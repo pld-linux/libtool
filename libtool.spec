@@ -155,10 +155,12 @@ cat libtool.m4 ltdl.m4 > libltdl/acinclude.m4
 
 %build
 %{__aclocal}
+%{__autoconf}
 %{__automake}
 
 cd libltdl
 %{__aclocal}
+%{__autoconf}
 cp -f ../config.sub .
 automake -a -c --foreign
 cd ..
