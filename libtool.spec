@@ -4,15 +4,15 @@ Summary(pl):	GNU libtool - narzêdzie do generowania bibliotek wspó³dzielonych
 Summary(pt_BR):	GNU libtool, uma ferramenta de geração de bibliotecas compartilhadas
 Name:		libtool
 Version:	1.4d
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL
 Group:		Development/Tools
 Source0:	ftp://alpha.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
-Source1:	%{name}-man-pages.tar.bz2
-Source2:	%{name}-ja-man-pages.tar.bz2
+Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-mktemp.patch
+Patch2:		%{name}-ac253.patch
 URL:		http://www.gnu.org/software/libtool/
 Requires:	mktemp
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -92,6 +92,7 @@ utilizando componentes estáticos (raramente necessário).
 %setup -q -a1
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %configure
@@ -100,11 +101,11 @@ utilizando componentes estáticos (raramente necessário).
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_mandir}
+
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT%{_mandir}
-cp -ar man/* $RPM_BUILD_ROOT%{_mandir}
-bzip2 -dc %{SOURCE2} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
+bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
 gzip -9nf AUTHORS NEWS README THANKS TODO ChangeLog
 
@@ -147,15 +148,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_aclocaldir}/ltdl.m4
 
 %dir %{_datadir}/libtool/libltdl
-%{_datadir}/libtool/libltdl/a*
+%{_datadir}/libtool/libltdl/[CMRal]*
 %{_datadir}/libtool/libltdl/config-h.in
 %attr(755,root,root) %{_datadir}/libtool/libltdl/configure
 %{_datadir}/libtool/libltdl/configure.ac
-%{_datadir}/libtool/libltdl/C*
-%{_datadir}/libtool/libltdl/l*
-%{_datadir}/libtool/libltdl/M*
-%{_datadir}/libtool/libltdl/R*
-%{_datadir}/libtool/libltdl/s*
 
 %files -n libltdl-static
 %defattr(644,root,root,755)
