@@ -1,5 +1,5 @@
---- libtool-1.4.1/ltmain.sh.relink	Wed Oct  3 02:05:35 2001
-+++ libtool-1.4.1/ltmain.sh	Wed Oct  3 05:16:14 2001
+--- libtool-1.4d/ltmain.sh.relink	Wed Oct  3 02:05:35 2001
++++ libtool-1.4d/ltmain.sh	Wed Oct  3 05:16:14 2001
 @@ -754,6 +754,7 @@
      linker_flags=
      dllsearchpath=
@@ -67,8 +67,8 @@
  	fi
        done
        # Quote the link command for shipping.
--      relink_command="cd `pwd`; $SHELL $0 --mode=relink $libtool_args"
-+      relink_command="cd `pwd`; $SHELL $0 --mode=relink $libtool_args @inst_prefix_dir@"
+-      relink_command="(cd `pwd`; $SHELL $0 --mode=relink $libtool_args)"
++      relink_command="(cd `pwd`; $SHELL $0 --mode=relink $libtool_args @inst_prefix_dir@)"
        relink_command=`$echo "X$relink_command" | $Xsed -e "$sed_quote_subst"`
  
        # Only create the output if not a dry run.

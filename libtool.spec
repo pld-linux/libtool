@@ -4,7 +4,7 @@ Summary(pl):	GNU libtool - narzêdzie do generowania bibliotek wspó³dzielonych
 Summary(pt_BR):	GNU libtool, uma ferramenta de geração de bibliotecas compartilhadas
 Name:		libtool
 Version:	1.4d
-Release:	2
+Release:	3
 Epoch:		1
 License:	GPL
 Group:		Development/Tools
@@ -13,6 +13,7 @@ Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-mktemp.patch
 Patch2:		%{name}-ac253.patch
+Patch3:		%{name}-relink.patch
 URL:		http://www.gnu.org/software/libtool/
 Requires:	mktemp
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -93,6 +94,7 @@ utilizando componentes estáticos (raramente necessário).
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %configure
@@ -106,8 +108,6 @@ install -d $RPM_BUILD_ROOT%{_mandir}
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
-
-gzip -9nf AUTHORS NEWS README THANKS TODO ChangeLog
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -123,7 +123,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz demo
+%doc AUTHORS NEWS README THANKS TODO ChangeLog demo
 %attr(755,root,root) %{_bindir}/*
 
 %dir %{_datadir}/libtool
