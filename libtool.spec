@@ -25,10 +25,11 @@ BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake >= 1.7.3
 %requires_eq	gcc
 Requires:	%(which %{__cc})
-Requires:	coreutils
+Requires:	fileutils
 Requires:	grep
 Requires:	mktemp
 Requires:	sed
+Requires:	sh-utils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
