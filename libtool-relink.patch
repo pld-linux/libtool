@@ -1,22 +1,66 @@
---- libtool-1.4e/ltmain.in.orig	Tue Dec 24 22:53:51 2002
-+++ libtool-1.4e/ltmain.in	Tue Dec 24 23:02:09 2002
-@@ -2372,7 +2372,7 @@
+diff -Nur libtool-1.4e.orig/ltmain.in libtool-1.4e/ltmain.in
+--- libtool-1.4e.orig/ltmain.in	Thu Dec 26 20:57:14 2002
++++ libtool-1.4e/ltmain.in	Thu Dec 26 21:02:12 2002
+@@ -2351,6 +2351,7 @@
+ 
+ 	  if test "$linkmode" = prog || test "$mode" = relink; then
+ 	    add_shlibpath=
++	    add_prefix_dir=
+ 	    add_dir=
+ 	    add=
+ 	    # Finalize command for both is simple: just hardcode it.
+@@ -2372,17 +2373,21 @@
  	      if test -n "$inst_prefix_dir"; then
  		case "$libdir" in
  		  [\\/]*)
 -		    add_dir="-L$inst_prefix_dir$libdir $add_dir"
-+		    add_dir="$add_dir -L$inst_prefix_dir$libdir"
++		    add_prefix_dir="-L$inst_prefix_dir$libdir"
  		    ;;
  		esac
  	      fi
---- libtool-1.4e/ltmain.sh.orig	Tue Dec 17 23:52:08 2002
-+++ libtool-1.4e/ltmain.sh	Tue Dec 24 23:02:33 2002
-@@ -2372,7 +2372,7 @@
+ 	      add="-l$name"
+ 	    fi
+ 
++	    # add_prefix_dir must be appended instead, otherwise it can
++	    # possibly be overrided by any hardcoded -L/... path in deplibs
+ 	    if test "$linkmode" = prog; then
++	      test -n "$add_prefix_dir" && finalize_deplibs="$finalize_deplibs $add_prefix_dir"
+ 	      test -n "$add_dir" && finalize_deplibs="$add_dir $finalize_deplibs"
+ 	      test -n "$add" && finalize_deplibs="$add $finalize_deplibs"
+ 	    else
++	      test -n "$add_prefix_dir" && deplibs="$deplibs $add_prefix_dir"
+ 	      test -n "$add_dir" && deplibs="$add_dir $deplibs"
+ 	      test -n "$add" && deplibs="$add $deplibs"
+ 	    fi
+diff -Nur libtool-1.4e.orig/ltmain.sh libtool-1.4e/ltmain.sh
+--- libtool-1.4e.orig/ltmain.sh	Tue Dec 17 23:52:08 2002
++++ libtool-1.4e/ltmain.sh	Thu Dec 26 21:03:03 2002
+@@ -2351,6 +2351,7 @@
+ 
+ 	  if test "$linkmode" = prog || test "$mode" = relink; then
+ 	    add_shlibpath=
++	    add_prefix_dir=
+ 	    add_dir=
+ 	    add=
+ 	    # Finalize command for both is simple: just hardcode it.
+@@ -2372,7 +2373,7 @@
  	      if test -n "$inst_prefix_dir"; then
  		case "$libdir" in
  		  [\\/]*)
 -		    add_dir="-L$inst_prefix_dir$libdir $add_dir"
-+		    add_dir="$add_dir -L$inst_prefix_dir$libdir"
++		    add_prefix_dir="-L$inst_prefix_dir$libdir"
  		    ;;
  		esac
  	      fi
+@@ -2380,9 +2381,11 @@
+ 	    fi
+ 
+ 	    if test "$linkmode" = prog; then
++	      test -n "$add_prefix_dir" && finalize_deplibs="$finalize_deplibs $add_prefix_dir"
+ 	      test -n "$add_dir" && finalize_deplibs="$add_dir $finalize_deplibs"
+ 	      test -n "$add" && finalize_deplibs="$add $finalize_deplibs"
+ 	    else
++	      test -n "$add_prefix_dir" && deplibs="$deplibs $add_prefix_dir"
+ 	      test -n "$add_dir" && deplibs="$add_dir $deplibs"
+ 	      test -n "$add" && deplibs="$add $deplibs"
+ 	    fi
