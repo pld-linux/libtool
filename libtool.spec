@@ -28,7 +28,11 @@ Patch10:	%{name}-LD_GNU.patch
 URL:		http://www.gnu.org/software/libtool/
 BuildRequires:	/usr/bin/which
 BuildRequires:	autoconf >= 2.57
+%ifarch amd64
 BuildRequires:	automake >= 1:1.7.9-2
+%else
+BuildRequires:	automake >= 1:1.7.3
+%endif
 BuildRequires:	gcc-c++ >= 5:3.3.2
 %requires_eq	gcc
 Requires:	%(which %{__cc})
