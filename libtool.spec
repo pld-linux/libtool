@@ -101,10 +101,10 @@ gzip -9nf AUTHORS NEWS README THANKS TODO ChangeLog
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%fix_info_dir
+[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %postun
-%fix_info_dir
+[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %post   -n libltdl -p /sbin/ldconfig
 %postun -n libltdl -p /sbin/ldconfig
