@@ -29,6 +29,7 @@ BuildRequires:	automake >= 1:1.7.9-2
 BuildRequires:	automake >= 1:1.7.3
 %endif
 BuildRequires:	gcc-c++ >= 5:3.3.3
+BuildRequires:	texinfo
 %requires_eq	gcc
 Requires:	%(which %{__cc})
 Requires:	coreutils
