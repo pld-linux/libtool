@@ -12,7 +12,7 @@ Patch0:		libtool-info.patch
 Patch1:		libtool-cache.patch
 URL:		http://www.gnu.org/software/libtool/
 PreReq:		/usr/sbin/fix-info-dir
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 GNU libtool is a set of shell scripts to automatically configure UNIX
