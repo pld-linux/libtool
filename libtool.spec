@@ -6,7 +6,7 @@ Summary(ru):	GNU libtool, набор утилит для генерации разделяемых библиотек
 Summary(uk):	GNU libtool, наб╕р утил╕т для генерац╕╖ динам╕чних б╕бл╕отек
 Name:		libtool
 Version:	1.5.6
-Release:	2
+Release:	3
 Epoch:		2
 License:	GPL
 Group:		Development/Tools
@@ -88,7 +88,7 @@ Summary(pt_BR):	Componentes de desenvolvimento para a libltdl
 Summary(ru):	Файлы для разработки программ с libltdl
 Summary(uk):	Файли для розробки програм з libltdl
 Group:		Development/Libraries
-Requires:	libltdl = %{epoch}:%{version}
+Requires:	libltdl = %{epoch}:%{version}-%{release}
 
 %description -n libltdl-devel
 System independent dlopen wrapper for GNU libtool - development part.
@@ -113,7 +113,7 @@ Summary(pt_BR):	Componentes de desenvolvimento para a libltdl
 Summary(ru):	Статическая библиотека libltdl из libltdl
 Summary(uk):	Статична б╕бл╕отека libltdl з libltdl
 Group:		Development/Libraries
-Requires:	libltdl-devel = %{epoch}:%{version}
+Requires:	libltdl-devel = %{epoch}:%{version}-%{release}
 
 %description -n libltdl-static
 Static system independent dlopen wrapper for GNU libtool. Install this
@@ -209,7 +209,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n libltdl
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so.*
+%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
 
 %files -n libltdl-devel
 %defattr(644,root,root,755)
