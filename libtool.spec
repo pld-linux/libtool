@@ -76,7 +76,7 @@ rm -rf $RPM_BUILD_ROOT
 
 make prefix=$RPM_BUILD_ROOT/usr install
 
-strip --strip-unneeded $RPM_BUILD_ROOT/usr/lib/lib*so.*.*
+strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*so.*.*
 
 gzip -9nf $RPM_BUILD_ROOT%{_infodir}/*.info* \
 	AUTHORS NEWS README THANKS TODO ChangeLog
@@ -109,18 +109,18 @@ fi
 
 %files -n libltdl
 %defattr(644,root,root,755)
-%attr(755,root,root) /usr/lib/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files -n libltdl-devel
 %defattr(644,root,root,755)
-%attr(755,root,root) /usr/lib/lib*.so
-%attr(755,root,root) /usr/lib/lib*.la
+%attr(755,root,root) %{_libdir}/lib*.so
+%attr(755,root,root) %{_libdir}/lib*.la
 /usr/include/*
 %attr(-,root,root) /usr/share/libtool/libltdl
 
 %files -n libltdl-static
 %defattr(644,root,root,755)
-/usr/lib/lib*.a
+%{_libdir}/lib*.a
 
 %changelog
 * Wed May  5 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
