@@ -27,7 +27,7 @@ Patch9:		%{name}-readonlysym.patch
 URL:		http://www.gnu.org/software/libtool/
 BuildRequires:	/usr/bin/which
 BuildRequires:	autoconf >= 2.57
-BuildRequires:	automake >= 1.7.9-2
+BuildRequires:	automake >= 1:1.7.9-2
 BuildRequires:	gcc-c++ >= 5:3.3.2
 %requires_eq	gcc
 Requires:	%(which %{__cc})
