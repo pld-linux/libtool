@@ -7,9 +7,6 @@ Version:	1.4.2
 Release:	3
 License:	GPL
 Group:		Development/Tools
-Group(de):	Entwicklung/Werkzeuge
-Group(fr):	Development/Outils
-Group(pl):	Programowanie/NarzЙdzia
 Source0:	ftp://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-mktemp.patch
@@ -44,13 +41,6 @@ Summary:	System independent dlopen wrapper for GNU libtool
 Summary(pl):	Biblioteka ogСlnych wywoЁaЯ dlopen
 Summary(pt_BR):	GNU libltdl, um wrapper dlopen para o GNU libtool
 Group:		Libraries
-Group(de):	Libraries
-Group(es):	Bibliotecas
-Group(fr):	Librairies
-Group(pl):	Biblioteki
-Group(pt_BR):	Bibliotecas
-Group(ru):	Библиотеки
-Group(uk):	Б╕бл╕отеки
 Obsoletes:	libtool-libs
 
 %description -n libltdl
@@ -67,13 +57,6 @@ Summary:	Development components for libltdl
 Summary(pl):	CzЙ╤Ф libltdl przeznaczona dla programistСw
 Summary(pt_BR):	Componentes de desenvolvimento para a libltdl
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	libltdl = %{version}
 
 %description -n libltdl-devel
@@ -91,13 +74,6 @@ Summary:	Static system independent dlopen wrapper for GNU libtool
 Summary(pl):	Statyczna biblioteka ogСlnych wywoЁaЯ dlopen
 Summary(pt_BR):	Componentes de desenvolvimento para a libltdl
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	libltdl-devel = %{version}
 
 %description -n libltdl-static
