@@ -5,8 +5,8 @@ Summary(pt_BR):	GNU libtool, uma ferramenta de geraГЦo de bibliotecas compartilh
 Summary(ru):	GNU libtool, набор утилит для генерации разделяемых библиотек
 Summary(uk):	GNU libtool, наб╕р утил╕т для генерац╕╖ динам╕чних б╕бл╕отек
 Name:		libtool
-Version:	1.4.2
-Release:	13
+Version:	1.4.3
+Release:	1
 Epoch:		1
 License:	GPL
 Group:		Development/Tools
@@ -17,7 +17,6 @@ Patch1:		%{name}-mktemp.patch
 Patch2:		%{name}-test.patch
 Patch3:		%{name}-relink.patch
 Patch4:		%{name}-ac253.patch
-Patch5:		%{name}-new-ac.patch
 URL:		http://www.gnu.org/software/libtool/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -128,7 +127,6 @@ utilizando componentes estАticos (raramente necessАrio).
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p0
 
 %build
 rm -f missing
@@ -178,6 +176,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_datadir}/libtool/config.guess
 %attr(755,root,root) %{_datadir}/libtool/config.sub
 %attr(755,root,root) %{_datadir}/libtool/ltmain.sh
+%attr(755,root,root) %{_datadir}/libtool/install-sh
 
 %{_infodir}/libtool.info*
 %{_mandir}/man1/*
@@ -199,6 +198,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/libtool/libltdl/a*
 %{_datadir}/libtool/libltdl/config-h.in
 %attr(755,root,root) %{_datadir}/libtool/libltdl/configure
+%attr(755,root,root) %{_datadir}/libtool/libltdl/config.guess
+%attr(755,root,root) %{_datadir}/libtool/libltdl/config.sub
+%attr(755,root,root) %{_datadir}/libtool/libltdl/install-sh
+%attr(755,root,root) %{_datadir}/libtool/libltdl/mkinstalldirs
+%attr(755,root,root) %{_datadir}/libtool/libltdl/missing
 %{_datadir}/libtool/libltdl/configure.in
 %{_datadir}/libtool/libltdl/C*
 %{_datadir}/libtool/libltdl/l*

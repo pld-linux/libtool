@@ -1,6 +1,6 @@
---- libtool-1.4.1/ltmain.sh.relink	Wed Oct  3 02:05:35 2001
-+++ libtool-1.4.1/ltmain.sh	Wed Oct  3 05:16:14 2001
-@@ -754,6 +754,7 @@
+--- libtool-1.4.3/ltmain.sh.wiget	Thu Oct 24 16:57:17 2002
++++ libtool-1.4.3/ltmain.sh	Thu Oct 24 16:57:17 2002
+@@ -768,6 +768,7 @@
      linker_flags=
      dllsearchpath=
      lib_search_path=`pwd`
@@ -8,7 +8,7 @@
  
      avoid_version=no
      dlfiles=
-@@ -884,6 +885,11 @@
+@@ -898,6 +899,11 @@
  	  prev=
  	  continue
  	  ;;
@@ -20,7 +20,7 @@
  	release)
  	  release="-$arg"
  	  prev=
-@@ -985,6 +991,11 @@
+@@ -999,6 +1005,11 @@
  	continue
  	;;
  
@@ -32,7 +32,7 @@
        # The native IRIX linker understands -LANG:*, -LIST:* and -LNO:*
        # so, if we see these flags be careful not to treat them like -L
        -L[A-Z][A-Z]*:*)
-@@ -1866,6 +1877,7 @@
+@@ -1887,6 +1898,7 @@
  
  	  if test "$linkmode" = prog || test "$mode" = relink; then
  	    add_shlibpath=
@@ -40,7 +40,7 @@
  	    add_dir=
  	    add=
  	    # Finalize command for both is simple: just hardcode it.
-@@ -1886,10 +1898,22 @@
+@@ -1907,10 +1919,22 @@
  	      add="-l$name"
  	    fi
  
@@ -63,16 +63,7 @@
  	      test -n "$add_dir" && deplibs="$add_dir $deplibs"
  	      test -n "$add" && deplibs="$add $deplibs"
  	    fi
-@@ -3856,7 +3880,7 @@
- 	fi
-       done
-       # Quote the link command for shipping.
--      relink_command="cd `pwd`; $SHELL $0 --mode=relink $libtool_args"
-+      relink_command="cd `pwd`; $SHELL $0 --mode=relink $libtool_args @inst_prefix_dir@"
-       relink_command=`$echo "X$relink_command" | $Xsed -e "$sed_quote_subst"`
- 
-       # Only create the output if not a dry run.
-@@ -4157,6 +4181,24 @@
+@@ -4229,6 +4253,24 @@
  	dir="$dir$objdir"
  
  	if test -n "$relink_command"; then
