@@ -1,15 +1,14 @@
 Summary:	GNU libtool, a shared library generation tool.
 Summary(pl):	GNU libtool - narzêdzie do generowania bibliotek wspó³dzielonych
 Name:		libtool
-Version:	1.3.3
-Release:	2
+Version:	1.3.4
+Release:	1
 Copyright:	GPL
 Group:		Development/Tools
 Group(pl):	Programowanie/Narzêdzia
-Source:		ftp://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
+Source:		ftp://alpha.gnu.org/pub/gnu/libtool/%{name}-%{version}.tar.gz
 Patch0:		libtool-info.patch
 Patch1:		libtool-cache.patch
-Patch2:		libtool-arm.patch
 URL:		http://www.gnu.org/software/libtool/
 PreReq:		/usr/sbin/fix-info-dir
 BuildRoot:	/tmp/%{name}-%{version}-root
@@ -64,7 +63,6 @@ Statyczna biblioteka ogólnych wywo³añ dlopen
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 %configure 
