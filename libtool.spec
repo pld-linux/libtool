@@ -1,16 +1,19 @@
-Summary:	GNU libtool, a shared library generation tool.
+Summary:	GNU libtool, a shared library generation tool
 Summary(pl):	GNU libtool - narzêdzie do generowania bibliotek wspó³dzielonych
 Name:		libtool
 Version:	1.3.5
-Release:	1
+Release:	9
 License:	GPL
 Group:		Development/Tools
-Group(fr):	Development/Outils
 Group(pl):	Programowanie/Narzêdzia
+Group(fr):	Development/Outils
 Source0:	ftp://alpha.gnu.org/pub/gnu/libtool/%{name}-%{version}.tar.gz
-Patch0:		libtool-info.patch
-Patch1:		libtool-cache.patch
+Patch0:		%{name}-info.patch
+Patch1:		%{name}-cache.patch
+Patch2:		%{name}-mktemp.patch
+Patch3:		%{name}-nonneg.patch
 URL:		http://www.gnu.org/software/libtool/
+Requires:	mktemp
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -27,6 +30,7 @@ Summary:	System independent dlopen wrapper for GNU libtool
 Summary(pl):	Biblioteka ogólnych wywo³añ dlopen
 Group:		Libraries
 Group(pl):	Biblioteki
+Obsoletes:	libtool-libs
 
 %description -n libltdl
 System independent dlopen wrapper for GNU libtool.
@@ -64,6 +68,8 @@ Statyczna biblioteka ogólnych wywo³añ dlopen.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 %configure
