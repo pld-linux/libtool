@@ -1,11 +1,11 @@
-%define		snap 20021218
+%define		snap 20030119
 Summary:	GNU libtool, a shared library generation tool
 Summary(es):	GNU libtool, una herramienta de creación de bibliotecas compartidas
 Summary(pl):	GNU libtool - narzêdzie do generowania bibliotek wspó³dzielonych
 Summary(pt_BR):	GNU libtool, uma ferramenta de geração de bibliotecas compartilhadas
 Name:		libtool
 Version:	1.4e
-Release:	0.%{snap}.3
+Release:	0.%{snap}.1
 Epoch:		2
 License:	GPL
 Group:		Development/Tools
