@@ -99,13 +99,13 @@ fi
 
 %{_infodir}/libtool.info*
 
-%dir /usr/share/libtool
-%attr(755,root,root) /usr/share/libtool/config.guess
-%attr(755,root,root) /usr/share/libtool/config.sub
-%attr(755,root,root) /usr/share/libtool/ltconfig
-/usr/share/libtool/ltmain.sh
+%dir %{_datadir}/libtool
+%attr(755,root,root) %{_datadir}/libtool/config.guess
+%attr(755,root,root) %{_datadir}/libtool/config.sub
+%attr(755,root,root) %{_datadir}/libtool/ltconfig
+%{_datadir}/libtool/ltmain.sh
 
-/usr/share/aclocal/libtool.m4
+%{_datadir}/aclocal/libtool.m4
 
 %files -n libltdl
 %defattr(644,root,root,755)
@@ -116,7 +116,7 @@ fi
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
 /usr/include/*
-%attr(-,root,root) /usr/share/libtool/libltdl
+%attr(-,root,root) %{_datadir}/libtool/libltdl
 
 %files -n libltdl-static
 %defattr(644,root,root,755)
