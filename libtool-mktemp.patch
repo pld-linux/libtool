@@ -1,31 +1,40 @@
-diff -urN libtool-1.5.2.org/ltmain.in libtool-1.5.2/ltmain.in
---- libtool-1.5.2.org/ltmain.in	2004-01-25 23:02:49.600129320 +0100
-+++ libtool-1.5.2/ltmain.in	2004-01-25 23:03:52.581029183 +0100
-@@ -5673,6 +5673,11 @@
- 	      tmpdir="/tmp"
- 	      test -n "$TMPDIR" && tmpdir="$TMPDIR"
- 	      tmpdir="$tmpdir/libtool-$$"
-+	      tmpdir=`mktemp -d $tmpdir/libtool-XXXXXX 2> /dev/null`
-+	      if test $? = 0 ; then :
-+	      else
-+		tmpdir="$tmpdir/libtool-$$"
-+	      fi
- 	      if $mkdir "$tmpdir" && chmod 700 "$tmpdir"; then :
- 	      else
- 		$echo "$modename: error: cannot create temporary directory \`$tmpdir'" 1>&2
-diff -urN libtool-1.5.2.org/ltmain.sh libtool-1.5.2/ltmain.sh
---- libtool-1.5.2.org/ltmain.sh	2004-01-25 23:02:49.561137431 +0100
-+++ libtool-1.5.2/ltmain.sh	2004-01-25 23:04:33.892436415 +0100
-@@ -5672,7 +5672,11 @@
+--- libtool-1.5.4/ltmain.in.orig	2004-04-02 05:46:15.000000000 +0200
++++ libtool-1.5.4/ltmain.in	2004-04-06 23:28:13.336768688 +0200
+@@ -5691,6 +5691,9 @@
  	    if test "$finalize" = yes && test -z "$run"; then
  	      tmpdir="/tmp"
  	      test -n "$TMPDIR" && tmpdir="$TMPDIR"
--	      tmpdir="$tmpdir/libtool-$$"
 +	      tmpdir=`mktemp -d $tmpdir/libtool-XXXXXX 2> /dev/null`
 +	      if test $? = 0 ; then :
 +	      else
-+		tmpdir="$tmpdir/libtool-$$"
-+	      fi
- 	      if $mkdir "$tmpdir" && chmod 700 "$tmpdir"; then :
- 	      else
+ 	      tmpdir="$tmpdir/libtool-$$"
+ 	      save_umask=`umask`
+ 	      umask 0077
+@@ -5701,6 +5704,7 @@
  		$echo "$modename: error: cannot create temporary directory \`$tmpdir'" 1>&2
+ 		continue
+ 	      fi
++	      fi
+ 	      file=`$echo "X$file$stripped_ext" | $Xsed -e 's%^.*/%%'`
+ 	      outputname="$tmpdir/$file"
+ 	      # Replace the output file specification.
+--- libtool-1.5.4/ltmain.sh.orig	2004-04-06 23:31:43.000000000 +0200
++++ libtool-1.5.4/ltmain.sh	2004-04-06 23:33:28.728821808 +0200
+@@ -5704,6 +5704,9 @@
+ 	    if test "$finalize" = yes && test -z "$run"; then
+ 	      tmpdir="/tmp"
+ 	      test -n "$TMPDIR" && tmpdir="$TMPDIR"
++	      tmpdir=`mktemp -d $tmpdir/libtool-XXXXXX 2> /dev/null`
++	      if test $? = 0 ; then :
++	      else
+ 	      tmpdir="$tmpdir/libtool-$$"
+ 	      save_umask=`umask`
+ 	      umask 0077
+@@ -5714,6 +5717,7 @@
+ 		$echo "$modename: error: cannot create temporary directory \`$tmpdir'" 1>&2
+ 		continue
+ 	      fi
++	      fi
+ 	      file=`$echo "X$file$stripped_ext" | $Xsed -e 's%^.*/%%'`
+ 	      outputname="$tmpdir/$file"
+ 	      # Replace the output file specification.
