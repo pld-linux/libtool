@@ -1,18 +1,16 @@
 Summary:	GNU libtool, a shared library generation tool
 Summary(pl):	GNU libtool - narzêdzie do generowania bibliotek wspó³dzielonych
 Name:		libtool
-Version:	1.3.5
-Release:	11
+Version:	1.4
+Release:	0.1
 License:	GPL
 Group:		Development/Tools
 Group(de):	Entwicklung/Werkzeuge
 Group(fr):	Development/Outils
 Group(pl):	Programowanie/Narzêdzia
-Source0:	ftp://alpha.gnu.org/pub/gnu/libtool/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.gnu.org/pub/gnu/libtool/%{name}-%{version}.tar.gz
 Patch0:		%{name}-info.patch
-Patch1:		%{name}-cache.patch
-Patch2:		%{name}-mktemp.patch
-Patch3:		%{name}-nonneg.patch
+Patch1:		%{name}-mktemp.patch
 URL:		http://www.gnu.org/software/libtool/
 Requires:	mktemp
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -75,8 +73,6 @@ Statyczna biblioteka ogólnych wywo³añ dlopen.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %build
 %configure
@@ -111,8 +107,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/libtool
 %attr(755,root,root) %{_datadir}/libtool/config.guess
 %attr(755,root,root) %{_datadir}/libtool/config.sub
-%attr(755,root,root) %{_datadir}/libtool/ltconfig
-%{_datadir}/libtool/ltmain.sh
+%attr(755,root,root) %{_datadir}/libtool/ltmain.sh
 
 %{_infodir}/libtool.info*
 %{_aclocaldir}/libtool.m4
@@ -126,6 +121,17 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
 %{_includedir}/*
+%{_aclocaldir}/ltdl.m4
+
+%{_datadir}/libtool/libltdl/a*
+%{_datadir}/libtool/libltdl/config.h.in
+%attr(755,root,root) %{_datadir}/libtool/libltdl/configure
+%{_datadir}/libtool/libltdl/configure.in
+%{_datadir}/libtool/libltdl/C*
+%{_datadir}/libtool/libltdl/l*
+%{_datadir}/libtool/libltdl/M*
+%{_datadir}/libtool/libltdl/R*
+%{_datadir}/libtool/libltdl/s*
 
 %files -n libltdl-static
 %defattr(644,root,root,755)
