@@ -18,6 +18,7 @@ Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-mktemp.patch
 Patch2:		%{name}-relink.patch
+Patch3:		%{name}-pmake.patch
 URL:		http://www.gnu.org/software/libtool/
 %requires_eq	gcc
 Requires:	%(which %{__cc})
@@ -126,11 +127,17 @@ utilizando componentes estáticos (raramente necessário).
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %configure
 
 %{__make} -C doc -k
+%{__make} libtoolize
+%{__make} acinclude.m4 cdemo/acinclude.m4 pdemo/acinclude.m4 \
+	demo/acinclude.m4 depdemo/acinclude.m4 mdemo/acinclude.m4 \
+	tagdemo/acinclude.m4 f77demo/acinclude.m4
+%{__make} -C libltdl Makefile.in
 %{__make}
 
 %install
