@@ -1,3 +1,4 @@
+%define		snap 20030119
 Summary:	GNU libtool, a shared library generation tool
 Summary(es):	GNU libtool, una herramienta de creaciСn de bibliotecas compartidas
 Summary(pl):	GNU libtool - narzЙdzie do generowania bibliotek wspСЁdzielonych
@@ -5,21 +6,19 @@ Summary(pt_BR):	GNU libtool, uma ferramenta de geraГЦo de bibliotecas compartilh
 Summary(ru):	GNU libtool, набор утилит для генерации разделяемых библиотек
 Summary(uk):	GNU libtool, наб╕р утил╕т для генерац╕╖ динам╕чних б╕бл╕отек
 Name:		libtool
-Version:	1.4.3
-Release:	3
-Epoch:		1
+Version:	1.4e
+Release:	0.%{snap}.1
+Epoch:		2
 License:	GPL
 Group:		Development/Tools
-Source0:	ftp://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
+#Source0:	ftp://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
+# source from Libtool CVS
+Source0:	%{name}-%{version}.%{snap}.tar.gz
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-mktemp.patch
-Patch2:		%{name}-test.patch
-Patch3:		%{name}-relink.patch
-Patch4:		%{name}-ac253.patch
+Patch2:		%{name}-relink.patch
 URL:		http://www.gnu.org/software/libtool/
-BuildRequires:	autoconf
-BuildRequires:	automake
 Requires:	mktemp
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -121,29 +120,14 @@ utilizando componentes estАticos (raramente necessАrio).
 складу libltdl.
 
 %prep
-%setup -q
+%setup -q -a1
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1 -b .wiget
-%patch4 -p1
 
 %build
-rm -f missing
-%{__aclocal}
-autoupdate
-%{__automake}
-%{__autoconf}
-cd libltdl
-rm -f missing
-cp -f ../ltmain.sh .
-%{__aclocal} -I ..
-autoupdate
-%{__automake}
-%{__autoconf}
-cd ..
-
 %configure
+
 %{__make} -C doc -k
 %{__make}
 
@@ -177,6 +161,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_datadir}/libtool/config.sub
 %attr(755,root,root) %{_datadir}/libtool/ltmain.sh
 %attr(755,root,root) %{_datadir}/libtool/install-sh
+%attr(755,root,root) %{_datadir}/libtool/missing
+%attr(755,root,root) %{_datadir}/libtool/mkinstalldirs
 
 %{_infodir}/libtool.info*
 %{_mandir}/man1/*
@@ -195,19 +181,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_aclocaldir}/ltdl.m4
 
 %dir %{_datadir}/libtool/libltdl
-%{_datadir}/libtool/libltdl/a*
+%{_datadir}/libtool/libltdl/[CMRal]*
 %{_datadir}/libtool/libltdl/config-h.in
 %attr(755,root,root) %{_datadir}/libtool/libltdl/configure
-%attr(755,root,root) %{_datadir}/libtool/libltdl/config.guess
-%attr(755,root,root) %{_datadir}/libtool/libltdl/config.sub
-%attr(755,root,root) %{_datadir}/libtool/libltdl/install-sh
-%attr(755,root,root) %{_datadir}/libtool/libltdl/mkinstalldirs
-%attr(755,root,root) %{_datadir}/libtool/libltdl/missing
-%{_datadir}/libtool/libltdl/configure.in
-%{_datadir}/libtool/libltdl/C*
-%{_datadir}/libtool/libltdl/l*
-%{_datadir}/libtool/libltdl/M*
-%{_datadir}/libtool/libltdl/R*
+%{_datadir}/libtool/libltdl/configure.ac
 
 %files -n libltdl-static
 %defattr(644,root,root,755)
