@@ -81,7 +81,7 @@ Summary(pt_BR):	Componentes de desenvolvimento para a libltdl
 Summary(ru):	Файлы для разработки программ с libltdl
 Summary(uk):	Файли для розробки програм з libltdl
 Group:		Development/Libraries
-Requires:	libltdl = %{version}
+Requires:	libltdl = %{epoch}:%{version}
 
 %description -n libltdl-devel
 System independent dlopen wrapper for GNU libtool - development part.
@@ -106,7 +106,7 @@ Summary(pt_BR):	Componentes de desenvolvimento para a libltdl
 Summary(ru):	Статическая библиотека libltdl из libltdl
 Summary(uk):	Статична б╕бл╕отека libltdl з libltdl
 Group:		Development/Libraries
-Requires:	libltdl-devel = %{version}
+Requires:	libltdl-devel = %{epoch}:%{version}
 
 %description -n libltdl-static
 Static system independent dlopen wrapper for GNU libtool. Install this
