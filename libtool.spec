@@ -129,14 +129,14 @@ utilizando componentes estáticos (raramente necessário).
 rm -f missing
 aclocal
 autoupdate
-automake -a -c -f
-autoconf
+%{__automake}
+%{__autoconf}
 (cd libltdl
 rm -f missing
 aclocal
 autoupdate
-automake -a -c -f
-autoconf)
+%{__automake}
+%{__autoconf})
 %configure
 %{__make} -C doc -k
 %{__make}
