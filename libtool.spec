@@ -7,7 +7,7 @@ Summary(ru):	GNU libtool, набор утилит для генерации разделяемых библиотек
 Summary(uk):	GNU libtool, наб╕р утил╕т для генерац╕╖ динам╕чних б╕бл╕отек
 Name:		libtool
 Version:	1.4e
-Release:	0.%{snap}.1
+Release:	0.%{snap}.2
 Epoch:		2
 License:	GPL
 Group:		Development/Tools
@@ -19,6 +19,8 @@ Patch0:		%{name}-info.patch
 Patch1:		%{name}-mktemp.patch
 Patch2:		%{name}-relink.patch
 URL:		http://www.gnu.org/software/libtool/
+%requires_eq	gcc
+Requires:	%(which %{__cc})
 Requires:	mktemp
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 

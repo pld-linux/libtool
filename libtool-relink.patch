@@ -1,29 +1,5 @@
 --- libtool-1.4e/ltmain.sh.wiget	Tue Jan 28 12:40:13 2003
 +++ libtool-1.4e/ltmain.sh	Tue Jan 28 14:39:27 2003
-@@ -981,6 +981,11 @@
- 	  prev=
- 	  continue
- 	  ;;
-+        inst_prefix)
-+	  inst_prefix_dir="$arg"
-+	  prev=
-+	  continue
-+	  ;;
- 	release)
- 	  release="-$arg"
- 	  prev=
-@@ -1202,6 +1207,11 @@
- 	continue
- 	;;
- 
-+      -inst-prefix-dir)
-+	prev=inst_prefix
-+	continue
-+	;;
-+
-       # The native IRIX linker understands -LANG:*, -LIST:* and -LNO:*
-       # so, if we see these flags be careful not to treat them like -L
-       -L[A-Z][A-Z]*:*)
 @@ -2356,6 +2366,7 @@
  
  	  if test "$linkmode" = prog || test "$mode" = relink; then
@@ -57,30 +33,6 @@
  	    fi
 --- libtool-1.4e/ltmain.in.wiget	Tue Jan 28 14:11:13 2003
 +++ libtool-1.4e/ltmain.in	Tue Jan 28 14:47:59 2003
-@@ -981,6 +981,11 @@
- 	  prev=
- 	  continue
- 	  ;;
-+        inst_prefix)
-+	  inst_prefix_dir="$arg"
-+	  prev=
-+	  continue
-+	  ;;
- 	release)
- 	  release="-$arg"
- 	  prev=
-@@ -1202,6 +1207,11 @@
- 	continue
- 	;;
- 
-+      -inst-prefix-dir)
-+	prev=inst_prefix
-+	continue
-+	;;
-+
-       # The native IRIX linker understands -LANG:*, -LIST:* and -LNO:*
-       # so, if we see these flags be careful not to treat them like -L
-       -L[A-Z][A-Z]*:*)
 @@ -2279,6 +2289,7 @@
  
  	  if test "$linkmode" = prog || test "$mode" != relink; then
