@@ -5,13 +5,13 @@ Summary(pt_BR):	GNU libtool, uma ferramenta de geraГЦo de bibliotecas compartilh
 Summary(ru):	GNU libtool, набор утилит для генерации разделяемых библиотек
 Summary(uk):	GNU libtool, наб╕р утил╕т для генерац╕╖ динам╕чних б╕бл╕отек
 Name:		libtool
-Version:	1.5.4
+Version:	1.5.6
 Release:	1
 Epoch:		2
 License:	GPL
 Group:		Development/Tools
 Source0:	ftp://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
-# Source0-md5:	5d7bcad7ca3af1ac2f344ec554fe70ec
+# Source0-md5:	f9b709f4ac6d094afdee9cdbe1c6ffe7
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 # Source1-md5:	b95e215961860c66f0868b0d551358c9
 Patch0:		%{name}-info.patch
@@ -21,7 +21,6 @@ Patch3:		%{name}-pmake.patch
 Patch4:		%{name}-libdirs.patch
 Patch5:		%{name}-multilib.patch
 Patch6:		%{name}-m4-x86_64.patch
-Patch7:		%{name}-installfix.patch
 URL:		http://www.gnu.org/software/libtool/
 BuildRequires:	/usr/bin/which
 BuildRequires:	autoconf >= 2.57
@@ -145,7 +144,6 @@ utilizando componentes estАticos (raramente necessАrio).
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
-%patch7 -p1
 
 # it's the same - copy so patching only libtool.m4 is sufficient
 cp -f libtool.m4 acinclude.m4
