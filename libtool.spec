@@ -66,15 +66,17 @@ Statyczna biblioteka ogólnych wywo³añ dlopen
 
 %build
 aclocal
+CFLAGS="$RPM_OPT_FLAGS" \
 ./configure %{_target} --prefix=/usr
 (cd doc && make -k)
 make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/usr
 
 make prefix=$RPM_BUILD_ROOT/usr install
+
+strip --strip-unneeded $RPM_BUILD_ROOT/usr/lib/lib*so.*.*
 
 gzip -9nf $RPM_BUILD_ROOT/usr/info/*.info* \
 	AUTHORS NEWS README THANKS TODO ChangeLog
@@ -121,8 +123,12 @@ fi
 /usr/lib/lib*.a
 
 %changelog
-* Fri Apr 30 1999 Artur Frysiak <wiget@pld.org.pl>
+* Wed May  5 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.3-2]
+- added CFLAGS="$RPM_OPT_FLAGS" to ./configure enviroment,
+- added stripping shared libraries.
+
+* Fri Apr 30 1999 Artur Frysiak <wiget@pld.org.pl>
 - added libltdl, libltdl-devel and libltdl-static subpackage
 - removed BuildArch: noarch (added subpackage are system independent)
 - added patch for work correct with grep 2.3
