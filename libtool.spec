@@ -115,7 +115,7 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
-/usr/include/*
+%{_includedir}/*
 %attr(-,root,root) %{_datadir}/libtool/libltdl
 
 %files -n libltdl-static
