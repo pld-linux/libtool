@@ -5,26 +5,22 @@ Summary(pt_BR):	GNU libtool, uma ferramenta de geraГЦo de bibliotecas compartilh
 Summary(ru):	GNU libtool, набор утилит для генерации разделяемых библиотек
 Summary(uk):	GNU libtool, наб╕р утил╕т для генерац╕╖ динам╕чних б╕бл╕отек
 Name:		libtool
-Version:	1.5
-Release:	14
+Version:	1.5.2
+Release:	1
 Epoch:		2
 License:	GPL
 Group:		Development/Tools
 Source0:	ftp://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
-# Source0-md5: 0e1844f25e2ad74c3715b5776d017545
+# Source0-md5:	db66ba05502f533ad0cfd84dc0e03bd5
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
-# Source1-md5: b95e215961860c66f0868b0d551358c9
+# Source1-md5:	b95e215961860c66f0868b0d551358c9
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-mktemp.patch
 Patch2:		%{name}-relink.patch
 Patch3:		%{name}-pmake.patch
 Patch4:		%{name}-libdirs.patch
-Patch5:		%{name}-am18.patch
-Patch6:		%{name}-multilib.patch
-Patch7:		%{name}-m4-x86_64.patch
-Patch8:		%{name}-nostdlib.patch
-Patch9:		%{name}-readonlysym.patch
-Patch10:	%{name}-LD_GNU.patch
+Patch5:		%{name}-multilib.patch
+Patch6:		%{name}-m4-x86_64.patch
 URL:		http://www.gnu.org/software/libtool/
 BuildRequires:	/usr/bin/which
 BuildRequires:	autoconf >= 2.57
@@ -148,10 +144,6 @@ utilizando componentes estАticos (raramente necessАrio).
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
 
 # it's the same - copy so patching only libtool.m4 is sufficient
 cp -f libtool.m4 acinclude.m4
@@ -233,7 +225,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/libtool/libltdl/configure.ac
 %attr(755,root,root) %{_datadir}/libtool/libltdl/install-sh
 %attr(755,root,root) %{_datadir}/libtool/libltdl/missing
-%attr(755,root,root) %{_datadir}/libtool/libltdl/mkinstalldirs
 %attr(755,root,root) %{_datadir}/libtool/libltdl/config.guess
 %attr(755,root,root) %{_datadir}/libtool/libltdl/config.sub
 
