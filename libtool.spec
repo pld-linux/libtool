@@ -2,9 +2,10 @@ Summary:	GNU libtool, a shared library generation tool.
 Summary(pl):	GNU libtool - narzêdzie do generowania bibliotek wspó³dzielonych
 Name:		libtool
 Version:	1.3.4
-Release:	1
-Copyright:	GPL
+Release:	2
+License:	GPL
 Group:		Development/Tools
+Group(fr):	Development/Outils
 Group(pl):	Programowanie/Narzêdzia
 Source:		ftp://alpha.gnu.org/pub/gnu/libtool/%{name}-%{version}.tar.gz
 Patch0:		libtool-info.patch
@@ -14,8 +15,8 @@ PreReq:		/usr/sbin/fix-info-dir
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
-GNU libtool is a set of shell scripts to automatically configure
-UNIX architectures to build shared libraries in generic fashion.
+GNU libtool is a set of shell scripts to automatically configure UNIX
+architectures to build shared libraries in generic fashion.
 
 %description -l pl
 GNU libtool jest zbiorem skryptów shellowych do automatycznego generowania
@@ -65,7 +66,7 @@ Statyczna biblioteka ogólnych wywo³añ dlopen
 %patch1 -p1
 
 %build
-%configure 
+%configure
 
 make -C doc -k
 make
@@ -84,10 +85,10 @@ gzip -9nf $RPM_BUILD_ROOT%{_infodir}/*.info* \
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
+%{_sbindir}/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %postun
-/usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
+%{_sbindir}/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %post   -n libltdl -p /sbin/ldconfig
 %postun -n libltdl -p /sbin/ldconfig
