@@ -2,11 +2,12 @@ Summary:	GNU libtool, a shared library generation tool
 Summary(pl):	GNU libtool - narzêdzie do generowania bibliotek wspó³dzielonych
 Name:		libtool
 Version:	1.3.5
-Release:	9
+Release:	10
 License:	GPL
 Group:		Development/Tools
-Group(pl):	Programowanie/Narzêdzia
+Group(de):	Entwicklung/Werkzeuge
 Group(fr):	Development/Outils
+Group(pl):	Programowanie/Narzêdzia
 Source0:	ftp://alpha.gnu.org/pub/gnu/libtool/%{name}-%{version}.tar.gz
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-cache.patch
@@ -29,6 +30,8 @@ systemowej.
 Summary:	System independent dlopen wrapper for GNU libtool
 Summary(pl):	Biblioteka ogólnych wywo³añ dlopen
 Group:		Libraries
+Group(de):	Libraries
+Group(fr):	Librairies
 Group(pl):	Biblioteki
 Obsoletes:	libtool-libs
 
@@ -42,6 +45,8 @@ Biblioteka ogólnych wywo³añ dlopen.
 Summary:	System independent dlopen wrapper for GNU libtool
 Summary(pl):	Biblioteka ogólnych wywo³añ dlopen
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
+Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	libltdl = %{version}
 
@@ -55,6 +60,8 @@ Biblioteka ogólnych wywo³añ dlopen.
 Summary:	Static system independent dlopen wrapper for GNU libtool
 Summary(pl):	Statyczna biblioteka ogólnych wywo³añ dlopen
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
+Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	libltdl-devel = %{version}
 
@@ -82,10 +89,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*so.*.*
-
-gzip -9nf $RPM_BUILD_ROOT%{_infodir}/*.info* \
-	AUTHORS NEWS README THANKS TODO ChangeLog
+gzip -9nf AUTHORS NEWS README THANKS TODO ChangeLog
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -101,7 +105,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc {AUTHORS,NEWS,README,THANKS,TODO,ChangeLog}.gz demo
+%doc *.gz demo
 %attr(755,root,root) %{_bindir}/*
 
 %dir %{_datadir}/libtool
