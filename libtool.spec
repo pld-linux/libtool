@@ -21,7 +21,7 @@ UNIX architectures to build shared libraries in generic fashion.
 GNU libtool jest zbiorem skryptów shellowych do automatycznego gemnerowania
 bibliotek wspó³dzielonych niezale¿nie od typu platformy systemowej.
 
-%package -n	libltdl
+%package -n libltdl
 Summary:	System independent dlopen wrapper for GNU libtool
 Summary(pl):	Biblioteka ogólnych wywo³añ dlopen
 Group:		Libraries
@@ -33,7 +33,7 @@ System independent dlopen wrapper for GNU libtool
 %description -n libltdl -l pl
 Biblioteka ogólnych wywo³añ dlopen
 
-%package -n	libltdl-devel
+%package -n libltdl-devel
 Summary:	System independent dlopen wrapper for GNU libtool
 Summary(pl):	Biblioteka ogólnych wywo³añ dlopen
 Group:		Development/Libraries
@@ -46,7 +46,7 @@ System independent dlopen wrapper for GNU libtool
 %description -n libltdl-devel -l pl
 Biblioteka ogólnych wywo³añ dlopen
 
-%package -n	libltdl-static
+%package -n libltdl-static
 Summary:	Static system independent dlopen wrapper for GNU libtool
 Summary(pl):	Statyczna biblioteka ogólnych wywo³añ dlopen
 Group:		Development/Libraries
@@ -67,15 +67,13 @@ Statyczna biblioteka ogólnych wywo³añ dlopen
 %build
 %configure 
 
-(cd doc && make -k)
+make -C doc -k
 make
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-make \
-    DESTDIR=$RPM_BUILD_ROOT \
-    install
+make install DESTDIR=$RPM_BUILD_ROOT
 
 strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*so.*.*
 
@@ -93,23 +91,21 @@ if [ "$1" = "0" ]; then
     /sbin/install-info --delete %{_infodir}/libtool.info.gz /etc/info-dir
 fi
 
-%post -n libltdl -p /sbin/ldconfig
+%post   -n libltdl -p /sbin/ldconfig
 %postun -n libltdl -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
 %doc {AUTHORS,NEWS,README,THANKS,TODO,ChangeLog}.gz demo
-
 %attr(755,root,root) %{_bindir}/*
-
-%{_infodir}/libtool.info*
 
 %dir %{_datadir}/libtool
 %attr(755,root,root) %{_datadir}/libtool/config.guess
 %attr(755,root,root) %{_datadir}/libtool/config.sub
 %attr(755,root,root) %{_datadir}/libtool/ltconfig
-
 %{_datadir}/libtool/ltmain.sh
+
+%{_infodir}/libtool.info*
 %{_datadir}/aclocal/libtool.m4
 
 %files -n libltdl
