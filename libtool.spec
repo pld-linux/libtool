@@ -132,14 +132,14 @@ utilizando componentes estáticos (raramente necessário).
 
 %build
 rm -f missing
-aclocal
+%{__aclocal}
 autoupdate
 %{__automake}
 %{__autoconf}
 cd libltdl
 rm -f missing
 cp -f ../ltmain.sh .
-aclocal -I ..
+%{__aclocal} -I ..
 autoupdate
 %{__automake}
 %{__autoconf}
