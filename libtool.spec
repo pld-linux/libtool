@@ -1,7 +1,7 @@
 Summary:	GNU libtool, a shared library generation tool.
 Summary(pl):	GNU libtool - narzêdzie do generowania bibliotek wspó³dzielonych
 Name:		libtool
-Version:	1.2f
+Version:	1.3
 Release:	1
 Copyright:	GPL
 Group:		Development/Tools
@@ -36,8 +36,8 @@ install -d $RPM_BUILD_ROOT/usr
 
 make prefix=$RPM_BUILD_ROOT/usr install
 
-gzip -9nf $RPM_BUILD_ROOT/usr/info/*.info*
-gzip -9nf AUTHORS NEWS README THANKS TODO ChangeLog
+gzip -9nf $RPM_BUILD_ROOT/usr/info/*.info* \
+	AUTHORS NEWS README THANKS TODO ChangeLog
 
 %clean
 rm -rf $RPM_BUILD_ROOT
