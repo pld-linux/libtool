@@ -5,7 +5,7 @@ Summary(pl):	GNU libtool - narzêdzie do generowania bibliotek wspó³dzielonych
 Summary(pt_BR):	GNU libtool, uma ferramenta de geração de bibliotecas compartilhadas
 Name:		libtool
 Version:	1.4e
-Release:	0.%{snap}.1
+Release:	0.%{snap}.2
 Epoch:		2
 License:	GPL
 Group:		Development/Tools
@@ -14,8 +14,7 @@ Source0:	%{name}-%{version}.%{snap}.tar.gz
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-mktemp.patch
-#Patch2:		%{name}-ac253.patch
-#Patch3:		%{name}-relink.patch
+Patch2:		%{name}-relink.patch
 URL:		http://www.gnu.org/software/libtool/
 Requires:	mktemp
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -95,8 +94,7 @@ utilizando componentes estáticos (raramente necessário).
 %setup -q -a1
 %patch0 -p1
 %patch1 -p1
-#%%patch2 -p1
-#%%patch3 -p1
+%patch2 -p1
 
 %build
 %configure
