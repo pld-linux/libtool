@@ -13,3 +13,18 @@
  	      if $mkdir -p "$tmpdir" && chmod 700 "$tmpdir"; then :
  	      else
  		$echo "$modename: error: cannot create temporary directory \`$tmpdir'" 1>&2
+--- libtool-1.5/ltmain.sh.orig	2003-12-28 15:55:47.000000000 +0100
++++ libtool-1.5/ltmain.sh	2003-12-28 16:10:48.916185896 +0100
+@@ -5582,7 +5582,11 @@
+ 	    if test "$finalize" = yes && test -z "$run"; then
+ 	      tmpdir="/tmp"
+ 	      test -n "$TMPDIR" && tmpdir="$TMPDIR"
+-	      tmpdir="$tmpdir/libtool-$$"
++              tmpdir=`mktemp -d $tmpdir/libtool-XXXXXX 2> /dev/null`
++              if test $? = 0 ; then :
++              else
++                tmpdir="$tmpdir/libtool-$$"
++              fi
+ 	      if $mkdir -p "$tmpdir" && chmod 700 "$tmpdir"; then :
+ 	      else
+ 		$echo "$modename: error: cannot create temporary directory \`$tmpdir'" 1>&2
