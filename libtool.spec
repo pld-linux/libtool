@@ -6,12 +6,11 @@ Summary(ru):	GNU libtool, набор утилит для генерации разделяемых библиотек
 Summary(uk):	GNU libtool, наб╕р утил╕т для генерац╕╖ динам╕чних б╕бл╕отек
 Name:		libtool
 Version:	1.4.2
-Release:	9
+Release:	10
 License:	GPL
 Group:		Development/Tools
 Source0:	ftp://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
-Source1:	%{name}-man-pages.tar.bz2
-Source2:	%{name}-ja-man-pages.tar.bz2
+Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-mktemp.patch
 Patch2:		%{name}-test.patch
@@ -120,7 +119,7 @@ utilizando componentes estАticos (raramente necessАrio).
 складу libltdl.
 
 %prep
-%setup -q -a1
+%setup -q
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
@@ -148,8 +147,7 @@ install -d $RPM_BUILD_ROOT%{_mandir}
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-cp -ar man/* $RPM_BUILD_ROOT%{_mandir}
-bzip2 -dc %{SOURCE2} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
+bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
 gzip -9nf AUTHORS NEWS README THANKS TODO ChangeLog
 
