@@ -3,16 +3,17 @@ Summary(es):	GNU libtool, una herramienta de creación de bibliotecas compartidas
 Summary(pl):	GNU libtool - narzêdzie do generowania bibliotek wspó³dzielonych
 Summary(pt_BR):	GNU libtool, uma ferramenta de geração de bibliotecas compartilhadas
 Name:		libtool
-Version:	1.4.1
+Version:	1.4.2
 Release:	1
 License:	GPL
 Group:		Development/Tools
 Group(de):	Entwicklung/Werkzeuge
 Group(fr):	Development/Outils
 Group(pl):	Programowanie/Narzêdzia
-Source0:	ftp://alpha.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-mktemp.patch
+Patch2:		%{name}-test.patch
 URL:		http://www.gnu.org/software/libtool/
 Requires:	mktemp
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -123,14 +124,16 @@ utilizando componentes estáticos (raramente necessário).
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
-rm missing
+rm -f missing
 aclocal
 autoupdate
 automake -a -c
 autoconf
 (cd libltdl
+rm -f missing
 aclocal
 autoupdate
 automake -a -c
