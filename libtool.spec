@@ -116,7 +116,7 @@ fi
 %attr(755,root,root) /usr/lib/lib*.so
 %attr(755,root,root) /usr/lib/lib*.la
 /usr/include/*
-%attr(-,roo,root) /usr/share/libtool/libltdl
+%attr(-,root,root) /usr/share/libtool/libltdl
 
 %files -n libltdl-static
 %defattr(644,root,root,755)
