@@ -100,9 +100,9 @@ utilizando componentes estáticos (raramente necessário).
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
+install -d $RPM_BUILD_ROOT%{_mandir}
 cp -ar man/* $RPM_BUILD_ROOT%{_mandir}
 bzip2 -dc %{SOURCE2} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
