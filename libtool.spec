@@ -2,7 +2,7 @@ Summary:	GNU libtool, a shared library generation tool
 Summary(pl):	GNU libtool - narzêdzie do generowania bibliotek wspó³dzielonych
 Name:		libtool
 Version:	1.3.5
-Release:	10
+Release:	11
 License:	GPL
 Group:		Development/Tools
 Group(de):	Entwicklung/Werkzeuge
@@ -126,21 +126,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
 %{_includedir}/*
-
-%dir %{_datadir}/libtool/libltdl
-%{_datadir}/libtool/libltdl/Makefile.am
-%{_datadir}/libtool/libltdl/Makefile.in
-%{_datadir}/libtool/libltdl/README
-%{_datadir}/libtool/libltdl/COPYING.LIB
-%{_datadir}/libtool/libltdl/acconfig.h
-%{_datadir}/libtool/libltdl/acinclude.m4
-%{_datadir}/libtool/libltdl/aclocal.m4
-%{_datadir}/libtool/libltdl/config.h.in
-%{_datadir}/libtool/libltdl/configure.in
-%{_datadir}/libtool/libltdl/ltdl.c
-%{_datadir}/libtool/libltdl/ltdl.h
-%{_datadir}/libtool/libltdl/stamp-h.in
-%attr(755,root,root) %{_datadir}/libtool/libltdl/configure
 
 %files -n libltdl-static
 %defattr(644,root,root,755)
