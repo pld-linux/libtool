@@ -1,0 +1,22 @@
+--- libtool-1.5.12/ltmain.in.orig	2005-02-05 15:04:29.000000000 +0100
++++ libtool-1.5.12/ltmain.in	2005-02-10 11:41:37.000000000 +0100
+@@ -1525,6 +1525,8 @@
+ 
+      -mt|-mthreads|-kthread|-Kthread|-pthread|-pthreads|--thread-safe)
+ 	compiler_flags="$compiler_flags $arg"
++	compile_command="$compile_command $arg"
++	finalize_command="$finalize_command $arg"
+ 	continue
+ 	;;
+ 
+--- libtool-1.5.12/ltmain.sh.orig	2005-02-05 16:34:10.000000000 +0100
++++ libtool-1.5.12/ltmain.sh	2005-02-10 11:41:52.000000000 +0100
+@@ -1525,6 +1525,8 @@
+ 
+      -mt|-mthreads|-kthread|-Kthread|-pthread|-pthreads|--thread-safe)
+ 	compiler_flags="$compiler_flags $arg"
++	compile_command="$compile_command $arg"
++	finalize_command="$finalize_command $arg"
+ 	continue
+ 	;;
+ 
