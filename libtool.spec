@@ -11,6 +11,7 @@ License:	GPL
 Group:		Development/Tools
 Source0:	ftp://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
 Source1:	%{name}-man-pages.tar.bz2
+Source2:	%{name}-ja-man-pages.tar.bz2
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-mktemp.patch
 Patch2:		%{name}-test.patch
@@ -148,6 +149,7 @@ install -d $RPM_BUILD_ROOT%{_mandir}
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
 cp -ar man/* $RPM_BUILD_ROOT%{_mandir}
+bzip2 -dc %{SOURCE2} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
 gzip -9nf AUTHORS NEWS README THANKS TODO ChangeLog
 
@@ -175,6 +177,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_infodir}/libtool.info*
 %{_mandir}/man1/*
+%lang(ja) %{_mandir}/ja/man1/*
 %{_aclocaldir}/libtool.m4
 
 %files -n libltdl
