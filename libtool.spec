@@ -185,17 +185,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/*
 %{_aclocaldir}/ltdl.m4
 
-%dir %{_datadir}/libtool/libltdl
-%{_datadir}/libtool/libltdl/a*
-%{_datadir}/libtool/libltdl/config.h.in
-%attr(755,root,root) %{_datadir}/libtool/libltdl/configure
-%{_datadir}/libtool/libltdl/configure.in
-%{_datadir}/libtool/libltdl/C*
-%{_datadir}/libtool/libltdl/l*
-%{_datadir}/libtool/libltdl/M*
-%{_datadir}/libtool/libltdl/R*
-%{_datadir}/libtool/libltdl/s*
-
 %files -n libltdl-static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
