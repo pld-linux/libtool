@@ -20,6 +20,7 @@ Patch1:		%{name}-mktemp.patch
 Patch2:		%{name}-relink.patch
 Patch3:		%{name}-pmake.patch
 URL:		http://www.gnu.org/software/libtool/
+BuildRequires:	automake
 %requires_eq	gcc
 Requires:	%(which %{__cc})
 Requires:	mktemp
@@ -130,6 +131,14 @@ utilizando componentes estáticos (raramente necessário).
 %patch3 -p1
 
 %build
+%{__aclocal}
+%{__automake}
+
+cd libltdl
+%{__aclocal}
+automake -a -c --foreign
+cd ..
+
 %configure
 
 %{__make} -C doc -k
