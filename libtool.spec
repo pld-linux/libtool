@@ -6,11 +6,11 @@ Release:	2
 Copyright:	GPL
 Group:		Development/Tools
 Group(pl):	Programowanie/Narzêdzia
-Source:		ftp://alpha.gnu.org/gnu/%{name}-%{version}.tar.gz
+Source:		ftp://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
 Patch0:		libtool-info.patch
 Patch2:		libtool-cache.patch
 Patch3:		libtool-egrep.patch
-URL:		http://www.profitpress.com/libtool/
+URL:		http://www.gnu.org/software/libtool/
 PreReq:		/sbin/install-info
 BuildRoot:	/tmp/%{name}-%{version}-root
 
