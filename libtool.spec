@@ -6,7 +6,7 @@ Summary(ru):	GNU libtool, набор утилит для генерации разделяемых библиотек
 Summary(uk):	GNU libtool, наб╕р утил╕т для генерац╕╖ динам╕чних б╕бл╕отек
 Name:		libtool
 Version:	1.5.2
-Release:	1
+Release:	2
 Epoch:		2
 License:	GPL
 Group:		Development/Tools
@@ -29,7 +29,7 @@ BuildRequires:	automake >= 1:1.7.9-2
 %else
 BuildRequires:	automake >= 1:1.7.3
 %endif
-BuildRequires:	gcc-c++ >= 5:3.3.2
+BuildRequires:	gcc-c++ >= 5:3.3.3
 %requires_eq	gcc
 Requires:	%(which %{__cc})
 Requires:	coreutils
