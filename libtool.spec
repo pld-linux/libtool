@@ -1,7 +1,7 @@
 Summary:	GNU libtool, a shared library generation tool.
 Summary(pl):	GNU libtool - narzêdzie do generowania bibliotek wspó³dzielonych
 Name:		libtool
-Version:	1.3.2
+Version:	1.3.3
 Release:	1
 Copyright:	GPL
 Group:		Development/Tools
