@@ -46,10 +46,10 @@ Obsoletes:	libtool-libs
 %description -n libltdl
 System independent dlopen wrapper for GNU libtool.
 
-%description -l pl -n libltdl
+%description -n libltdl -l pl
 Biblioteka ogólnych wywo³añ dlopen.
 
-%description -l pt_BR -n libltdl
+%description -n libltdl -l pt_BR
 GNU libltdl, um wrapper dlopen para o GNU libtool.
 
 %package -n libltdl-devel
@@ -63,10 +63,10 @@ Requires:	libltdl = %{version}
 System independent dlopen wrapper for GNU libtool - development part.
 Install this package if you want to develop for libltdl.
 
-%description -l pl -n libltdl-devel
+%description -n libltdl-devel -l pl
 Biblioteka ogólnych wywo³añ dlopen - czê¶æ dla programistów.
 
-%description -l pt_BR -n libltdl-devel
+%description -n libltdl-devel -l pt_BR
 Instale este pacote se você deseja desenvolver para a libltdl.
 
 %package -n libltdl-static
@@ -77,14 +77,14 @@ Group:		Development/Libraries
 Requires:	libltdl-devel = %{version}
 
 %description -n libltdl-static
-Static system independent dlopen wrapper for GNU libtool.
-Install this package if you want to develop for libltdl, but using
-static components (seldom used).
+Static system independent dlopen wrapper for GNU libtool. Install this
+package if you want to develop for libltdl, but using static
+components (seldom used).
 
-%description -l pl -n libltdl-static
+%description -n libltdl-static -l pl
 Statyczna biblioteka ogólnych wywo³añ dlopen.
 
-%description -l pt_BR -n libltdl-static
+%description -n libltdl-static -l pt_BR
 Instale este pacote se você deseja desenvolver para a libltdl,
 utilizando componentes estáticos (raramente necessário).
 
