@@ -14,8 +14,8 @@ diff -Nru libtool-1.2d/doc/libtool.texi libtool-1.2d.new/doc/libtool.texi
 -@dircategory Individual utilities
 -@direntry
 -* libtoolize: (libtool)Invoking libtoolize.     Adding libtool support.
-+* Libtool: (libtool)			Generic shared library support script.
-+* libtoolize: (libtool)libtoolize.	Adding libtool support.
++* Libtool: (libtool).			Generic shared library support script
++* libtoolize: (libtool)libtoolize.	Adding libtool support
  @end direntry
  
  @ifinfo
