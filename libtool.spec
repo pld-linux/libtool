@@ -1,5 +1,7 @@
 Summary:	GNU libtool, a shared library generation tool
+Summary(es):	GNU libtool, una herramienta de creación de bibliotecas compartidas
 Summary(pl):	GNU libtool - narzêdzie do generowania bibliotek wspó³dzielonych
+Summary(pt_BR):	GNU libtool, uma ferramenta de geração de bibliotecas compartilhadas
 Name:		libtool
 Version:	1.4.1
 Release:	1
@@ -19,55 +21,103 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 GNU libtool is a set of shell scripts to automatically configure UNIX
 architectures to build shared libraries in generic fashion.
 
+%description -l es
+GNU libtool es un conjunto de scripts shell para configurar
+automáticamente la creación de bibliotecas compartidas para varias
+arquitecturas UNIX de una manera genérica.
+
 %description -l pl
 GNU libtool jest zbiorem skryptów shellowych do automatycznego
 generowania bibliotek wspó³dzielonych niezale¿nie od typu platformy
 systemowej.
 
+%description -l pt_BR
+GNU libtool é um conjunto de scripts shell para configurar
+automaticamente a geração de bibliotecas compartilhadas para várias
+arquiteturas UNIX de uma maneira genérica.
+
 %package -n libltdl
 Summary:	System independent dlopen wrapper for GNU libtool
+Summary(es):	GNU libltdl, a system independent dlopen wrapper for GNU libtool
 Summary(pl):	Biblioteka ogólnych wywo³añ dlopen
+Summary(pt_BR):	GNU libltdl, um wrapper dlopen para o GNU libtool
 Group:		Libraries
 Group(de):	Libraries
+Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
+Group(pt_BR):	Bibliotecas
+Group(ru):	âÉÂÌÉÏÔÅËÉ
+Group(uk):	â¦ÂÌ¦ÏÔÅËÉ
 Obsoletes:	libtool-libs
 
 %description -n libltdl
 System independent dlopen wrapper for GNU libtool.
 
-%description -n libltdl -l pl
+%description -l es -n libltdl
+GNU libltdl, a system independent dlopen wrapper for GNU libtool.
+
+%description -l pl -n libltdl
 Biblioteka ogólnych wywo³añ dlopen.
+
+%description -l pt_BR -n libltdl
+GNU libltdl, um wrapper dlopen para o GNU libtool.
 
 %package -n libltdl-devel
 Summary:	System independent dlopen wrapper for GNU libtool
+Summary(es):	Development components for libltdl
 Summary(pl):	Biblioteka ogólnych wywo³añ dlopen
+Summary(pt_BR):	Componentes de desenvolvimento para a libltdl
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	òÁÚÒÁÂÏÔËÁ/âÉÂÌÉÏÔÅËÉ
+Group(uk):	òÏÚÒÏÂËÁ/â¦ÂÌ¦ÏÔÅËÉ
 Requires:	libltdl = %{version}
 
 %description -n libltdl-devel
 System independent dlopen wrapper for GNU libtool.
 
-%description -n libltdl-devel -l pl
+%description -l es -n libltdl-devel
+Install this package if you want to develop for libltdl.
+
+%description -l pl -n libltdl-devel
 Biblioteka ogólnych wywo³añ dlopen.
+
+%description -l pt_BR -n libltdl-devel
+Instale este pacote se você deseja desenvolver para a libltdl.
 
 %package -n libltdl-static
 Summary:	Static system independent dlopen wrapper for GNU libtool
+Summary(es):	Development components for libltdl
 Summary(pl):	Statyczna biblioteka ogólnych wywo³añ dlopen
+Summary(pt_BR):	Componentes de desenvolvimento para a libltdl
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	òÁÚÒÁÂÏÔËÁ/âÉÂÌÉÏÔÅËÉ
+Group(uk):	òÏÚÒÏÂËÁ/â¦ÂÌ¦ÏÔÅËÉ
 Requires:	libltdl-devel = %{version}
 
 %description -n libltdl-static
 Static system independent dlopen wrapper for GNU libtool.
 
-%description -n libltdl-static -l pl
+%description -l es -n libltdl-static
+Install this package if you want to develop for libltdl, but using
+static components (seldom used).
+
+%description -l pl -n libltdl-static
 Statyczna biblioteka ogólnych wywo³añ dlopen.
+
+%description -l pt_BR -n libltdl-static
+Instale este pacote se você deseja desenvolver para a libltdl,
+utilizando componentes estáticos (raramente necessário).
 
 %prep
 %setup -q
@@ -80,12 +130,11 @@ aclocal
 autoupdate
 automake -a -c
 autoconf
-cd libltdl
+(cd libltdl
 aclocal
 autoupdate
 automake -a -c
-autoconf
-cd ..
+autoconf)
 %configure
 %{__make} -C doc -k
 %{__make}
@@ -135,9 +184,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %dir %{_datadir}/libtool/libltdl
 %{_datadir}/libtool/libltdl/a*
-%{_datadir}/libtool/libltdl/config-h.in
+%{_datadir}/libtool/libltdl/config.h.in
 %attr(755,root,root) %{_datadir}/libtool/libltdl/configure
-%{_datadir}/libtool/libltdl/configure.ac
+%{_datadir}/libtool/libltdl/configure.in
 %{_datadir}/libtool/libltdl/C*
 %{_datadir}/libtool/libltdl/l*
 %{_datadir}/libtool/libltdl/M*
