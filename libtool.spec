@@ -154,8 +154,6 @@ install -d $RPM_BUILD_ROOT%{_mandir}
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
-gzip -9nf AUTHORS NEWS README THANKS TODO ChangeLog
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -170,7 +168,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz demo
+%doc AUTHORS NEWS README THANKS TODO ChangeLog demo
 %attr(755,root,root) %{_bindir}/*
 
 %dir %{_datadir}/libtool
