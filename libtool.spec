@@ -1,4 +1,3 @@
-%define		snap 20030119
 Summary:	GNU libtool, a shared library generation tool
 Summary(es):	GNU libtool, una herramienta de creación de bibliotecas compartidas
 Summary(pl):	GNU libtool - narzêdzie do generowania bibliotek wspó³dzielonych
@@ -6,21 +5,20 @@ Summary(pt_BR):	GNU libtool, uma ferramenta de geração de bibliotecas compartilh
 Summary(ru):	GNU libtool, ÎÁÂÏÒ ÕÔÉÌÉÔ ÄÌÑ ÇÅÎÅÒÁÃÉÉ ÒÁÚÄÅÌÑÅÍÙÈ ÂÉÂÌÉÏÔÅË
 Summary(uk):	GNU libtool, ÎÁÂ¦Ò ÕÔÉÌ¦Ô ÄÌÑ ÇÅÎÅÒÁÃ¦§ ÄÉÎÁÍ¦ÞÎÉÈ Â¦ÂÌ¦ÏÔÅË
 Name:		libtool
-Version:	1.4e
-Release:	0.%{snap}.2
+Version:	1.5
+Release:	1
 Epoch:		2
 License:	GPL
 Group:		Development/Tools
-#Source0:	ftp://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
-# source from Libtool CVS
-Source0:	%{name}-%{version}.%{snap}.tar.gz
+Source0:	ftp://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-mktemp.patch
 Patch2:		%{name}-relink.patch
 Patch3:		%{name}-pmake.patch
 URL:		http://www.gnu.org/software/libtool/
-BuildRequires:	automake
+BuildRequires:	autoconf >= 2.57
+BuildRequires:	automake >= 1.7.3
 %requires_eq	gcc
 Requires:	%(which %{__cc})
 Requires:	mktemp
@@ -178,9 +176,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_datadir}/libtool/config.guess
 %attr(755,root,root) %{_datadir}/libtool/config.sub
 %attr(755,root,root) %{_datadir}/libtool/ltmain.sh
-%attr(755,root,root) %{_datadir}/libtool/install-sh
-%attr(755,root,root) %{_datadir}/libtool/missing
-%attr(755,root,root) %{_datadir}/libtool/mkinstalldirs
 
 %{_infodir}/libtool.info*
 %{_mandir}/man1/*
@@ -203,6 +198,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/libtool/libltdl/config-h.in
 %attr(755,root,root) %{_datadir}/libtool/libltdl/configure
 %{_datadir}/libtool/libltdl/configure.ac
+%attr(755,root,root) %{_datadir}/libtool/libltdl/install-sh
+%attr(755,root,root) %{_datadir}/libtool/libltdl/missing
+%attr(755,root,root) %{_datadir}/libtool/libltdl/mkinstalldirs
+%attr(755,root,root) %{_datadir}/libtool/libltdl/config.guess
+%attr(755,root,root) %{_datadir}/libtool/libltdl/config.sub
 
 %files -n libltdl-static
 %defattr(644,root,root,755)
