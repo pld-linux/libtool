@@ -5,13 +5,13 @@ Summary(pt_BR):	GNU libtool, uma ferramenta de geraГЦo de bibliotecas compartilh
 Summary(ru):	GNU libtool, набор утилит для генерации разделяемых библиотек
 Summary(uk):	GNU libtool, наб╕р утил╕т для генерац╕╖ динам╕чних б╕бл╕отек
 Name:		libtool
-Version:	1.5.10
-Release:	4
+Version:	1.5.12
+Release:	1
 Epoch:		2
 License:	GPL
 Group:		Development/Tools
 Source0:	ftp://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
-# Source0-md5:	e2093a85f6d48f1562c36920087502d6
+# Source0-md5:	44015e57e730d84c4b27e556847349cd
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 # Source1-md5:	b95e215961860c66f0868b0d551358c9
 Patch0:		%{name}-info.patch
@@ -199,6 +199,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/libtool
 %attr(755,root,root) %{_datadir}/libtool/config.guess
 %attr(755,root,root) %{_datadir}/libtool/config.sub
+%attr(755,root,root) %{_datadir}/libtool/install-sh
 %attr(755,root,root) %{_datadir}/libtool/ltmain.sh
 
 %{_infodir}/libtool.info*
@@ -208,13 +209,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n libltdl
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
+%attr(755,root,root) %{_libdir}/libltdl.so.*.*.*
 
 %files -n libltdl-devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
-%{_includedir}/*
+%attr(755,root,root) %{_libdir}/libltdl.so
+%{_libdir}/libltdl.la
+%{_includedir}/ltdl.h
 %{_aclocaldir}/ltdl.m4
 
 %dir %{_datadir}/libtool/libltdl
@@ -229,4 +230,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n libltdl-static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libltdl.a
