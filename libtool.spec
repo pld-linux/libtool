@@ -6,7 +6,7 @@ Summary(ru):	GNU libtool, набор утилит для генерации разделяемых библиотек
 Summary(uk):	GNU libtool, наб╕р утил╕т для генерац╕╖ динам╕чних б╕бл╕отек
 Name:		libtool
 Version:	1.4.2
-Release:	12
+Release:	13
 Epoch:		1
 License:	GPL
 Group:		Development/Tools
@@ -17,6 +17,7 @@ Patch1:		%{name}-mktemp.patch
 Patch2:		%{name}-test.patch
 Patch3:		%{name}-relink.patch
 Patch4:		%{name}-ac253.patch
+Patch5:		%{name}-new-ac.patch
 URL:		http://www.gnu.org/software/libtool/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -127,6 +128,7 @@ utilizando componentes estАticos (raramente necessАrio).
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p0
 
 %build
 rm -f missing
