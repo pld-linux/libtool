@@ -1,14 +1,6 @@
---- libtool-1.4.3/ltmain.sh.wiget	Tue Nov 19 13:34:10 2002
-+++ libtool-1.4.3/ltmain.sh	Tue Nov 19 13:34:56 2002
-@@ -768,6 +768,7 @@
-     linker_flags=
-     dllsearchpath=
-     lib_search_path=`pwd`
-+    inst_prefix_dir=
- 
-     avoid_version=no
-     dlfiles=
-@@ -898,6 +899,11 @@
+--- libtool-1.4e/ltmain.sh.wiget	Tue Jan 28 12:40:13 2003
++++ libtool-1.4e/ltmain.sh	Tue Jan 28 14:39:27 2003
+@@ -981,6 +981,11 @@
  	  prev=
  	  continue
  	  ;;
@@ -20,7 +12,7 @@
  	release)
  	  release="-$arg"
  	  prev=
-@@ -999,6 +1005,11 @@
+@@ -1202,6 +1207,11 @@
  	continue
  	;;
  
@@ -32,7 +24,7 @@
        # The native IRIX linker understands -LANG:*, -LIST:* and -LNO:*
        # so, if we see these flags be careful not to treat them like -L
        -L[A-Z][A-Z]*:*)
-@@ -1887,6 +1898,7 @@
+@@ -2356,6 +2366,7 @@
  
  	  if test "$linkmode" = prog || test "$mode" = relink; then
  	    add_shlibpath=
@@ -40,7 +32,7 @@
  	    add_dir=
  	    add=
  	    # Finalize command for both is simple: just hardcode it.
-@@ -1907,10 +1919,22 @@
+@@ -2384,10 +2395,22 @@
  	      add="-l$name"
  	    fi
  
@@ -63,51 +55,9 @@
  	      test -n "$add_dir" && deplibs="$add_dir $deplibs"
  	      test -n "$add" && deplibs="$add $deplibs"
  	    fi
-@@ -3928,7 +3952,7 @@
- 	fi
-       done
-       # Quote the link command for shipping.
--      relink_command="(cd `pwd`; $SHELL $0 --mode=relink $libtool_args)"
-+      relink_command="(cd `pwd`; $SHELL $0 --mode=relink $libtool_args @inst_prefix_dir@)"
-       relink_command=`$echo "X$relink_command" | $Xsed -e "$sed_quote_subst"`
- 
-       # Only create the output if not a dry run.
-@@ -4229,6 +4253,24 @@
- 	dir="$dir$objdir"
- 
- 	if test -n "$relink_command"; then
-+	  # Determine the prefix the user has applied to our future dir.
-+	  inst_prefix_dir=`$echo "$destdir" | sed "s%$libdir\$%%"`
-+
-+	  # Don't allow the user to place us outside of our expected
-+	  # location b/c this prevents finding dependent libraries that
-+	  # are installed to the same prefix.
-+	  if test "$inst_prefix_dir" = "$destdir"; then
-+	    $echo "$modename: error: cannot install \`$file' to a directory not ending in $libdir" 1>&2
-+	    exit 1
-+	  fi
-+
-+	  if test -n "$inst_prefix_dir"; then
-+	    # Stick the inst_prefix_dir data into the link command.
-+	    relink_command=`$echo "$relink_command" | sed "s%@inst_prefix_dir@%-inst-prefix-dir $inst_prefix_dir%"`
-+	  else
-+	    relink_command=`$echo "$relink_command" | sed "s%@inst_prefix_dir@%%"`
-+	  fi
-+
- 	  $echo "$modename: warning: relinking \`$file'" 1>&2
- 	  $show "$relink_command"
- 	  if $run eval "$relink_command"; then :
---- libtool-1.4.3/ltmain.in.wiget	Tue Nov 19 13:34:10 2002
-+++ libtool-1.4.3/ltmain.in	Tue Nov 19 13:35:15 2002
-@@ -768,6 +768,7 @@
-     linker_flags=
-     dllsearchpath=
-     lib_search_path=`pwd`
-+    inst_prefix_dir=
- 
-     avoid_version=no
-     dlfiles=
-@@ -898,6 +899,11 @@
+--- libtool-1.4e/ltmain.in.wiget	Tue Jan 28 14:11:13 2003
++++ libtool-1.4e/ltmain.in	Tue Jan 28 14:47:59 2003
+@@ -981,6 +981,11 @@
  	  prev=
  	  continue
  	  ;;
@@ -119,7 +69,7 @@
  	release)
  	  release="-$arg"
  	  prev=
-@@ -999,6 +1005,11 @@
+@@ -1202,6 +1207,11 @@
  	continue
  	;;
  
@@ -131,68 +81,34 @@
        # The native IRIX linker understands -LANG:*, -LIST:* and -LNO:*
        # so, if we see these flags be careful not to treat them like -L
        -L[A-Z][A-Z]*:*)
-@@ -1887,6 +1898,7 @@
+@@ -2279,6 +2289,7 @@
  
- 	  if test $linkmode = prog || test "$mode" = relink; then
+ 	  if test "$linkmode" = prog || test "$mode" != relink; then
  	    add_shlibpath=
 +	    add_prefix_dir=
  	    add_dir=
  	    add=
- 	    # Finalize command for both is simple: just hardcode it.
-@@ -1907,10 +1919,22 @@
+ 	    lib_linked=yes
+@@ -2384,10 +2395,22 @@
  	      add="-l$name"
  	    fi
  
-+ 	    if test -n "$inst_prefix_dir"; then
-+ 	      case "$libdir" in
-+ 	      [\\/]*)
-+ 		add_prefix_dir="-L$inst_prefix_dir$libdir"
-+ 		;;
-+ 	      esac
-+ 	    fi
-+ 
-+ 	    # add_prefix_dir must be appended instead, otherwise it can
-+ 	    # possibly be overrided by any hardcoded -L/... path in deplibs
- 	    if test $linkmode = prog; then
-+ 	      test -n "$add_prefix_dir" && finalize_deplibs="$finalize_deplibs $add_prefix_dir"
++  	    if test -n "$inst_prefix_dir"; then
++  	      case "$libdir" in
++  	      [\\/]*)
++  		add_prefix_dir="-L$inst_prefix_dir$libdir"
++  		;;
++  	      esac
++  	    fi
++  
++  	    # add_prefix_dir must be appended instead, otherwise it can
++  	    # possibly be overrided by any hardcoded -L/... path in deplibs
+ 	    if test "$linkmode" = prog; then
++  	      test -n "$add_prefix_dir" && finalize_deplibs="$finalize_deplibs $add_prefix_dir"
  	      test -n "$add_dir" && finalize_deplibs="$add_dir $finalize_deplibs"
  	      test -n "$add" && finalize_deplibs="$add $finalize_deplibs"
  	    else
-+ 	      test -n "$add_prefix_dir" && deplibs="$deplibs $add_prefix_dir"
++  	      test -n "$add_prefix_dir" && deplibs="$deplibs $add_prefix_dir"
  	      test -n "$add_dir" && deplibs="$add_dir $deplibs"
  	      test -n "$add" && deplibs="$add $deplibs"
  	    fi
-@@ -3928,7 +3952,7 @@
- 	fi
-       done
-       # Quote the link command for shipping.
--      relink_command="(cd `pwd`; $SHELL $0 --mode=relink $libtool_args)"
-+      relink_command="(cd `pwd`; $SHELL $0 --mode=relink $libtool_args @inst_prefix_dir@)"
-       relink_command=`$echo "X$relink_command" | $Xsed -e "$sed_quote_subst"`
- 
-       # Only create the output if not a dry run.
-@@ -4229,6 +4253,24 @@
- 	dir="$dir$objdir"
- 
- 	if test -n "$relink_command"; then
-+	  # Determine the prefix the user has applied to our future dir.
-+	  inst_prefix_dir=`$echo "$destdir" | sed "s%$libdir\$%%"`
-+
-+	  # Don't allow the user to place us outside of our expected
-+	  # location b/c this prevents finding dependent libraries that
-+	  # are installed to the same prefix.
-+	  if test "$inst_prefix_dir" = "$destdir"; then
-+	    $echo "$modename: error: cannot install \`$file' to a directory not ending in $libdir" 1>&2
-+	    exit 1
-+	  fi
-+
-+	  if test -n "$inst_prefix_dir"; then
-+	    # Stick the inst_prefix_dir data into the link command.
-+	    relink_command=`$echo "$relink_command" | sed "s%@inst_prefix_dir@%-inst-prefix-dir $inst_prefix_dir%"`
-+	  else
-+	    relink_command=`$echo "$relink_command" | sed "s%@inst_prefix_dir@%%"`
-+	  fi
-+
- 	  $echo "$modename: warning: relinking \`$file'" 1>&2
- 	  $show "$relink_command"
- 	  if $run eval "$relink_command"; then :
