@@ -6,7 +6,7 @@ Summary(ru):	GNU libtool, набор утилит для генерации разделяемых библиотек
 Summary(uk):	GNU libtool, наб╕р утил╕т для генерац╕╖ динам╕чних б╕бл╕отек
 Name:		libtool
 Version:	1.4.2
-Release:	10
+Release:	11
 License:	GPL
 Group:		Development/Tools
 Source0:	ftp://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
@@ -15,6 +15,7 @@ Patch0:		%{name}-info.patch
 Patch1:		%{name}-mktemp.patch
 Patch2:		%{name}-test.patch
 Patch3:		%{name}-relink.patch
+Patch4:		%{name}-ac253.patch
 URL:		http://www.gnu.org/software/libtool/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -124,6 +125,7 @@ utilizando componentes estАticos (raramente necessАrio).
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 rm -f missing
@@ -131,12 +133,15 @@ aclocal
 autoupdate
 %{__automake}
 %{__autoconf}
-(cd libltdl
+cd libltdl
 rm -f missing
-aclocal
+cp -f ../ltmain.sh .
+aclocal -I ..
 autoupdate
 %{__automake}
-%{__autoconf})
+%{__autoconf}
+cd ..
+
 %configure
 %{__make} -C doc -k
 %{__make}
@@ -198,7 +203,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/libtool/libltdl/l*
 %{_datadir}/libtool/libltdl/M*
 %{_datadir}/libtool/libltdl/R*
-%{_datadir}/libtool/libltdl/s*
 
 %files -n libltdl-static
 %defattr(644,root,root,755)
