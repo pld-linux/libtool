@@ -109,12 +109,14 @@ fi
 %{_datadir}/aclocal/libtool.m4
 
 %files -n libltdl
+%defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files -n libltdl-devel
+%defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
-%attr(644,root,root) %{_includedir}/*
+%{_includedir}/*
 
 %dir %{_datadir}/libtool/libltdl
 %{_datadir}/libtool/libltdl/Makefile.am
@@ -132,4 +134,5 @@ fi
 %attr(755,root,root) %{_datadir}/libtool/libltdl/configure
 
 %files -n libltdl-static
-%attr(644,root,root) %{_libdir}/lib*.a
+%defattr(644,root,root,755)
+%{_libdir}/lib*.a
