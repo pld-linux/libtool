@@ -18,6 +18,7 @@ Patch2:		%{name}-relink.patch
 Patch3:		%{name}-pmake.patch
 Patch4:		%{name}-libdirs.patch
 URL:		http://www.gnu.org/software/libtool/
+BuildRequires:	/usr/bin/which
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake >= 1.7.3
 %requires_eq	gcc
