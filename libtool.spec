@@ -1,8 +1,8 @@
 Summary:	GNU libtool, a shared library generation tool.
 Summary(pl):	GNU libtool - narzêdzie do generowania bibliotek wspó³dzielonych
 Name:		libtool
-Version:	1.3
-Release:	3
+Version:	1.3.2
+Release:	1
 Copyright:	GPL
 Group:		Development/Tools
 Group(pl):	Programowanie/Narzêdzia
@@ -65,11 +65,7 @@ Statyczna biblioteka ogólnych wywo³añ dlopen
 %patch1 -p1
 
 %build
-aclocal
-CFLAGS="$RPM_OPT_FLAGS" \
-    ./configure \
-	--prefix=%{_prefix} \
-	%{_target_platform}
+%configure 
 
 (cd doc && make -k)
 make
@@ -78,7 +74,7 @@ make
 rm -rf $RPM_BUILD_ROOT
 
 make \
-    prefix=$RPM_BUILD_ROOT%{_prefix} \
+    DESTDIR=$RPM_BUILD_ROOT \
     install
 
 strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*so.*.*
@@ -96,17 +92,9 @@ rm -rf $RPM_BUILD_ROOT
 if [ "$1" = "0" ]; then
     /sbin/install-info --delete %{_infodir}/libtool.info.gz /etc/info-dir
 fi
-%post -n libltdl
-/sbin/ldconfig
 
-%post -n libltdl-devel
-/sbin/ldconfig
-
-%postun -n libltdl
-/sbin/ldconfig
-
-%postun -n libltdl-devel
-/sbin/ldconfig
+%post -n libltdl -p /sbin/ldconfig
+%postun -n libltdl -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
@@ -135,7 +123,21 @@ fi
 %attr(755,root,root) %{_libdir}/lib*.la
 
 %{_includedir}/*
-%attr(-,root,root) %{_datadir}/libtool/libltdl
+
+%dir %{_datadir}/libtool/libltdl
+%{_datadir}/libtool/libltdl/Makefile.am
+%{_datadir}/libtool/libltdl/Makefile.in
+%{_datadir}/libtool/libltdl/README
+%{_datadir}/libtool/libltdl/COPYING.LIB
+%{_datadir}/libtool/libltdl/acconfig.h
+%{_datadir}/libtool/libltdl/acinclude.m4
+%{_datadir}/libtool/libltdl/aclocal.m4
+%{_datadir}/libtool/libltdl/config.h.in
+%{_datadir}/libtool/libltdl/configure.in
+%{_datadir}/libtool/libltdl/ltdl.c
+%{_datadir}/libtool/libltdl/ltdl.h
+%{_datadir}/libtool/libltdl/stamp-h.in
+%attr(755,root,root) %{_datadir}/libtool/libltdl/configure
 
 %files -n libltdl-static
 %defattr(644,root,root,755)
