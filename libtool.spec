@@ -1,12 +1,13 @@
 Summary:     GNU libtool, a shared library generation tool.
 Name:        libtool
-Version:     1.2
-Release:     1
+Version:     1.2b
+Release:     2
 Copyright:   GPL
 Group:       Development/Building
 Source:      ftp://alpha.gnu.org/gnu/%{name}-%{version}.tar.gz
 PreReq:      /sbin/install-info
 BuildRoot:   /tmp/%{name}-%{version}-root
+URL:         http://www.profitpress.com/libtool/
 BuildArchitectures: noarch
 
 %description
@@ -31,12 +32,12 @@ gzip -9 $RPM_BUILD_ROOT/usr/info/*.info*
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/sbin/install-info /usr/info/libtool.info.gz /usr/info/dir
+/sbin/install-info /usr/info/libtool.info.gz /usr/info/dir --entry \
+"* Libtool: (libtool).                           Generic shared library support script."
 
 %preun
-if [ "$1" = 0 ]; then
-    /sbin/install-info --delete /usr/info/libtool.info.gz /usr/info/dir
-fi
+/sbin/install-info --delete /usr/info/libtool.info.gz /usr/info/dir \
+"* Libtool: (libtool).                           Generic shared library support script."
 
 %files
 %defattr(644, root, root, 755)
@@ -51,6 +52,12 @@ fi
 /usr/share/aclocal/libtool.m4
 
 %changelog
+* Wed Nov 25 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.2b-2]
+- added URL field,
+- fixed --entry text on {un}registering info page for libtool in %post
+  %preun in devel.
+
 * Thu Sep  8 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.2-1]
 - added -q %setup parameter,
