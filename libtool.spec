@@ -4,8 +4,8 @@ Summary(pl):	GNU libtool - narzêdzie do generowania bibliotek wspó³dzielonych
 Summary(pt_BR):	GNU libtool, uma ferramenta de geração de bibliotecas compartilhadas
 Name:		libtool
 Version:	1.4d
-Release:	3
-Epoch:		1
+Release:	4
+Epoch:		2
 License:	GPL
 Group:		Development/Tools
 Source0:	ftp://alpha.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
