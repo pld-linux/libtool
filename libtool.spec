@@ -151,6 +151,7 @@ utilizando componentes estáticos (raramente necessário).
 
 # it's the same - copy so patching only libtool.m4 is sufficient
 cp -f libtool.m4 acinclude.m4
+cat libtool.m4 ltdl.m4 > libltdl/acinclude.m4
 
 %build
 %{__aclocal}
