@@ -9,7 +9,6 @@ Group(pl):	Programowanie/Narzêdzia
 Source:		ftp://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
 Patch0:		libtool-info.patch
 Patch2:		libtool-cache.patch
-Patch3:		libtool-egrep.patch
 URL:		http://www.gnu.org/software/libtool/
 PreReq:		/sbin/install-info
 BuildRoot:	/tmp/%{name}-%{version}-root
@@ -64,7 +63,6 @@ Statyczna biblioteka ogólnych wywo³añ dlopen
 %setup -q
 %patch0 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 aclocal
