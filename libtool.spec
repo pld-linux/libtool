@@ -2,9 +2,11 @@ Summary:	GNU libtool, a shared library generation tool
 Summary(es):	GNU libtool, una herramienta de creaciСn de bibliotecas compartidas
 Summary(pl):	GNU libtool - narzЙdzie do generowania bibliotek wspСЁdzielonych
 Summary(pt_BR):	GNU libtool, uma ferramenta de geraГЦo de bibliotecas compartilhadas
+Summary(ru):	GNU libtool, набор утилит для генерации разделяемых библиотек
+Summary(uk):	GNU libtool, наб╕р утил╕т для генерац╕╖ динам╕чних б╕бл╕отек
 Name:		libtool
 Version:	1.4.2
-Release:	3
+Release:	8
 License:	GPL
 Group:		Development/Tools
 Source0:	ftp://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
@@ -36,6 +38,14 @@ GNU libtool И um conjunto de scripts shell para configurar
 automaticamente a geraГЦo de bibliotecas compartilhadas para vАrias
 arquiteturas UNIX de uma maneira genИrica.
 
+%description -l ru
+GNU libtool - это набор скриптов для автоматической генерации
+динамических разделяемых библиотек на различных архитектурах UNIX.
+
+%description -l uk
+GNU libtool - це наб╕р скрипт╕в для автоматично╖ генерац╕╖ динам╕чних
+б╕бл╕отек на р╕зних арх╕тектурах UNIX.
+
 %package -n libltdl
 Summary:	System independent dlopen wrapper for GNU libtool
 Summary(pl):	Biblioteka ogСlnych wywoЁaЯ dlopen
@@ -56,6 +66,8 @@ GNU libltdl, um wrapper dlopen para o GNU libtool.
 Summary:	Development components for libltdl
 Summary(pl):	CzЙ╤Ф libltdl przeznaczona dla programistСw
 Summary(pt_BR):	Componentes de desenvolvimento para a libltdl
+Summary(ru):	Файлы для разработки программ с libltdl
+Summary(uk):	Файли для розробки програм з libltdl
 Group:		Development/Libraries
 Requires:	libltdl = %{version}
 
@@ -69,10 +81,18 @@ Biblioteka ogСlnych wywoЁaЯ dlopen - czЙ╤Ф dla programistСw.
 %description -n libltdl-devel -l pt_BR
 Instale este pacote se vocЙ deseja desenvolver para a libltdl.
 
+%description -n libltdl-devel -l uk
+Файли для розробки програм з libltdl.
+
+%description -n libltdl-devel -l ru
+Файлы для разработки программ с libltdl.
+
 %package -n libltdl-static
 Summary:	Static system independent dlopen wrapper for GNU libtool
 Summary(pl):	Statyczna biblioteka ogСlnych wywoЁaЯ dlopen
 Summary(pt_BR):	Componentes de desenvolvimento para a libltdl
+Summary(ru):	Статическая библиотека libltdl из libltdl
+Summary(uk):	Статична б╕бл╕отека libltdl з libltdl
 Group:		Development/Libraries
 Requires:	libltdl-devel = %{version}
 
@@ -87,6 +107,14 @@ Statyczna biblioteka ogСlnych wywoЁaЯ dlopen.
 %description -n libltdl-static -l pt_BR
 Instale este pacote se vocЙ deseja desenvolver para a libltdl,
 utilizando componentes estАticos (raramente necessАrio).
+
+%description -n libltdl-static -l ru
+Это отдельный пакет со статическими библиотеками, которые больше не
+входят в libltdl.
+
+%description -n libltdl-static -l uk
+Це окремий пакет з╕ статичними б╕бл╕отеками, що б╕льше не входять до
+складу libltdl.
 
 %prep
 %setup -q
