@@ -69,7 +69,7 @@ Statyczna biblioteka ogólnych wywo³añ dlopen.
 %configure
 
 %{__make} -C doc -k
-make
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
