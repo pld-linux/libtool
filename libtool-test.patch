@@ -1,6 +1,15 @@
---- libtool-1.4.3/ltmain.sh.wiget	Wed Oct 23 04:26:24 2002
-+++ libtool-1.4.3/ltmain.sh	Thu Oct 24 16:55:44 2002
-@@ -1379,7 +1379,7 @@
+--- ./ltmain.sh	Tue May 29 19:16:03 2001
++++ ./ltmain.sh	Tue May 29 21:26:50 2001
+@@ -459,7 +459,7 @@
+       pic_mode=default
+       ;;
+     esac
+-    if test $pic_mode = no && test "$deplibs_check_method" != pass_all; then
++    if test "$pic_mode" = no && test "$deplibs_check_method" != pass_all; then
+       # non-PIC code in shared libraries is not supported
+       pic_mode=default
+     fi
+@@ -1343,7 +1343,7 @@
  	;;
      esac
      for pass in $passes; do
@@ -9,7 +18,7 @@
  	# Determine which files to process
  	case $pass in
  	dlopen)
-@@ -1396,11 +1396,11 @@
+@@ -1360,11 +1360,11 @@
  	found=no
  	case $deplib in
  	-l*)
@@ -23,7 +32,7 @@
  	    deplibs="$deplib $deplibs"
  	    continue
  	  fi
-@@ -1420,7 +1420,7 @@
+@@ -1384,7 +1384,7 @@
  	      finalize_deplibs="$deplib $finalize_deplibs"
  	    else
  	      deplibs="$deplib $deplibs"
@@ -32,7 +41,7 @@
  	    fi
  	    continue
  	  fi
-@@ -1429,16 +1429,16 @@
+@@ -1393,16 +1393,16 @@
  	  case $linkmode in
  	  lib)
  	    deplibs="$deplib $deplibs"
@@ -52,7 +61,7 @@
  	      deplibs="$deplib $deplibs"
  	      newlib_search_path="$newlib_search_path "`$echo "X$deplib" | $Xsed -e 's/^-L//'`
  	    else
-@@ -1453,7 +1453,7 @@
+@@ -1417,7 +1417,7 @@
  	  continue
  	  ;; # -L
  	-R*)
@@ -61,7 +70,7 @@
  	    dir=`$echo "X$deplib" | $Xsed -e 's/^-R//'`
  	    # Make sure the xrpath contains only unique directories.
  	    case "$xrpath " in
-@@ -1466,7 +1466,7 @@
+@@ -1430,7 +1430,7 @@
  	  ;;
  	*.la) lib="$deplib" ;;
  	*.$libext)
@@ -70,7 +79,7 @@
  	    deplibs="$deplib $deplibs"
  	    continue
  	  fi
-@@ -1489,7 +1489,7 @@
+@@ -1451,7 +1451,7 @@
  	    continue
  	    ;;
  	  prog)
@@ -79,7 +88,7 @@
  	      deplibs="$deplib $deplibs"
  	    else
  	      compile_deplibs="$deplib $compile_deplibs"
-@@ -1500,7 +1500,7 @@
+@@ -1462,7 +1462,7 @@
  	  esac # linkmode
  	  ;; # *.$libext
  	*.lo | *.$objext)
@@ -88,7 +97,7 @@
  	    # If there is no dlopen support or we're linking statically,
  	    # we need to preload.
  	    newdlprefiles="$newdlprefiles $deplib"
-@@ -1550,13 +1550,13 @@
+@@ -1512,13 +1512,13 @@
  
  	if test "$linkmode,$pass" = "lib,link" ||
  	   test "$linkmode,$pass" = "prog,scan" ||
@@ -104,8 +113,8 @@
  	  # Only check for convenience libraries
  	  deplibs="$lib $deplibs"
  	  if test -z "$libdir"; then
-@@ -1577,7 +1577,7 @@
-               fi
+@@ -1537,7 +1537,7 @@
+ 	      esac
  	      tmp_libs="$tmp_libs $deplib"
  	    done
 -	  elif test $linkmode != prog && test $linkmode != lib; then
@@ -113,7 +122,7 @@
  	    $echo "$modename: \`$lib' is not a convenience library" 1>&2
  	    exit 1
  	  fi
-@@ -1595,7 +1595,7 @@
+@@ -1555,7 +1555,7 @@
  	fi
  
  	# This library was specified with -dlopen.
@@ -122,7 +131,7 @@
  	  if test -z "$libdir"; then
  	    $echo "$modename: cannot -dlopen a convenience library: \`$lib'" 1>&2
  	    exit 1
-@@ -1644,7 +1644,7 @@
+@@ -1604,7 +1604,7 @@
  	name=`$echo "X$laname" | $Xsed -e 's/\.la$//' -e 's/^lib//'`
  
  	# This library was specified with -dlpreopen.
@@ -131,7 +140,7 @@
  	  if test -z "$libdir"; then
  	    $echo "$modename: cannot -dlpreopen a convenience library: \`$lib'" 1>&2
  	    exit 1
-@@ -1663,7 +1663,7 @@
+@@ -1623,7 +1623,7 @@
  
  	if test -z "$libdir"; then
  	  # Link the convenience library
@@ -140,7 +149,7 @@
  	    deplibs="$dir/$old_library $deplibs"
  	  elif test "$linkmode,$pass" = "prog,link"; then
  	    compile_deplibs="$dir/$old_library $compile_deplibs"
-@@ -1674,7 +1674,7 @@
+@@ -1634,7 +1634,7 @@
  	  continue
  	fi
  
@@ -149,7 +158,7 @@
  	  newlib_search_path="$newlib_search_path $ladir"
  	  deplibs="$lib $deplibs"
  
-@@ -1713,7 +1713,7 @@
+@@ -1671,7 +1671,7 @@
  	  # Link against this shared library
  
  	  if test "$linkmode,$pass" = "prog,link" ||
@@ -158,7 +167,7 @@
  	    # Hardcode the library path.
  	    # Skip directories that are in the system default run-time
  	    # search path.
-@@ -1735,7 +1735,7 @@
+@@ -1693,7 +1693,7 @@
  	      esac
  	      ;;
  	    esac
@@ -167,7 +176,7 @@
  	      # We need to hardcode the library path
  	      if test -n "$shlibpath_var"; then
  		# Make sure the rpath contains only unique directories.
-@@ -1819,7 +1819,7 @@
+@@ -1777,7 +1777,7 @@
  	    linklib=$newlib
  	  fi # test -n $old_archive_from_expsyms_cmds
  
@@ -176,7 +185,7 @@
  	    add_shlibpath=
  	    add_dir=
  	    add=
-@@ -1868,7 +1868,7 @@
+@@ -1826,7 +1826,7 @@
  	      *) compile_shlibpath="$compile_shlibpath$add_shlibpath:" ;;
  	      esac
  	    fi
@@ -185,7 +194,7 @@
  	      test -n "$add_dir" && compile_deplibs="$add_dir $compile_deplibs"
  	      test -n "$add" && compile_deplibs="$add $compile_deplibs"
  	    else
-@@ -1885,7 +1885,7 @@
+@@ -1843,7 +1843,7 @@
  	    fi
  	  fi
  
@@ -194,7 +203,7 @@
  	    add_shlibpath=
  	    add_dir=
  	    add=
-@@ -1907,7 +1907,7 @@
+@@ -1865,7 +1865,7 @@
  	      add="-l$name"
  	    fi
  
@@ -203,7 +212,7 @@
  	      test -n "$add_dir" && finalize_deplibs="$add_dir $finalize_deplibs"
  	      test -n "$add" && finalize_deplibs="$add $finalize_deplibs"
  	    else
-@@ -1915,7 +1915,7 @@
+@@ -1873,7 +1873,7 @@
  	      test -n "$add" && deplibs="$add $deplibs"
  	    fi
  	  fi
@@ -212,7 +221,7 @@
  	  if test "$alldeplibs" = yes &&
  	     { test "$deplibs_check_method" = pass_all ||
  	       { test "$build_libtool_libs" = yes &&
-@@ -1975,9 +1975,9 @@
+@@ -1932,9 +1932,9 @@
  	  fi
  	fi # link shared/static library?
  
@@ -224,7 +233,7 @@
  	       test $link_static = yes; }; then
  	    # Extract -R from dependency_libs
  	    temp_deplibs=
-@@ -2009,7 +2009,7 @@
+@@ -1964,7 +1964,7 @@
  	    tmp_libs="$tmp_libs $deplib"
  	  done
  
@@ -233,7 +242,7 @@
  	    # Add the search paths of all dependency libraries
  	    for deplib in $dependency_libs; do
  	      case $deplib in
-@@ -2052,15 +2052,15 @@
+@@ -2007,15 +2007,15 @@
  	  fi # link_all_deplibs != no
  	fi # linkmode = lib
        done # for deplib in $libs
@@ -253,7 +262,7 @@
  	  # Make sure lib_search_path contains only unique directories.
  	  lib_search_path=
  	  for dir in $newlib_search_path; do
-@@ -2118,7 +2118,7 @@
+@@ -2073,7 +2073,7 @@
  	deplibs=
        fi
      done # for pass
@@ -262,7 +271,7 @@
        dlfiles="$newdlfiles"
        dlprefiles="$newdlprefiles"
      fi
-@@ -2473,7 +2473,7 @@
+@@ -2410,7 +2410,7 @@
  	    ;;
  	  *)
  	    # Add libc to deplibs on all other systems if necessary.
@@ -271,7 +280,7 @@
  	      deplibs="$deplibs -lc"
  	    fi
  	    ;;
-@@ -2765,7 +2765,7 @@
+@@ -2683,7 +2683,7 @@
  
        # Test again, we may have decided not to build it any more
        if test "$build_libtool_libs" = yes; then

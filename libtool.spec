@@ -6,26 +6,30 @@ Summary(ru):	GNU libtool, набор утилит для генерации разделяемых библиотек
 Summary(uk):	GNU libtool, наб╕р утил╕т для генерац╕╖ динам╕чних б╕бл╕отек
 Name:		libtool
 Version:	1.5
-Release:	2
+Release:	5
 Epoch:		2
 License:	GPL
 Group:		Development/Tools
 Source0:	ftp://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
+# Source0-md5: 0e1844f25e2ad74c3715b5776d017545
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
+# Source1-md5: b95e215961860c66f0868b0d551358c9
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-mktemp.patch
 Patch2:		%{name}-relink.patch
 Patch3:		%{name}-pmake.patch
 Patch4:		%{name}-libdirs.patch
 URL:		http://www.gnu.org/software/libtool/
+BuildRequires:	/usr/bin/which
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake >= 1.7.3
 %requires_eq	gcc
 Requires:	%(which %{__cc})
-Requires:	coreutils
+Requires:	fileutils
 Requires:	grep
 Requires:	mktemp
 Requires:	sed
+Requires:	sh-utils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -78,7 +82,7 @@ Summary(pt_BR):	Componentes de desenvolvimento para a libltdl
 Summary(ru):	Файлы для разработки программ с libltdl
 Summary(uk):	Файли для розробки програм з libltdl
 Group:		Development/Libraries
-Requires:	libltdl = %{version}
+Requires:	libltdl = %{epoch}:%{version}
 
 %description -n libltdl-devel
 System independent dlopen wrapper for GNU libtool - development part.
@@ -103,7 +107,7 @@ Summary(pt_BR):	Componentes de desenvolvimento para a libltdl
 Summary(ru):	Статическая библиотека libltdl из libltdl
 Summary(uk):	Статична б╕бл╕отека libltdl з libltdl
 Group:		Development/Libraries
-Requires:	libltdl-devel = %{version}
+Requires:	libltdl-devel = %{epoch}:%{version}
 
 %description -n libltdl-static
 Static system independent dlopen wrapper for GNU libtool. Install this
@@ -156,7 +160,8 @@ cd ..
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_mandir}
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
