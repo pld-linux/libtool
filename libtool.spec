@@ -10,6 +10,7 @@ Release:	9
 License:	GPL
 Group:		Development/Tools
 Source0:	ftp://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
+Source1:	%{name}-man-pages.tar.bz2
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-mktemp.patch
 Patch2:		%{name}-test.patch
@@ -118,7 +119,7 @@ utilizando componentes est·ticos (raramente necess·rio).
 ”ÀÃ¡ƒ’ libltdl.
 
 %prep
-%setup -q
+%setup -q -a1
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
@@ -142,8 +143,11 @@ autoconf)
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_mandir}
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
+
+cp -ar man/* $RPM_BUILD_ROOT%{_mandir}
 
 gzip -9nf AUTHORS NEWS README THANKS TODO ChangeLog
 
@@ -170,6 +174,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_datadir}/libtool/ltmain.sh
 
 %{_infodir}/libtool.info*
+%{_mandir}/man1/*
 %{_aclocaldir}/libtool.m4
 
 %files -n libltdl
