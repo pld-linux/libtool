@@ -1,30 +1,31 @@
---- libtool-1.3.5/ltmain.in.mktemp	Fri Jul  7 18:49:44 2000
-+++ libtool-1.3.5/ltmain.in	Fri May 26 21:53:15 2000
-@@ -3462,7 +3462,11 @@
- 	    if test "$finalize" = yes && test -z "$run"; then
+diff -urN libtool-1.5.2.org/ltmain.in libtool-1.5.2/ltmain.in
+--- libtool-1.5.2.org/ltmain.in	2004-01-25 23:02:49.600129320 +0100
++++ libtool-1.5.2/ltmain.in	2004-01-25 23:03:52.581029183 +0100
+@@ -5673,6 +5673,11 @@
  	      tmpdir="/tmp"
  	      test -n "$TMPDIR" && tmpdir="$TMPDIR"
--	      tmpdir="$tmpdir/libtool-$$"
-+              tmpdir=`mktemp -d $tmpdir/libtool-XXXXXX 2> /dev/null`
-+              if test $? = 0 ; then :
-+              else
-+                tmpdir="$tmpdir/libtool-$$"
-+              fi
- 	      if $mkdir -p "$tmpdir" && chmod 700 "$tmpdir"; then :
+ 	      tmpdir="$tmpdir/libtool-$$"
++	      tmpdir=`mktemp -d $tmpdir/libtool-XXXXXX 2> /dev/null`
++	      if test $? = 0 ; then :
++	      else
++		tmpdir="$tmpdir/libtool-$$"
++	      fi
+ 	      if $mkdir "$tmpdir" && chmod 700 "$tmpdir"; then :
  	      else
  		$echo "$modename: error: cannot create temporary directory \`$tmpdir'" 1>&2
---- libtool-1.5/ltmain.sh.orig	2003-12-28 15:55:47.000000000 +0100
-+++ libtool-1.5/ltmain.sh	2003-12-28 16:10:48.916185896 +0100
-@@ -5582,7 +5582,11 @@
+diff -urN libtool-1.5.2.org/ltmain.sh libtool-1.5.2/ltmain.sh
+--- libtool-1.5.2.org/ltmain.sh	2004-01-25 23:02:49.561137431 +0100
++++ libtool-1.5.2/ltmain.sh	2004-01-25 23:04:33.892436415 +0100
+@@ -5672,7 +5672,11 @@
  	    if test "$finalize" = yes && test -z "$run"; then
  	      tmpdir="/tmp"
  	      test -n "$TMPDIR" && tmpdir="$TMPDIR"
 -	      tmpdir="$tmpdir/libtool-$$"
-+              tmpdir=`mktemp -d $tmpdir/libtool-XXXXXX 2> /dev/null`
-+              if test $? = 0 ; then :
-+              else
-+                tmpdir="$tmpdir/libtool-$$"
-+              fi
- 	      if $mkdir -p "$tmpdir" && chmod 700 "$tmpdir"; then :
++	      tmpdir=`mktemp -d $tmpdir/libtool-XXXXXX 2> /dev/null`
++	      if test $? = 0 ; then :
++	      else
++		tmpdir="$tmpdir/libtool-$$"
++	      fi
+ 	      if $mkdir "$tmpdir" && chmod 700 "$tmpdir"; then :
  	      else
  		$echo "$modename: error: cannot create temporary directory \`$tmpdir'" 1>&2
