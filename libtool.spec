@@ -6,7 +6,7 @@ Summary(ru):	GNU libtool, ÎÁÂÏÒ ÕÔÉÌÉÔ ÄÌÑ ÇÅÎÅÒÁÃÉÉ ÒÁÚÄÅÌÑÅÍÙÈ ÂÉÂÌÉÏÔÅË
 Summary(uk):	GNU libtool, ÎÁÂ¦Ò ÕÔÉÌ¦Ô ÄÌÑ ÇÅÎÅÒÁÃ¦§ ÄÉÎÁÍ¦ÞÎÉÈ Â¦ÂÌ¦ÏÔÅË
 Name:		libtool
 Version:	1.5
-Release:	13
+Release:	14
 Epoch:		2
 License:	GPL
 Group:		Development/Tools
@@ -24,6 +24,7 @@ Patch6:		%{name}-multilib.patch
 Patch7:		%{name}-m4-x86_64.patch
 Patch8:		%{name}-nostdlib.patch
 Patch9:		%{name}-readonlysym.patch
+Patch10:	%{name}-LD_GNU.patch
 URL:		http://www.gnu.org/software/libtool/
 BuildRequires:	/usr/bin/which
 BuildRequires:	autoconf >= 2.57
@@ -146,6 +147,10 @@ utilizando componentes estáticos (raramente necessário).
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
+
+# it's the same - copy so patching only libtool.m4 is sufficient
+cp -f libtool.m4 acinclude.m4
 
 %build
 %{__aclocal}
@@ -153,7 +158,7 @@ utilizando componentes estáticos (raramente necessário).
 
 cd libltdl
 %{__aclocal}
-cp ../config.sub .
+cp -f ../config.sub .
 automake -a -c --foreign
 cd ..
 
