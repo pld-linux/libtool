@@ -6,7 +6,7 @@ Summary(ru):	GNU libtool, набор утилит для генерации разделяемых библиотек
 Summary(uk):	GNU libtool, наб╕р утил╕т для генерац╕╖ динам╕чних б╕бл╕отек
 Name:		libtool
 Version:	1.4.3
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL
 Group:		Development/Tools
@@ -125,7 +125,7 @@ utilizando componentes estАticos (raramente necessАrio).
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
+%patch3 -p1 -b .wiget
 %patch4 -p1
 
 %build
