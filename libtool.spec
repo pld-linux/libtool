@@ -18,7 +18,7 @@ GNU libtool is a set of shell scripts to automatically configure
 UNIX architectures to build shared libraries in generic fashion.
 
 %description -l pl
-GNU libtool jest zbiorem skryptów shellowych do automatycznego gemnerowania
+GNU libtool jest zbiorem skryptów shellowych do automatycznego generowania
 bibliotek wspó³dzielonych niezale¿nie od typu platformy systemowej.
 
 %package -n libltdl
