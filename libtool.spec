@@ -1,13 +1,13 @@
 Summary:	GNU libtool, a shared library generation tool.
 Summary(pl):	GNU libtool - narzêdzie do generowania bibliotek wspó³dzielonych
 Name:		libtool
-Version:	1.3.4
-Release:	2
+Version:	1.3.5
+Release:	1
 License:	GPL
 Group:		Development/Tools
 Group(fr):	Development/Outils
 Group(pl):	Programowanie/Narzêdzia
-Source:		ftp://alpha.gnu.org/pub/gnu/libtool/%{name}-%{version}.tar.gz
+Source0:	ftp://alpha.gnu.org/pub/gnu/libtool/%{name}-%{version}.tar.gz
 Patch0:		libtool-info.patch
 Patch1:		libtool-cache.patch
 URL:		http://www.gnu.org/software/libtool/
@@ -28,10 +28,10 @@ Group:		Libraries
 Group(pl):	Biblioteki
 
 %description -n libltdl
-System independent dlopen wrapper for GNU libtool
+System independent dlopen wrapper for GNU libtool.
 
 %description -n libltdl -l pl
-Biblioteka ogólnych wywo³añ dlopen
+Biblioteka ogólnych wywo³añ dlopen.
 
 %package -n libltdl-devel
 Summary:	System independent dlopen wrapper for GNU libtool
@@ -41,10 +41,10 @@ Group(pl):	Programowanie/Biblioteki
 Requires:	libltdl = %{version}
 
 %description -n libltdl-devel
-System independent dlopen wrapper for GNU libtool
+System independent dlopen wrapper for GNU libtool.
 
 %description -n libltdl-devel -l pl
-Biblioteka ogólnych wywo³añ dlopen
+Biblioteka ogólnych wywo³añ dlopen.
 
 %package -n libltdl-static
 Summary:	Static system independent dlopen wrapper for GNU libtool
@@ -54,10 +54,10 @@ Group(pl):	Programowanie/Biblioteki
 Requires:	libltdl-devel = %{version}
 
 %description -n libltdl-static
-Static system independent dlopen wrapper for GNU libtool
+Static system independent dlopen wrapper for GNU libtool.
 
 %description -n libltdl-static -l pl
-Statyczna biblioteka ogólnych wywo³añ dlopen
+Statyczna biblioteka ogólnych wywo³añ dlopen.
 
 %prep
 %setup -q
@@ -104,7 +104,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/libtool/ltmain.sh
 
 %{_infodir}/libtool.info*
-%{_datadir}/aclocal/libtool.m4
+%{_aclocaldir}/libtool.m4
 
 %files -n libltdl
 %defattr(644,root,root,755)
