@@ -2,13 +2,13 @@ Summary:	GNU libtool, a shared library generation tool.
 Summary(pl):	GNU libtool - narzêdzie do generowania bibliotek wspó³dzielonych
 Name:		libtool
 Version:	1.3
-Release:	2
+Release:	3
 Copyright:	GPL
 Group:		Development/Tools
 Group(pl):	Programowanie/Narzêdzia
 Source:		ftp://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
 Patch0:		libtool-info.patch
-Patch2:		libtool-cache.patch
+Patch1:		libtool-cache.patch
 URL:		http://www.gnu.org/software/libtool/
 PreReq:		/sbin/install-info
 BuildRoot:	/tmp/%{name}-%{version}-root
@@ -21,7 +21,7 @@ UNIX architectures to build shared libraries in generic fashion.
 GNU libtool jest zbiorem skryptów shellowych do automatycznego gemnerowania
 bibliotek wspó³dzielonych niezale¿nie od typu platformy systemowej.
 
-%package -n libltdl
+%package -n	libltdl
 Summary:	System independent dlopen wrapper for GNU libtool
 Summary(pl):	Biblioteka ogólnych wywo³añ dlopen
 Group:		Libraries
@@ -33,7 +33,7 @@ System independent dlopen wrapper for GNU libtool
 %description -n libltdl -l pl
 Biblioteka ogólnych wywo³añ dlopen
 
-%package -n libltdl-devel
+%package -n	libltdl-devel
 Summary:	System independent dlopen wrapper for GNU libtool
 Summary(pl):	Biblioteka ogólnych wywo³añ dlopen
 Group:		Development/Libraries
@@ -46,7 +46,7 @@ System independent dlopen wrapper for GNU libtool
 %description -n libltdl-devel -l pl
 Biblioteka ogólnych wywo³añ dlopen
 
-%package -n libltdl-static
+%package -n	libltdl-static
 Summary:	Static system independent dlopen wrapper for GNU libtool
 Summary(pl):	Statyczna biblioteka ogólnych wywo³añ dlopen
 Group:		Development/Libraries
@@ -62,19 +62,24 @@ Statyczna biblioteka ogólnych wywo³añ dlopen
 %prep
 %setup -q
 %patch0 -p1
-%patch2 -p1
+%patch1 -p1
 
 %build
 aclocal
 CFLAGS="$RPM_OPT_FLAGS" \
-./configure %{_target} --prefix=/usr
+    ./configure \
+	--prefix=%{_prefix} \
+	%{_target_platform}
+
 (cd doc && make -k)
 make
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-make prefix=$RPM_BUILD_ROOT/usr install
+make \
+    prefix=$RPM_BUILD_ROOT%{_prefix} \
+    install
 
 strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*so.*.*
 
@@ -89,12 +94,24 @@ rm -rf $RPM_BUILD_ROOT
 
 %preun
 if [ "$1" = "0" ]; then
-	/sbin/install-info --delete %{_infodir}/libtool.info.gz /etc/info-dir
+    /sbin/install-info --delete %{_infodir}/libtool.info.gz /etc/info-dir
 fi
+%post -n libltdl
+/sbin/ldconfig
+
+%post -n libltdl-devel
+/sbin/ldconfig
+
+%postun -n libltdl
+/sbin/ldconfig
+
+%postun -n libltdl-devel
+/sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
 %doc {AUTHORS,NEWS,README,THANKS,TODO,ChangeLog}.gz demo
+
 %attr(755,root,root) %{_bindir}/*
 
 %{_infodir}/libtool.info*
@@ -103,26 +120,35 @@ fi
 %attr(755,root,root) %{_datadir}/libtool/config.guess
 %attr(755,root,root) %{_datadir}/libtool/config.sub
 %attr(755,root,root) %{_datadir}/libtool/ltconfig
-%{_datadir}/libtool/ltmain.sh
 
+%{_datadir}/libtool/ltmain.sh
 %{_datadir}/aclocal/libtool.m4
 
 %files -n libltdl
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%defattr(755,root,root,755)
+%{_libdir}/lib*.so.*.*
 
 %files -n libltdl-devel
 %defattr(644,root,root,755)
+
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
+
 %{_includedir}/*
 %attr(-,root,root) %{_datadir}/libtool/libltdl
 
 %files -n libltdl-static
 %defattr(644,root,root,755)
+
 %{_libdir}/lib*.a
 
 %changelog
+* Sun May 23 1999 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
+  [1.3-3]
+- added some macros,
+- fixed %post & %postun,
+- cosmetic.
+
 * Wed May  5 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.3-2]
 - added CFLAGS="$RPM_OPT_FLAGS" to ./configure enviroment,
@@ -161,16 +187,5 @@ fi
 - added using %%{name} and %%{version} in Source,
 - removed COPYING and INSTALL drom %doc,
 - added %attr and %defattr macros in %files (allows build package from
-  non-root account).
-
-* Thu May 07 1998 Donnie Barnes <djb@redhat.com>
-- fixed busted group
-
-* Sat Jan 24 1998 Marc Ewing <marc@redhat.com>
-- Update to 1.0h
-- added install-info support
-
-* Tue Nov 25 1997 Elliot Lee <sopwith@redhat.com>
-- Update to 1.0f
-- BuildRoot it
-- Make it a noarch package
+  non-root account),
+- start at RH spec.
