@@ -1,21 +1,28 @@
 Summary:     GNU libtool, a shared library generation tool.
+Summary(pl): GNU libtool - narzêdzie do generowania bibliotek wspó³dzielonych
 Name:        libtool
-Version:     1.2b
-Release:     2
+Version:     1.2d
+Release:     1
 Copyright:   GPL
 Group:       Development/Building
 Source:      ftp://alpha.gnu.org/gnu/%{name}-%{version}.tar.gz
+Patch0:      libtool-info.patch
+URL:         http://www.profitpress.com/libtool/
 PreReq:      /sbin/install-info
 BuildRoot:   /tmp/%{name}-%{version}-root
-URL:         http://www.profitpress.com/libtool/
-BuildArchitectures: noarch
+BuildArch:   noarch
 
 %description
 GNU libtool is a set of shell scripts to automatically configure
 UNIX architectures to build shared libraries in generic fashion.
 
+%description -l pl
+GNU libtool jest zbiorem skryptów shellowych do automatycznego gemnerowania
+bibliotek wspó³dzielonych niezale¿nie od typu platformy systemowej.
+
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 ./configure --prefix=/usr
@@ -32,12 +39,12 @@ gzip -9 $RPM_BUILD_ROOT/usr/info/*.info*
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/sbin/install-info /usr/info/libtool.info.gz /usr/info/dir --entry \
-"* Libtool: (libtool).                           Generic shared library support script."
+/sbin/install-info /usr/info/libtool.info.gz /etc/info-dir
 
 %preun
-/sbin/install-info --delete /usr/info/libtool.info.gz /usr/info/dir \
-"* Libtool: (libtool).                           Generic shared library support script."
+if [ $1 = 0 ]; then
+	/sbin/install-info --delete /usr/info/libtool.info.gz /etc/info-dir
+fi
 
 %files
 %defattr(644, root, root, 755)
@@ -52,6 +59,12 @@ rm -rf $RPM_BUILD_ROOT
 /usr/share/aclocal/libtool.m4
 
 %changelog
+* Tue Dec 29 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.2d-1]
+- added pl translation,
+- added libtool-info.patch.
+- standarized {un}registering info pages.
+
 * Wed Nov 25 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.2b-2]
 - added URL field,
