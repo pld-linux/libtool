@@ -3,17 +3,15 @@ Summary(es):	GNU libtool, una herramienta de creación de bibliotecas compartidas
 Summary(pl):	GNU libtool - narzêdzie do generowania bibliotek wspó³dzielonych
 Summary(pt_BR):	GNU libtool, uma ferramenta de geração de bibliotecas compartilhadas
 Name:		libtool
-Version:	1.4.2
-Release:	3
+Version:	1.4d
+Release:	1
+Epoch:		1
 License:	GPL
 Group:		Development/Tools
-Source0:	ftp://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
+Source0:	ftp://alpha.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-mktemp.patch
-Patch2:		%{name}-test.patch
 URL:		http://www.gnu.org/software/libtool/
-BuildRequires:	autoconf
-BuildRequires:	automake
 Requires:	mktemp
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -92,20 +90,8 @@ utilizando componentes estáticos (raramente necessário).
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
-rm -f missing
-aclocal
-autoupdate
-automake -a -c -f
-autoconf
-(cd libltdl
-rm -f missing
-aclocal
-autoupdate
-automake -a -c -f
-autoconf)
 %configure
 %{__make} -C doc -k
 %{__make}
@@ -157,7 +143,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/libtool/libltdl/a*
 %{_datadir}/libtool/libltdl/config-h.in
 %attr(755,root,root) %{_datadir}/libtool/libltdl/configure
-%{_datadir}/libtool/libltdl/configure.in
+%{_datadir}/libtool/libltdl/configure.ac
 %{_datadir}/libtool/libltdl/C*
 %{_datadir}/libtool/libltdl/l*
 %{_datadir}/libtool/libltdl/M*
