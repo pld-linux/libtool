@@ -9,6 +9,8 @@ Epoch:		1
 License:	GPL
 Group:		Development/Tools
 Source0:	ftp://alpha.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
+Source1:	%{name}-man-pages.tar.bz2
+Source2:	%{name}-ja-man-pages.tar.bz2
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-mktemp.patch
 URL:		http://www.gnu.org/software/libtool/
@@ -87,7 +89,7 @@ Instale este pacote se você deseja desenvolver para a libltdl,
 utilizando componentes estáticos (raramente necessário).
 
 %prep
-%setup -q
+%setup -q -a1
 %patch0 -p1
 %patch1 -p1
 
@@ -100,6 +102,9 @@ utilizando componentes estáticos (raramente necessário).
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
+
+cp -ar man/* $RPM_BUILD_ROOT%{_mandir}
+bzip2 -dc %{SOURCE2} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
 gzip -9nf AUTHORS NEWS README THANKS TODO ChangeLog
 
@@ -126,6 +131,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_datadir}/libtool/ltmain.sh
 
 %{_infodir}/libtool.info*
+%{_mandir}/man1/*
+%lang(ja) %{_mandir}/ja/man1/*
 %{_aclocaldir}/libtool.m4
 
 %files -n libltdl
