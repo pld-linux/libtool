@@ -6,8 +6,8 @@ Summary(ru):	GNU libtool, набор утилит для генерации разделяемых библиотек
 Summary(uk):	GNU libtool, наб╕р утил╕т для генерац╕╖ динам╕чних б╕бл╕отек
 Name:		libtool
 Version:	1.4.3
-Release:	2
-Epoch:		1
+Release:	3
+Epoch:		2
 License:	GPL
 Group:		Development/Tools
 Source0:	ftp://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
