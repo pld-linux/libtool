@@ -1,0 +1,21 @@
+--- libtool-1.5.4/Makefile.am.orig	2004-04-02 05:46:11.000000000 +0200
++++ libtool-1.5.4/Makefile.am	2004-04-06 23:48:25.033562776 +0200
+@@ -73,16 +73,13 @@
+ # Create and install libltdl
+ install-data-hook:
+ 	cd libltdl && $(MAKE) local-install-files
++	chmod +x $(DESTDIR)$(pkgdatadir)/config.guess
++	chmod +x $(DESTDIR)$(pkgdatadir)/config.sub
+ 
+ # Uninstall libltdl
+ uninstall-local:
+ 	-rm -rf $(DESTDIR)$(pkgdatadir)/libltdl
+ 
+-install-data-hook:
+-	chmod +x $(DESTDIR)$(pkgdatadir)/config.guess
+-	chmod +x $(DESTDIR)$(pkgdatadir)/config.sub
+-
+-
+ ## ---------------------------------------------------------------- ##
+ ##  Everything past here is useful to the maintainer, but probably  ##
+ ##  not to anybody else (inspiration from automake/Makefile.am).    ##
