@@ -95,7 +95,7 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc {AUTHORS,NEWS,README,THANKS,TODO,ChangeLog}.gz demo
-%attr(755,root,root) /usr/bin/*
+%attr(755,root,root) %{_bindir}/*
 
 %{_infodir}/libtool.info*
 
