@@ -78,18 +78,18 @@ make prefix=$RPM_BUILD_ROOT/usr install
 
 strip --strip-unneeded $RPM_BUILD_ROOT/usr/lib/lib*so.*.*
 
-gzip -9nf $RPM_BUILD_ROOT/usr/info/*.info* \
+gzip -9nf $RPM_BUILD_ROOT%{_infodir}/*.info* \
 	AUTHORS NEWS README THANKS TODO ChangeLog
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/sbin/install-info /usr/info/libtool.info.gz /etc/info-dir
+/sbin/install-info %{_infodir}/libtool.info.gz /etc/info-dir
 
 %preun
 if [ "$1" = "0" ]; then
-	/sbin/install-info --delete /usr/info/libtool.info.gz /etc/info-dir
+	/sbin/install-info --delete %{_infodir}/libtool.info.gz /etc/info-dir
 fi
 
 %files
@@ -97,7 +97,7 @@ fi
 %doc {AUTHORS,NEWS,README,THANKS,TODO,ChangeLog}.gz demo
 %attr(755,root,root) /usr/bin/*
 
-/usr/info/libtool.info*
+%{_infodir}/libtool.info*
 
 %dir /usr/share/libtool
 %attr(755,root,root) /usr/share/libtool/config.guess
