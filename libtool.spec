@@ -11,7 +11,9 @@ Epoch:		2
 License:	GPL
 Group:		Development/Tools
 Source0:	ftp://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
+# Source0-md5: 0e1844f25e2ad74c3715b5776d017545
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
+# Source1-md5: b95e215961860c66f0868b0d551358c9
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-mktemp.patch
 Patch2:		%{name}-relink.patch
