@@ -2,16 +2,16 @@ Summary:	GNU libtool, a shared library generation tool.
 Summary(pl):	GNU libtool - narzêdzie do generowania bibliotek wspó³dzielonych
 Name:		libtool
 Version:	1.2d
-Release:	2
+Release:	3
 Copyright:	GPL
 Group:		Development/Tools
 Group(pl):	Programowanie/Narzêdzia
 Source:		ftp://alpha.gnu.org/gnu/%{name}-%{version}.tar.gz
-Patch0:		libtool-info.patch
+Patch:		libtool-info.patch
 URL:		http://www.profitpress.com/libtool/
 PreReq:		/sbin/install-info
-BuildRoot:	/tmp/%{name}-%{version}-root
 BuildArch:	noarch
+BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
 GNU libtool is a set of shell scripts to automatically configure
@@ -23,7 +23,7 @@ bibliotek wspó³dzielonych niezale¿nie od typu platformy systemowej.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -p1
 
 %build
 ./configure --prefix=/usr
@@ -33,8 +33,11 @@ make
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/usr
+
 make prefix=$RPM_BUILD_ROOT/usr install
-gzip -9 $RPM_BUILD_ROOT/usr/info/*.info*
+
+gzip -9nf $RPM_BUILD_ROOT/usr/info/*.info*
+gzip -9nf AUTHORS NEWS README THANKS TODO ChangeLog
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -49,7 +52,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS NEWS README THANKS TODO ChangeLog demo
+%doc {AUTHORS,NEWS,README,THANKS,TODO,ChangeLog}.gz demo
 %attr(755,root,root) /usr/bin/*
 
 /usr/info/libtool.info*
@@ -63,6 +66,10 @@ fi
 /usr/share/aclocal/libtool.m4
 
 %changelog
+* Sun Mar 14 1999 Micha³ Kuratczyk <kura@pld.org.pl>
+  [1.2d-3]
+- added gzipping documentation
+
 * Thu Mar 11 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.2d-2]
 - Group changed to Development/Tools,
