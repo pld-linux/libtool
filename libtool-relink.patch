@@ -4,7 +4,7 @@
      linker_flags=
      dllsearchpath=
      lib_search_path=`pwd`
-+    inst_prefix_dir=
++    inst_prefix_dir="$DESTDIR"
  
      avoid_version=no
      dlfiles=
