@@ -15,6 +15,8 @@ Patch0:		%{name}-info.patch
 Patch1:		%{name}-mktemp.patch
 Patch2:		%{name}-test.patch
 URL:		http://www.gnu.org/software/libtool/
+BuildRequires:	autoconf
+BuildRequires:	automake
 Requires:	mktemp
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
