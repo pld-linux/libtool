@@ -11,7 +11,6 @@ Source:		ftp://alpha.gnu.org/pub/gnu/libtool/%{name}-%{version}.tar.gz
 Patch0:		libtool-info.patch
 Patch1:		libtool-cache.patch
 URL:		http://www.gnu.org/software/libtool/
-PreReq:		/usr/sbin/fix-info-dir
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -85,10 +84,10 @@ gzip -9nf $RPM_BUILD_ROOT%{_infodir}/*.info* \
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%{_sbindir}/fix-info-dir -c %{_infodir} >/dev/null 2>&1
+[ -x /usr/sbin/fix-info-dir ] && /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %postun
-%{_sbindir}/fix-info-dir -c %{_infodir} >/dev/null 2>&1
+[ -x /usr/sbin/fix-info-dir ] && /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %post   -n libltdl -p /sbin/ldconfig
 %postun -n libltdl -p /sbin/ldconfig
