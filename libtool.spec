@@ -22,12 +22,13 @@ Patch4:		%{name}-multilib.patch
 URL:		http://www.gnu.org/software/libtool/
 BuildRequires:	/usr/bin/which
 BuildRequires:	autoconf >= 2.57
-%ifarch amd64
+%ifarch %{x8664}
 BuildRequires:	automake >= 1:1.7.9-2
 %else
 BuildRequires:	automake >= 1:1.7.3
 %endif
 BuildRequires:	gcc-c++ >= 5:3.3.3
+BuildRequires:	rpmbuild(macros) >= 1.213
 BuildRequires:	texinfo
 %requires_eq	gcc
 Requires:	%(which %{__cc})
