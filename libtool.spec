@@ -6,7 +6,7 @@ Summary(ru):	GNU libtool, набор утилит для генерации разделяемых библиотек
 Summary(uk):	GNU libtool, наб╕р утил╕т для генерац╕╖ динам╕чних б╕бл╕отек
 Name:		libtool
 Version:	1.5.22
-Release:	3
+Release:	4
 Epoch:		2
 License:	GPL
 Group:		Development/Tools
@@ -215,6 +215,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/ltdl.h
 %{_aclocaldir}/ltdl.m4
 
+%dir %{_datadir}/libtool
 %dir %{_datadir}/libtool/libltdl
 %{_datadir}/libtool/libltdl/[CMRal]*
 %{_datadir}/libtool/libltdl/config-h.in
