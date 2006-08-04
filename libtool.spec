@@ -18,6 +18,7 @@ Patch0:		%{name}-info.patch
 Patch1:		%{name}-relink.patch
 Patch2:		%{name}-libdirs.patch
 Patch3:		%{name}-multilib.patch
+Patch4:		%{name}-linking-order.patch
 URL:		http://www.gnu.org/software/libtool/
 BuildRequires:	/usr/bin/which
 BuildRequires:	autoconf >= 2.57
@@ -140,6 +141,7 @@ utilizando componentes estáticos (raramente necessário).
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 # it's the same - copy so patching only libtool.m4 is sufficient
 cp -f libtool.m4 acinclude.m4
