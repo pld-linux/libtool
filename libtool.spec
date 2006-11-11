@@ -6,7 +6,7 @@ Summary(ru):	GNU libtool, набор утилит для генерации разделяемых библиотек
 Summary(uk):	GNU libtool, наб╕р утил╕т для генерац╕╖ динам╕чних б╕бл╕отек
 Name:		libtool
 Version:	1.5.22
-Release:	7
+Release:	8
 Epoch:		2
 License:	GPL
 Group:		Development/Tools
@@ -141,7 +141,7 @@ utilizando componentes estАticos (raramente necessАrio).
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
+#%patch4 -p1
 
 # it's the same - copy so patching only libtool.m4 is sufficient
 cp -f libtool.m4 acinclude.m4
