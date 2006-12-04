@@ -31,7 +31,6 @@ BuildRequires:	gcc-c++ >= 5:3.3.3
 BuildRequires:	rpmbuild(macros) >= 1.213
 BuildRequires:	texinfo
 %requires_eq	gcc
-Requires:	%(which %{__cc})
 Requires:	coreutils
 Requires:	grep
 Requires:	mktemp
