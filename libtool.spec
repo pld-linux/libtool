@@ -1,9 +1,9 @@
 Summary:	GNU libtool, a shared library generation tool
-Summary(es):	GNU libtool, una herramienta de creaciСn de bibliotecas compartidas
-Summary(pl):	GNU libtool - narzЙdzie do generowania bibliotek wspСЁdzielonych
-Summary(pt_BR):	GNU libtool, uma ferramenta de geraГЦo de bibliotecas compartilhadas
-Summary(ru):	GNU libtool, набор утилит для генерации разделяемых библиотек
-Summary(uk):	GNU libtool, наб╕р утил╕т для генерац╕╖ динам╕чних б╕бл╕отек
+Summary(es.UTF-8):   GNU libtool, una herramienta de creaciцЁn de bibliotecas compartidas
+Summary(pl.UTF-8):   GNU libtool - narzд≥dzie do generowania bibliotek wspцЁе┌dzielonych
+Summary(pt_BR.UTF-8):   GNU libtool, uma ferramenta de geraц╖цёo de bibliotecas compartilhadas
+Summary(ru.UTF-8):   GNU libtool, п╫п╟п╠п╬я─ я┐я┌п╦п╩п╦я┌ п╢п╩я▐ пЁп╣п╫п╣я─п╟я├п╦п╦ я─п╟п╥п╢п╣п╩я▐п╣п╪я▀я┘ п╠п╦п╠п╩п╦п╬я┌п╣п╨
+Summary(uk.UTF-8):   GNU libtool, п╫п╟п╠я√я─ я┐я┌п╦п╩я√я┌ п╢п╩я▐ пЁп╣п╫п╣я─п╟я├я√я≈ п╢п╦п╫п╟п╪я√я┤п╫п╦я┘ п╠я√п╠п╩я√п╬я┌п╣п╨
 Name:		libtool
 Version:	1.5.22
 Release:	13
@@ -41,51 +41,51 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 GNU libtool is a set of shell scripts to automatically configure UNIX
 architectures to build shared libraries in generic fashion.
 
-%description -l es
+%description -l es.UTF-8
 GNU libtool es un conjunto de scripts shell para configurar
-automАticamente la creaciСn de bibliotecas compartidas para varias
-arquitecturas UNIX de una manera genИrica.
+automц║ticamente la creaciцЁn de bibliotecas compartidas para varias
+arquitecturas UNIX de una manera genц╘rica.
 
-%description -l pl
-GNU libtool jest zbiorem skryptСw shellowych do automatycznego
-generowania bibliotek wspСЁdzielonych niezale©nie od typu platformy
+%description -l pl.UTF-8
+GNU libtool jest zbiorem skryptцЁw shellowych do automatycznego
+generowania bibliotek wspцЁе┌dzielonych niezaleе╪nie od typu platformy
 systemowej.
 
-%description -l pt_BR
-GNU libtool И um conjunto de scripts shell para configurar
-automaticamente a geraГЦo de bibliotecas compartilhadas para vАrias
-arquiteturas UNIX de uma maneira genИrica.
+%description -l pt_BR.UTF-8
+GNU libtool ц╘ um conjunto de scripts shell para configurar
+automaticamente a geraц╖цёo de bibliotecas compartilhadas para vц║rias
+arquiteturas UNIX de uma maneira genц╘rica.
 
-%description -l ru
-GNU libtool - это набор скриптов для автоматической генерации
-динамических разделяемых библиотек на различных архитектурах UNIX.
+%description -l ru.UTF-8
+GNU libtool - я█я┌п╬ п╫п╟п╠п╬я─ я│п╨я─п╦п©я┌п╬п╡ п╢п╩я▐ п╟п╡я┌п╬п╪п╟я┌п╦я┤п╣я│п╨п╬п╧ пЁп╣п╫п╣я─п╟я├п╦п╦
+п╢п╦п╫п╟п╪п╦я┤п╣я│п╨п╦я┘ я─п╟п╥п╢п╣п╩я▐п╣п╪я▀я┘ п╠п╦п╠п╩п╦п╬я┌п╣п╨ п╫п╟ я─п╟п╥п╩п╦я┤п╫я▀я┘ п╟я─я┘п╦я┌п╣п╨я┌я┐я─п╟я┘ UNIX.
 
-%description -l uk
-GNU libtool - це наб╕р скрипт╕в для автоматично╖ генерац╕╖ динам╕чних
-б╕бл╕отек на р╕зних арх╕тектурах UNIX.
+%description -l uk.UTF-8
+GNU libtool - я├п╣ п╫п╟п╠я√я─ я│п╨я─п╦п©я┌я√п╡ п╢п╩я▐ п╟п╡я┌п╬п╪п╟я┌п╦я┤п╫п╬я≈ пЁп╣п╫п╣я─п╟я├я√я≈ п╢п╦п╫п╟п╪я√я┤п╫п╦я┘
+п╠я√п╠п╩я√п╬я┌п╣п╨ п╫п╟ я─я√п╥п╫п╦я┘ п╟я─я┘я√я┌п╣п╨я┌я┐я─п╟я┘ UNIX.
 
 %package -n libltdl
 Summary:	System independent dlopen wrapper for GNU libtool
-Summary(pl):	Biblioteka ogСlnych wywoЁaЯ dlopen
-Summary(pt_BR):	GNU libltdl, um wrapper dlopen para o GNU libtool
+Summary(pl.UTF-8):   Biblioteka ogцЁlnych wywoе┌aе└ dlopen
+Summary(pt_BR.UTF-8):   GNU libltdl, um wrapper dlopen para o GNU libtool
 Group:		Libraries
 Obsoletes:	libtool-libs
 
 %description -n libltdl
 System independent dlopen wrapper for GNU libtool.
 
-%description -n libltdl -l pl
-Biblioteka ogСlnych wywoЁaЯ dlopen.
+%description -n libltdl -l pl.UTF-8
+Biblioteka ogцЁlnych wywoе┌aе└ dlopen.
 
-%description -n libltdl -l pt_BR
+%description -n libltdl -l pt_BR.UTF-8
 GNU libltdl, um wrapper dlopen para o GNU libtool.
 
 %package -n libltdl-devel
 Summary:	Development components for libltdl
-Summary(pl):	CzЙ╤Ф libltdl przeznaczona dla programistСw
-Summary(pt_BR):	Componentes de desenvolvimento para a libltdl
-Summary(ru):	Файлы для разработки программ с libltdl
-Summary(uk):	Файли для розробки програм з libltdl
+Summary(pl.UTF-8):   Czд≥е⌡д┤ libltdl przeznaczona dla programistцЁw
+Summary(pt_BR.UTF-8):   Componentes de desenvolvimento para a libltdl
+Summary(ru.UTF-8):   п╓п╟п╧п╩я▀ п╢п╩я▐ я─п╟п╥я─п╟п╠п╬я┌п╨п╦ п©я─п╬пЁя─п╟п╪п╪ я│ libltdl
+Summary(uk.UTF-8):   п╓п╟п╧п╩п╦ п╢п╩я▐ я─п╬п╥я─п╬п╠п╨п╦ п©я─п╬пЁя─п╟п╪ п╥ libltdl
 Group:		Development/Libraries
 Requires:	libltdl = %{epoch}:%{version}-%{release}
 
@@ -93,24 +93,24 @@ Requires:	libltdl = %{epoch}:%{version}-%{release}
 System independent dlopen wrapper for GNU libtool - development part.
 Install this package if you want to develop for libltdl.
 
-%description -n libltdl-devel -l pl
-Biblioteka ogСlnych wywoЁaЯ dlopen - czЙ╤Ф dla programistСw.
+%description -n libltdl-devel -l pl.UTF-8
+Biblioteka ogцЁlnych wywoе┌aе└ dlopen - czд≥е⌡д┤ dla programistцЁw.
 
-%description -n libltdl-devel -l pt_BR
-Instale este pacote se vocЙ deseja desenvolver para a libltdl.
+%description -n libltdl-devel -l pt_BR.UTF-8
+Instale este pacote se vocц╙ deseja desenvolver para a libltdl.
 
-%description -n libltdl-devel -l uk
-Файли для розробки програм з libltdl.
+%description -n libltdl-devel -l uk.UTF-8
+п╓п╟п╧п╩п╦ п╢п╩я▐ я─п╬п╥я─п╬п╠п╨п╦ п©я─п╬пЁя─п╟п╪ п╥ libltdl.
 
-%description -n libltdl-devel -l ru
-Файлы для разработки программ с libltdl.
+%description -n libltdl-devel -l ru.UTF-8
+п╓п╟п╧п╩я▀ п╢п╩я▐ я─п╟п╥я─п╟п╠п╬я┌п╨п╦ п©я─п╬пЁя─п╟п╪п╪ я│ libltdl.
 
 %package -n libltdl-static
 Summary:	Static system independent dlopen wrapper for GNU libtool
-Summary(pl):	Statyczna biblioteka ogСlnych wywoЁaЯ dlopen
-Summary(pt_BR):	Componentes de desenvolvimento para a libltdl
-Summary(ru):	Статическая библиотека libltdl из libltdl
-Summary(uk):	Статична б╕бл╕отека libltdl з libltdl
+Summary(pl.UTF-8):   Statyczna biblioteka ogцЁlnych wywoе┌aе└ dlopen
+Summary(pt_BR.UTF-8):   Componentes de desenvolvimento para a libltdl
+Summary(ru.UTF-8):   п║я┌п╟я┌п╦я┤п╣я│п╨п╟я▐ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╟ libltdl п╦п╥ libltdl
+Summary(uk.UTF-8):   п║я┌п╟я┌п╦я┤п╫п╟ п╠я√п╠п╩я√п╬я┌п╣п╨п╟ libltdl п╥ libltdl
 Group:		Development/Libraries
 Requires:	libltdl-devel = %{epoch}:%{version}-%{release}
 
@@ -119,20 +119,20 @@ Static system independent dlopen wrapper for GNU libtool. Install this
 package if you want to develop for libltdl, but using static
 components (seldom used).
 
-%description -n libltdl-static -l pl
-Statyczna biblioteka ogСlnych wywoЁaЯ dlopen.
+%description -n libltdl-static -l pl.UTF-8
+Statyczna biblioteka ogцЁlnych wywoе┌aе└ dlopen.
 
-%description -n libltdl-static -l pt_BR
-Instale este pacote se vocЙ deseja desenvolver para a libltdl,
-utilizando componentes estАticos (raramente necessАrio).
+%description -n libltdl-static -l pt_BR.UTF-8
+Instale este pacote se vocц╙ deseja desenvolver para a libltdl,
+utilizando componentes estц║ticos (raramente necessц║rio).
 
-%description -n libltdl-static -l ru
-Это отдельный пакет со статическими библиотеками, которые больше не
-входят в libltdl.
+%description -n libltdl-static -l ru.UTF-8
+п╜я┌п╬ п╬я┌п╢п╣п╩я▄п╫я▀п╧ п©п╟п╨п╣я┌ я│п╬ я│я┌п╟я┌п╦я┤п╣я│п╨п╦п╪п╦ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╟п╪п╦, п╨п╬я┌п╬я─я▀п╣ п╠п╬п╩я▄я┬п╣ п╫п╣
+п╡я┘п╬п╢я▐я┌ п╡ libltdl.
 
-%description -n libltdl-static -l uk
-Це окремий пакет з╕ статичними б╕бл╕отеками, що б╕льше не входять до
-складу libltdl.
+%description -n libltdl-static -l uk.UTF-8
+п╕п╣ п╬п╨я─п╣п╪п╦п╧ п©п╟п╨п╣я┌ п╥я√ я│я┌п╟я┌п╦я┤п╫п╦п╪п╦ п╠я√п╠п╩я√п╬я┌п╣п╨п╟п╪п╦, я┴п╬ п╠я√п╩я▄я┬п╣ п╫п╣ п╡я┘п╬п╢я▐я┌я▄ п╢п╬
+я│п╨п╩п╟п╢я┐ libltdl.
 
 %prep
 %setup -q -a1
