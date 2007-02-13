@@ -1,9 +1,9 @@
 Summary:	GNU libtool, a shared library generation tool
-Summary(es.UTF-8):   GNU libtool, una herramienta de creación de bibliotecas compartidas
-Summary(pl.UTF-8):   GNU libtool - narzędzie do generowania bibliotek współdzielonych
-Summary(pt_BR.UTF-8):   GNU libtool, uma ferramenta de geração de bibliotecas compartilhadas
-Summary(ru.UTF-8):   GNU libtool, набор утилит для генерации разделяемых библиотек
-Summary(uk.UTF-8):   GNU libtool, набір утиліт для генерації динамічних бібліотек
+Summary(es.UTF-8):	GNU libtool, una herramienta de creación de bibliotecas compartidas
+Summary(pl.UTF-8):	GNU libtool - narzędzie do generowania bibliotek współdzielonych
+Summary(pt_BR.UTF-8):	GNU libtool, uma ferramenta de geração de bibliotecas compartilhadas
+Summary(ru.UTF-8):	GNU libtool, набор утилит для генерации разделяемых библиотек
+Summary(uk.UTF-8):	GNU libtool, набір утиліт для генерації динамічних бібліотек
 Name:		libtool
 Version:	1.5.22
 Release:	13
@@ -66,8 +66,8 @@ GNU libtool - це набір скриптів для автоматичної �
 
 %package -n libltdl
 Summary:	System independent dlopen wrapper for GNU libtool
-Summary(pl.UTF-8):   Biblioteka ogólnych wywołań dlopen
-Summary(pt_BR.UTF-8):   GNU libltdl, um wrapper dlopen para o GNU libtool
+Summary(pl.UTF-8):	Biblioteka ogólnych wywołań dlopen
+Summary(pt_BR.UTF-8):	GNU libltdl, um wrapper dlopen para o GNU libtool
 Group:		Libraries
 Obsoletes:	libtool-libs
 
@@ -82,10 +82,10 @@ GNU libltdl, um wrapper dlopen para o GNU libtool.
 
 %package -n libltdl-devel
 Summary:	Development components for libltdl
-Summary(pl.UTF-8):   Część libltdl przeznaczona dla programistów
-Summary(pt_BR.UTF-8):   Componentes de desenvolvimento para a libltdl
-Summary(ru.UTF-8):   Файлы для разработки программ с libltdl
-Summary(uk.UTF-8):   Файли для розробки програм з libltdl
+Summary(pl.UTF-8):	Część libltdl przeznaczona dla programistów
+Summary(pt_BR.UTF-8):	Componentes de desenvolvimento para a libltdl
+Summary(ru.UTF-8):	Файлы для разработки программ с libltdl
+Summary(uk.UTF-8):	Файли для розробки програм з libltdl
 Group:		Development/Libraries
 Requires:	libltdl = %{epoch}:%{version}-%{release}
 
@@ -107,10 +107,10 @@ Instale este pacote se você deseja desenvolver para a libltdl.
 
 %package -n libltdl-static
 Summary:	Static system independent dlopen wrapper for GNU libtool
-Summary(pl.UTF-8):   Statyczna biblioteka ogólnych wywołań dlopen
-Summary(pt_BR.UTF-8):   Componentes de desenvolvimento para a libltdl
-Summary(ru.UTF-8):   Статическая библиотека libltdl из libltdl
-Summary(uk.UTF-8):   Статична бібліотека libltdl з libltdl
+Summary(pl.UTF-8):	Statyczna biblioteka ogólnych wywołań dlopen
+Summary(pt_BR.UTF-8):	Componentes de desenvolvimento para a libltdl
+Summary(ru.UTF-8):	Статическая библиотека libltdl из libltdl
+Summary(uk.UTF-8):	Статична бібліотека libltdl з libltdl
 Group:		Development/Libraries
 Requires:	libltdl-devel = %{epoch}:%{version}-%{release}
 
