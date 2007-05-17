@@ -6,7 +6,7 @@ Summary(ru.UTF-8):	GNU libtool, набор утилит для генераци�
 Summary(uk.UTF-8):	GNU libtool, набір утиліт для генерації динамічних бібліотек
 Name:		libtool
 Version:	1.5.22
-Release:	14
+Release:	15
 Epoch:		2
 License:	GPL
 Group:		Development/Tools
@@ -141,7 +141,7 @@ utilizando componentes estáticos (raramente necessário).
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-#%patch4 -p1
+%patch4 -p1
 %patch5 -p1
 
 # it's the same - copy so patching only libtool.m4 is sufficient
