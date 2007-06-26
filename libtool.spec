@@ -5,13 +5,13 @@ Summary(pt_BR.UTF-8):	GNU libtool, uma ferramenta de geração de bibliotecas co
 Summary(ru.UTF-8):	GNU libtool, набор утилит для генерации разделяемых библиотек
 Summary(uk.UTF-8):	GNU libtool, набір утиліт для генерації динамічних бібліотек
 Name:		libtool
-Version:	1.5.22
-Release:	15
+Version:	1.5.24
+Release:	1
 Epoch:		2
 License:	GPL
 Group:		Development/Tools
 Source0:	ftp://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
-# Source0-md5:	8e0ac9797b62ba4dcc8a2fb7936412b0
+# Source0-md5:	d0071c890101fcf4f2be8934a37841b0
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 # Source1-md5:	b95e215961860c66f0868b0d551358c9
 Patch0:		%{name}-info.patch
