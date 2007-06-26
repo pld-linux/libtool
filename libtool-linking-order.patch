@@ -125,19 +125,19 @@ diff -Nur libtool-1.5.22.orig/libtool.m4 libtool-1.5.22.linking-order/libtool.m4
        else
  	_LT_AC_TAGVAR(ld_shlibs, $1)=no
        fi
-@@ -5582,13 +5582,13 @@
- 	ifc* | ifort*)			# Intel Fortran compiler
- 	  tmp_addflag=' -nofor_main' ;;
+@@ -5741,13 +5741,13 @@
+ 	*)
+ 	  tmp_sharedflag='-shared' ;;
  	esac
--	_LT_AC_TAGVAR(archive_cmds, $1)='$CC -shared'"$tmp_addflag"' $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
-+	_LT_AC_TAGVAR(archive_cmds, $1)='$CC $compiler_flags -shared'"$tmp_addflag"' $libobjs $deplibs ${wl}-soname $wl$soname -o $lib'
+-	_LT_AC_TAGVAR(archive_cmds, $1)='$CC '"$tmp_sharedflag""$tmp_addflag"' $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
++	_LT_AC_TAGVAR(archive_cmds, $1)='$CC $compiler_flags '"$tmp_sharedflag""$tmp_addflag"' $libobjs $deplibs ${wl}-soname $wl$soname -o $lib'
  
  	if test $supports_anon_versioning = yes; then
  	  _LT_AC_TAGVAR(archive_expsym_cmds, $1)='$echo "{ global:" > $output_objdir/$libname.ver~
    cat $export_symbols | sed -e "s/\(.*\)/\1;/" >> $output_objdir/$libname.ver~
    $echo "local: *; };" >> $output_objdir/$libname.ver~
--	  $CC -shared'"$tmp_addflag"' $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname ${wl}-version-script ${wl}$output_objdir/$libname.ver -o $lib'
-+	  $CC $compiler_flags -shared'"$tmp_addflag"' $libobjs $deplibs ${wl}-soname $wl$soname ${wl}-version-script ${wl}$output_objdir/$libname.ver -o $lib'
+-	  $CC '"$tmp_sharedflag""$tmp_addflag"' $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname ${wl}-version-script ${wl}$output_objdir/$libname.ver -o $lib'
++	  $CC $compiler_flags '"$tmp_sharedflag""$tmp_addflag"' $libobjs $deplibs ${wl}-soname $wl$soname ${wl}-version-script ${wl}$output_objdir/$libname.ver -o $lib'
  	fi
        else
  	_LT_AC_TAGVAR(ld_shlibs, $1)=no

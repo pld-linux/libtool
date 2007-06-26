@@ -89,8 +89,8 @@
      beos* | cygwin* | irix5* | irix6* | nonstopux* | osf3* | osf4* | osf5*)
        # PIC is the default for these OSes.
        ;;
--    mingw* | os2* | pw32*)
-+    mingw* | os2* | pw32* | cegcc*)
+-    mingw* | cygwin* | os2* | pw32*)
++    mingw* | cygwin* | os2* | pw32* | cegcc*)
        # This hack is so that the source file can tell whether it is being
        # built for inclusion in a dll (and should export symbols for example).
        _LT_AC_TAGVAR(lt_prog_compiler_pic, $1)='-DDLL_EXPORT'
@@ -98,8 +98,8 @@
        # PIC is the default for these OSes.
        ;;
  
--    mingw* | pw32* | os2*)
-+    mingw* | pw32* | os2* | cegcc*)
+-    mingw* | cygwin* | pw32* | os2*)
++    mingw* | cygwin* | pw32* | os2* | cegcc*)
        # This hack is so that the source file can tell whether it is being
        # built for inclusion in a dll (and should export symbols for example).
        _LT_AC_TAGVAR(lt_prog_compiler_pic, $1)='-DDLL_EXPORT'
@@ -107,8 +107,8 @@
         esac
         ;;
  
--    mingw* | pw32* | os2*)
-+    mingw* | pw32* | os2* | cegcc*)
+-    mingw* | cygwin* | pw32* | os2*)
++    mingw* | cygwin* | pw32* | os2* | cegcc*)
        # This hack is so that the source file can tell whether it is being
        # built for inclusion in a dll (and should export symbols for example).
        _LT_AC_TAGVAR(lt_prog_compiler_pic, $1)='-DDLL_EXPORT'
@@ -118,7 +118,7 @@
    ;;
 -  cygwin* | mingw*)
 +  cygwin* | mingw* | cegcc*)
-     _LT_AC_TAGVAR(export_symbols_cmds, $1)='$NM $libobjs $convenience | $global_symbol_pipe | $SED -e '\''/^[[BCDGRS]] /s/.* \([[^ ]]*\)/\1 DATA/;/^.* __nm__/s/^.* __nm__\([[^ ]]*\) [[^ ]]*/\1 DATA/;/^I /d;/^[[AITW]] /s/.* //'\'' | sort | uniq > $export_symbols'
+     _LT_AC_TAGVAR(export_symbols_cmds, $1)='$NM $libobjs $convenience | $global_symbol_pipe | $SED -e '\''/^[[BCDGRS]][[ ]]/s/.*[[ ]]\([[^ ]]*\)/\1 DATA/;/^.*[[ ]]__nm__/s/^.*[[ ]]__nm__\([[^ ]]*\)[[ ]][[^ ]]*/\1 DATA/;/^I[[ ]]/d;/^[[AITW]][[ ]]/s/.*[[ ]]//'\'' | sort | uniq > $export_symbols'
    ;;
    *)
 @@ -5438,7 +5445,7 @@ ifelse([$1],[CXX],[
