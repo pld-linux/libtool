@@ -5,13 +5,13 @@ Summary(pt_BR.UTF-8):	GNU libtool, uma ferramenta de geração de bibliotecas co
 Summary(ru.UTF-8):	GNU libtool, набор утилит для генерации разделяемых библиотек
 Summary(uk.UTF-8):	GNU libtool, набір утиліт для генерації динамічних бібліотек
 Name:		libtool
-Version:	1.5.24
-Release:	10
+Version:	1.5.26
+Release:	1
 Epoch:		2
-License:	GPL
+License:	GPL v2+
 Group:		Development/Tools
 Source0:	ftp://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
-# Source0-md5:	d0071c890101fcf4f2be8934a37841b0
+# Source0-md5:	aa9c5107f3ec9ef4200eb6556f3b3c29
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 # Source1-md5:	b95e215961860c66f0868b0d551358c9
 Patch0:		%{name}-info.patch
@@ -69,6 +69,7 @@ GNU libtool - це набір скриптів для автоматичної �
 Summary:	System independent dlopen wrapper for GNU libtool
 Summary(pl.UTF-8):	Biblioteka ogólnych wywołań dlopen
 Summary(pt_BR.UTF-8):	GNU libltdl, um wrapper dlopen para o GNU libtool
+License:	LGPL v2+
 Group:		Libraries
 Obsoletes:	libtool-libs
 
@@ -87,6 +88,7 @@ Summary(pl.UTF-8):	Część libltdl przeznaczona dla programistów
 Summary(pt_BR.UTF-8):	Componentes de desenvolvimento para a libltdl
 Summary(ru.UTF-8):	Файлы для разработки программ с libltdl
 Summary(uk.UTF-8):	Файли для розробки програм з libltdl
+License:	LGPL v2+
 Group:		Development/Libraries
 Requires:	libltdl = %{epoch}:%{version}-%{release}
 
@@ -112,6 +114,7 @@ Summary(pl.UTF-8):	Statyczna biblioteka ogólnych wywołań dlopen
 Summary(pt_BR.UTF-8):	Componentes de desenvolvimento para a libltdl
 Summary(ru.UTF-8):	Статическая библиотека libltdl из libltdl
 Summary(uk.UTF-8):	Статична бібліотека libltdl з libltdl
+License:	LGPL v2+
 Group:		Development/Libraries
 Requires:	libltdl-devel = %{epoch}:%{version}-%{release}
 
@@ -183,10 +186,10 @@ cp -a demo/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-p	/sbin/postshell
+%post	-p /sbin/postshell
 -/usr/sbin/fix-info-dir -c %{_infodir}
 
-%postun	-p	/sbin/postshell
+%postun	-p /sbin/postshell
 -/usr/sbin/fix-info-dir -c %{_infodir}
 
 %post   -n libltdl -p /sbin/ldconfig
@@ -195,23 +198,25 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README THANKS TODO ChangeLog
-%attr(755,root,root) %{_bindir}/*
-
+%attr(755,root,root) %{_bindir}/libtool
+%attr(755,root,root) %{_bindir}/libtoolize
 %dir %{_datadir}/libtool
 %attr(755,root,root) %{_datadir}/libtool/config.guess
 %attr(755,root,root) %{_datadir}/libtool/config.sub
 %attr(755,root,root) %{_datadir}/libtool/install-sh
 %attr(755,root,root) %{_datadir}/libtool/ltmain.sh
-
+%{_mandir}/man1/libtool.1*
+%{_mandir}/man1/libtoolize.1*
+%lang(ja) %{_mandir}/ja/man1/libtool.1*
+%lang(ja) %{_mandir}/ja/man1/libtoolize.1*
 %{_infodir}/libtool.info*
-%{_mandir}/man1/*
-%lang(ja) %{_mandir}/ja/man1/*
 %{_aclocaldir}/libtool.m4
 %{_examplesdir}/%{name}-%{version}
 
 %files -n libltdl
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libltdl.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libltdl.so.3
 
 %files -n libltdl-devel
 %defattr(644,root,root,755)
