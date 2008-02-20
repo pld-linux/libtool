@@ -1,0 +1,2 @@
+- added missing dir to libltdl-devel: %{_datadir}/libtool/libltdl
+- release 2
