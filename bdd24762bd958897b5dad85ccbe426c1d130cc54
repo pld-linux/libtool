@@ -1,0 +1,2 @@
+- removed %{_datadir}/libtool/libltdl from devel %files list (seems this
+  isn't neccessary).
