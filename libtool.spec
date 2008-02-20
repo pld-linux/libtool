@@ -183,6 +183,9 @@ install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{_mandir}}
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 cp -a demo/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
+rm $RPM_BUILD_ROOT%{_infodir}/dir
+rm $RPM_BUILD_ROOT%{_mandir}/README.libtool-man-pages
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
