@@ -1,0 +1,7 @@
+- updated to 1.4
+- removed cache patch (obsoleted now)
+- removed nonneg (its broken and not needed, author of this patch must
+  read SUSv2 and understand libtool)
+- ltconfig is gone
+- libltdl source in libltdl-devel subpackage
+  (in order to 'libtoolize --ltdl' work correct)
