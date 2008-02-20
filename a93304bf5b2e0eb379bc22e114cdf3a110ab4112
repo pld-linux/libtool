@@ -1,0 +1,4 @@
+- libltdl/* ARE needed - for libtoolize --ltdl
+- reverted and updated %files (s/config\.h\.in/config-h.in/)
+- fixed English summaries/descriptions, removed English "es" translations
+- release 2
