@@ -1,0 +1,3 @@
+- release 11,
+- removed %{_datadir}/libtool from libltdl-devel (this file s are not
+  neccessary).
