@@ -1,172 +1,249 @@
---- libtool-1.5.26/libtool.m4.orig	2008-02-09 00:07:39.322803730 +0100
-+++ libtool-1.5.26/libtool.m4	2008-02-09 00:31:42.977072898 +0100
-@@ -2988,8 +2988,8 @@
-   # Check if GNU C++ uses GNU ld as the underlying linker, since the
-   # archiving commands below assume that GNU ld is being used.
-   if test "$with_gnu_ld" = yes; then
--    _LT_AC_TAGVAR(archive_cmds, $1)='$CC -shared -nostdlib $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags ${wl}-soname $wl$soname -o $lib'
--    _LT_AC_TAGVAR(archive_expsym_cmds, $1)='$CC -shared -nostdlib $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags ${wl}-soname $wl$soname ${wl}-retain-symbols-file $wl$export_symbols -o $lib'
-+    _LT_AC_TAGVAR(archive_cmds, $1)='$CC $compiler_flags -shared -nostdlib $predep_objects $libobjs $deplibs $postdep_objects ${wl}-soname $wl$soname -o $lib'
-+    _LT_AC_TAGVAR(archive_expsym_cmds, $1)='$CC $compiler_flags -shared -nostdlib $predep_objects $libobjs $deplibs $postdep_objects ${wl}-soname $wl$soname ${wl}-retain-symbols-file $wl$export_symbols -o $lib'
+--- libtool-2.2/libltdl/m4/libtool.m4.orig	2008-03-08 16:27:45.500328028 +0100
++++ libtool-2.2/libltdl/m4/libtool.m4	2008-03-08 16:52:29.192878848 +0100
+@@ -4306,7 +4306,7 @@
+       _LT_TAGVAR(export_symbols_cmds, $1)='$NM $libobjs $convenience | $global_symbol_pipe | $SED -e '\''/^[[BCDGRS]][[ ]]/s/.*[[ ]]\([[^ ]]*\)/\1 DATA/'\'' | $SED -e '\''/^[[AITW]][[ ]]/s/.*[[ ]]//'\'' | sort | uniq > $export_symbols'
  
-     _LT_AC_TAGVAR(hardcode_libdir_flag_spec, $1)='${wl}--rpath ${wl}$libdir'
-     _LT_AC_TAGVAR(export_dynamic_flag_spec, $1)='${wl}--export-dynamic'
-@@ -3015,7 +3015,7 @@
-     # linker, instead of GNU ld.  If possible, this setting should
-     # overridden to take advantage of the native linker features on
-     # the platform it is being used on.
--    _LT_AC_TAGVAR(archive_cmds, $1)='$CC -shared -nostdlib $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags -o $lib'
-+    _LT_AC_TAGVAR(archive_cmds, $1)='$CC $compiler_flags -shared -nostdlib $predep_objects $libobjs $deplibs $postdep_objects -o $lib'
-   fi
- 
-   # Commands to make compiler produce verbose output that lists
-@@ -3129,12 +3129,12 @@
-       _LT_AC_SYS_LIBPATH_AIX
-       _LT_AC_TAGVAR(hardcode_libdir_flag_spec, $1)='${wl}-blibpath:$libdir:'"$aix_libpath"
- 
--      _LT_AC_TAGVAR(archive_expsym_cmds, $1)="\$CC"' -o $output_objdir/$soname $libobjs $deplibs '"\${wl}$no_entry_flag"' $compiler_flags `if test "x${allow_undefined_flag}" != "x"; then echo "${wl}${allow_undefined_flag}"; else :; fi` '"\${wl}$exp_sym_flag:\$export_symbols $shared_flag"
-+      _LT_AC_TAGVAR(archive_expsym_cmds, $1)="\$CC"' $compiler_flags -o $output_objdir/$soname $libobjs $deplibs '"\${wl}$no_entry_flag"' `if test "x${allow_undefined_flag}" != "x"; then echo "${wl}${allow_undefined_flag}"; else :; fi` '"\${wl}$exp_sym_flag:\$export_symbols $shared_flag"
-      else
-       if test "$host_cpu" = ia64; then
- 	_LT_AC_TAGVAR(hardcode_libdir_flag_spec, $1)='${wl}-R $libdir:/usr/lib:/lib'
- 	_LT_AC_TAGVAR(allow_undefined_flag, $1)="-z nodefs"
--	_LT_AC_TAGVAR(archive_expsym_cmds, $1)="\$CC $shared_flag"' -o $output_objdir/$soname $libobjs $deplibs '"\${wl}$no_entry_flag"' $compiler_flags ${wl}${allow_undefined_flag} '"\${wl}$exp_sym_flag:\$export_symbols"
-+	_LT_AC_TAGVAR(archive_expsym_cmds, $1)="\$CC $shared_flag"' $compiler_flags -o $output_objdir/$soname $libobjs $deplibs '"\${wl}$no_entry_flag"' ${wl}${allow_undefined_flag} '"\${wl}$exp_sym_flag:\$export_symbols"
+       if $LD --help 2>&1 | $GREP 'auto-import' > /dev/null; then
+-        _LT_TAGVAR(archive_cmds, $1)='$CC -shared $libobjs $deplibs $compiler_flags -o $output_objdir/$soname ${wl}--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
++        _LT_TAGVAR(archive_cmds, $1)='$CC $compiler_flags -shared $libobjs $deplibs -o $output_objdir/$soname ${wl}--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
+ 	# If the export-symbols file already is a .def file (1st line
+ 	# is EXPORTS), use it as is; otherwise, prepend...
+ 	_LT_TAGVAR(archive_expsym_cmds, $1)='if test "x`$SED 1q $export_symbols`" = xEXPORTS; then
+@@ -4315,7 +4315,7 @@
+ 	  echo EXPORTS > $output_objdir/$soname.def;
+ 	  cat $export_symbols >> $output_objdir/$soname.def;
+ 	fi~
+-	$CC -shared $output_objdir/$soname.def $libobjs $deplibs $compiler_flags -o $output_objdir/$soname ${wl}--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
++	$CC -shared $output_objdir/$soname.def $compiler_flags $libobjs $deplibs -o $output_objdir/$soname ${wl}--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
        else
- 	# Determine the default libpath from the value encoded in an empty executable.
- 	_LT_AC_SYS_LIBPATH_AIX
-@@ -3147,7 +3147,7 @@
- 	_LT_AC_TAGVAR(whole_archive_flag_spec, $1)='$convenience'
- 	_LT_AC_TAGVAR(archive_cmds_need_lc, $1)=yes
- 	# This is similar to how AIX traditionally builds its shared libraries.
--	_LT_AC_TAGVAR(archive_expsym_cmds, $1)="\$CC $shared_flag"' -o $output_objdir/$soname $libobjs $deplibs ${wl}-bnoentry $compiler_flags ${wl}-bE:$export_symbols${allow_undefined_flag}~$AR $AR_FLAGS $output_objdir/$libname$release.a $output_objdir/$soname'
-+	_LT_AC_TAGVAR(archive_expsym_cmds, $1)="\$CC $shared_flag"' $compiler_flags -o $output_objdir/$soname $libobjs $deplibs ${wl}-bnoentry ${wl}-bE:$export_symbols${allow_undefined_flag}~$AR $AR_FLAGS $output_objdir/$libname$release.a $output_objdir/$soname'
+ 	_LT_TAGVAR(ld_shlibs, $1)=no
        fi
-     fi
-     ;;
-@@ -3157,7 +3157,7 @@
-       _LT_AC_TAGVAR(allow_undefined_flag, $1)=unsupported
-       # Joseph Beckenbach <jrb3@best.com> says some releases of gcc
-       # support --undefined.  This deserves some investigation.  FIXME
--      _LT_AC_TAGVAR(archive_cmds, $1)='$CC -nostart $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
-+      _LT_AC_TAGVAR(archive_cmds, $1)='$CC $compiler_flags -nostart $libobjs $deplibs ${wl}-soname $wl$soname -o $lib'
-     else
-       _LT_AC_TAGVAR(ld_shlibs, $1)=no
-     fi
-@@ -3181,7 +3181,7 @@
-     _LT_AC_TAGVAR(enable_shared_with_static_runtimes, $1)=yes
- 
-     if $LD --help 2>&1 | grep 'auto-import' > /dev/null; then
--      _LT_AC_TAGVAR(archive_cmds, $1)='$CC -shared -nostdlib $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags -o $output_objdir/$soname ${wl}--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
-+      _LT_AC_TAGVAR(archive_cmds, $1)='$CC $compiler_flags -shared -nostdlib $predep_objects $libobjs $deplibs $postdep_objects -o $output_objdir/$soname ${wl}--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
-       # If the export-symbols file already is a .def file (1st line
-       # is EXPORTS), use it as is; otherwise, prepend...
-       _LT_AC_TAGVAR(archive_expsym_cmds, $1)='if test "x`$SED 1q $export_symbols`" = xEXPORTS; then
-@@ -3190,7 +3190,7 @@
- 	echo EXPORTS > $output_objdir/$soname.def;
- 	cat $export_symbols >> $output_objdir/$soname.def;
-       fi~
--      $CC -shared -nostdlib $output_objdir/$soname.def $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags -o $output_objdir/$soname ${wl}--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
-+      $CC $compiler_flags -shared -nostdlib $output_objdir/$soname.def $predep_objects $libobjs $deplibs $postdep_objects -o $output_objdir/$soname ${wl}--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
-     else
-       _LT_AC_TAGVAR(ld_shlibs, $1)=no
-     fi
-@@ -3210,7 +3210,7 @@
-       _LT_AC_TAGVAR(archive_expsym_cmds, $1)="sed 's,^,_,' < \$export_symbols > \$output_objdir/\${libname}-symbols.expsym~\$CC -dynamiclib \$allow_undefined_flag -o \$lib \$libobjs \$deplibs \$compiler_flags -install_name \$rpath/\$soname \$verstring ${_lt_dar_single_mod}${_lt_dar_export_syms}${_lt_dsymutil}"
-       _LT_AC_TAGVAR(module_expsym_cmds, $1)="sed -e 's,^,_,' < \$export_symbols > \$output_objdir/\${libname}-symbols.expsym~\$CC \$allow_undefined_flag -o \$lib -bundle \$libobjs \$deplibs \$compiler_flags${_lt_dar_export_syms}${_lt_dsymutil}"
-       if test "$lt_cv_apple_cc_single_mod" != "yes"; then
--        _LT_AC_TAGVAR(archive_cmds, $1)="\$CC -r -keep_private_externs -nostdlib -o \${lib}-master.o \$libobjs~\$CC -dynamiclib \$allow_undefined_flag -o \$lib \${lib}-master.o \$deplibs \$compiler_flags -install_name \$rpath/\$soname \$verstring${_lt_dsymutil}"
-+        _LT_AC_TAGVAR(archive_cmds, $1)="\$CC \$compiler_flags -r -keep_private_externs -nostdlib -o \${lib}-master.o \$libobjs~\$CC -dynamiclib \$allow_undefined_flag -o \$lib \${lib}-master.o \$deplibs -install_name \$rpath/\$soname \$verstring${_lt_dsymutil}"
-         _LT_AC_TAGVAR(archive_expsym_cmds, $1)="sed 's,^,_,' < \$export_symbols > \$output_objdir/\${libname}-symbols.expsym~\$CC -r -keep_private_externs -nostdlib -o \${lib}-master.o \$libobjs~\$CC -dynamiclib \$allow_undefined_flag -o \$lib \${lib}-master.o \$deplibs \$compiler_flags -install_name \$rpath/\$soname \$verstring${_lt_dar_export_syms}${_lt_dsymutil}"
-       fi
-       else
-@@ -3446,16 +3446,16 @@
- 	# earlier do not add the objects themselves.
- 	case `$CC -V 2>&1` in
- 	*"Version 7."*)
--  	  _LT_AC_TAGVAR(archive_cmds, $1)='$CC -shared $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags ${wl}-soname $wl$soname -o $lib'
--  	  _LT_AC_TAGVAR(archive_expsym_cmds, $1)='$CC -shared $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags ${wl}-soname $wl$soname ${wl}-retain-symbols-file $wl$export_symbols -o $lib'
-+  	  _LT_AC_TAGVAR(archive_cmds, $1)='$CC $compiler_flags -shared $predep_objects $libobjs $deplibs $postdep_objects ${wl}-soname $wl$soname -o $lib'
-+  	  _LT_AC_TAGVAR(archive_expsym_cmds, $1)='$CC $compiler_flags -shared $predep_objects $libobjs $deplibs $postdep_objects ${wl}-soname $wl$soname ${wl}-retain-symbols-file $wl$export_symbols -o $lib'
- 	  ;;
- 	*)  # Version 8.0 or newer
- 	  tmp_idyn=
- 	  case $host_cpu in
- 	    ia64*) tmp_idyn=' -i_dynamic';;
- 	  esac
--  	  _LT_AC_TAGVAR(archive_cmds, $1)='$CC -shared'"$tmp_idyn"' $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
--	  _LT_AC_TAGVAR(archive_expsym_cmds, $1)='$CC -shared'"$tmp_idyn"' $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname ${wl}-retain-symbols-file $wl$export_symbols -o $lib'
-+  	  _LT_AC_TAGVAR(archive_cmds, $1)='$CC $compiler_flags -shared'"$tmp_idyn"' $libobjs $deplibs ${wl}-soname $wl$soname -o $lib'
-+	  _LT_AC_TAGVAR(archive_expsym_cmds, $1)='$CC $compiler_flags -shared'"$tmp_idyn"' $libobjs $deplibs ${wl}-soname $wl$soname ${wl}-retain-symbols-file $wl$export_symbols -o $lib'
- 	  ;;
+@@ -4374,13 +4374,13 @@
+ 	*Sun\ F*)			# Sun Fortran 8.3
+ 	  tmp_sharedflag='-G' ;;
  	esac
- 	_LT_AC_TAGVAR(archive_cmds_need_lc, $1)=no
-@@ -3474,8 +3474,8 @@
-         ;;
-       cxx*)
- 	# Compaq C++
--	_LT_AC_TAGVAR(archive_cmds, $1)='$CC -shared $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags ${wl}-soname $wl$soname -o $lib'
--	_LT_AC_TAGVAR(archive_expsym_cmds, $1)='$CC -shared $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags ${wl}-soname $wl$soname  -o $lib ${wl}-retain-symbols-file $wl$export_symbols'
-+	_LT_AC_TAGVAR(archive_cmds, $1)='$CC $compiler_flags -shared $predep_objects $libobjs $deplibs $postdep_objects ${wl}-soname $wl$soname -o $lib'
-+	_LT_AC_TAGVAR(archive_expsym_cmds, $1)='$CC $compiler_flags -shared $predep_objects $libobjs $deplibs $postdep_objects ${wl}-soname $wl$soname  -o $lib ${wl}-retain-symbols-file $wl$export_symbols'
+-	_LT_TAGVAR(archive_cmds, $1)='$CC '"$tmp_sharedflag""$tmp_addflag"' $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
++	_LT_TAGVAR(archive_cmds, $1)='$CC '"$tmp_sharedflag""$tmp_addflag"' $compiler_flags $libobjs $deplibs ${wl}-soname $wl$soname -o $lib'
  
- 	runpath_var=LD_RUN_PATH
- 	_LT_AC_TAGVAR(hardcode_libdir_flag_spec, $1)='-rpath $libdir'
-@@ -5740,7 +5740,7 @@
- 	_LT_AC_TAGVAR(allow_undefined_flag, $1)=unsupported
- 	# Joseph Beckenbach <jrb3@best.com> says some releases of gcc
- 	# support --undefined.  This deserves some investigation.  FIXME
--	_LT_AC_TAGVAR(archive_cmds, $1)='$CC -nostart $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
-+	_LT_AC_TAGVAR(archive_cmds, $1)='$CC $compiler_flags -nostart $libobjs $deplibs ${wl}-soname $wl$soname -o $lib'
-       else
- 	_LT_AC_TAGVAR(ld_shlibs, $1)=no
-       fi
-@@ -5813,13 +5813,13 @@
- 	*)
- 	  tmp_sharedflag='-shared' ;;
- 	esac
--	_LT_AC_TAGVAR(archive_cmds, $1)='$CC '"$tmp_sharedflag""$tmp_addflag"' $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
-+	_LT_AC_TAGVAR(archive_cmds, $1)='$CC $compiler_flags '"$tmp_sharedflag""$tmp_addflag"' $libobjs $deplibs ${wl}-soname $wl$soname -o $lib'
+         if test "x$supports_anon_versioning" = xyes; then
+           _LT_TAGVAR(archive_expsym_cmds, $1)='echo "{ global:" > $output_objdir/$libname.ver~
+ 	    cat $export_symbols | sed -e "s/\(.*\)/\1;/" >> $output_objdir/$libname.ver~
+ 	    echo "local: *; };" >> $output_objdir/$libname.ver~
+-	    $CC '"$tmp_sharedflag""$tmp_addflag"' $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname ${wl}-version-script ${wl}$output_objdir/$libname.ver -o $lib'
++	    $CC '"$tmp_sharedflag""$tmp_addflag"' $compiler_flags $libobjs $deplibs ${wl}-soname $wl$soname ${wl}-version-script ${wl}$output_objdir/$libname.ver -o $lib'
+         fi
  
- 	if test $supports_anon_versioning = yes; then
- 	  _LT_AC_TAGVAR(archive_expsym_cmds, $1)='$echo "{ global:" > $output_objdir/$libname.ver~
-   cat $export_symbols | sed -e "s/\(.*\)/\1;/" >> $output_objdir/$libname.ver~
-   $echo "local: *; };" >> $output_objdir/$libname.ver~
--	  $CC '"$tmp_sharedflag""$tmp_addflag"' $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname ${wl}-version-script ${wl}$output_objdir/$libname.ver -o $lib'
-+	  $CC $compiler_flags '"$tmp_sharedflag""$tmp_addflag"' $libobjs $deplibs ${wl}-soname $wl$soname ${wl}-version-script ${wl}$output_objdir/$libname.ver -o $lib'
- 	fi
-       else
- 	_LT_AC_TAGVAR(ld_shlibs, $1)=no
-@@ -5831,8 +5831,8 @@
- 	_LT_AC_TAGVAR(archive_cmds, $1)='$LD -Bshareable $libobjs $deplibs $linker_flags -o $lib'
+ 	case $cc_basename in
+@@ -4408,8 +4408,8 @@
+ 	_LT_TAGVAR(archive_cmds, $1)='$LD -Bshareable $libobjs $deplibs $linker_flags -o $lib'
  	wlarc=
        else
--	_LT_AC_TAGVAR(archive_cmds, $1)='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
--	_LT_AC_TAGVAR(archive_expsym_cmds, $1)='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname ${wl}-retain-symbols-file $wl$export_symbols -o $lib'
-+	_LT_AC_TAGVAR(archive_cmds, $1)='$CC $compiler_flags -shared $libobjs $deplibs ${wl}-soname $wl$soname -o $lib'
-+	_LT_AC_TAGVAR(archive_expsym_cmds, $1)='$CC $compiler_flags -shared $libobjs $deplibs ${wl}-soname $wl$soname ${wl}-retain-symbols-file $wl$export_symbols -o $lib'
+-	_LT_TAGVAR(archive_cmds, $1)='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
+-	_LT_TAGVAR(archive_expsym_cmds, $1)='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname ${wl}-retain-symbols-file $wl$export_symbols -o $lib'
++	_LT_TAGVAR(archive_cmds, $1)='$CC -shared $compiler_flags $libobjs $deplibs ${wl}-soname $wl$soname -o $lib'
++	_LT_TAGVAR(archive_expsym_cmds, $1)='$CC -shared $compiler_flags $libobjs $deplibs ${wl}-soname $wl$soname ${wl}-retain-symbols-file $wl$export_symbols -o $lib'
        fi
        ;;
  
-@@ -5850,8 +5850,8 @@
+@@ -4427,8 +4427,8 @@
  
- EOF
-       elif $LD --help 2>&1 | grep ': supported targets:.* elf' > /dev/null; then
--	_LT_AC_TAGVAR(archive_cmds, $1)='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
--	_LT_AC_TAGVAR(archive_expsym_cmds, $1)='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname ${wl}-retain-symbols-file $wl$export_symbols -o $lib'
-+	_LT_AC_TAGVAR(archive_cmds, $1)='$CC $compiler_flags -shared $libobjs $deplibs ${wl}-soname $wl$soname -o $lib'
-+	_LT_AC_TAGVAR(archive_expsym_cmds, $1)='$CC $compiler_flags -shared $libobjs $deplibs ${wl}-soname $wl$soname ${wl}-retain-symbols-file $wl$export_symbols -o $lib'
+ _LT_EOF
+       elif $LD --help 2>&1 | $GREP ': supported targets:.* elf' > /dev/null; then
+-	_LT_TAGVAR(archive_cmds, $1)='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
+-	_LT_TAGVAR(archive_expsym_cmds, $1)='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname ${wl}-retain-symbols-file $wl$export_symbols -o $lib'
++	_LT_TAGVAR(archive_cmds, $1)='$CC -shared $compiler_flags $libobjs $deplibs ${wl}-soname $wl$soname -o $lib'
++	_LT_TAGVAR(archive_expsym_cmds, $1)='$CC -shared $compiler_flags $libobjs $deplibs ${wl}-soname $wl$soname ${wl}-retain-symbols-file $wl$export_symbols -o $lib'
        else
- 	_LT_AC_TAGVAR(ld_shlibs, $1)=no
+ 	_LT_TAGVAR(ld_shlibs, $1)=no
        fi
-@@ -5893,8 +5893,8 @@
+@@ -4474,8 +4474,8 @@
  
      *)
-       if $LD --help 2>&1 | grep ': supported targets:.* elf' > /dev/null; then
--	_LT_AC_TAGVAR(archive_cmds, $1)='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
--	_LT_AC_TAGVAR(archive_expsym_cmds, $1)='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname ${wl}-retain-symbols-file $wl$export_symbols -o $lib'
-+	_LT_AC_TAGVAR(archive_cmds, $1)='$CC $compiler_flags -shared $libobjs $deplibs ${wl}-soname $wl$soname -o $lib'
-+	_LT_AC_TAGVAR(archive_expsym_cmds, $1)='$CC $compiler_flags -shared $libobjs $deplibs ${wl}-soname $wl$soname ${wl}-retain-symbols-file $wl$export_symbols -o $lib'
+       if $LD --help 2>&1 | $GREP ': supported targets:.* elf' > /dev/null; then
+-	_LT_TAGVAR(archive_cmds, $1)='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
+-	_LT_TAGVAR(archive_expsym_cmds, $1)='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname ${wl}-retain-symbols-file $wl$export_symbols -o $lib'
++	_LT_TAGVAR(archive_cmds, $1)='$CC -shared $compiler_flags $libobjs $deplibs ${wl}-soname $wl$soname -o $lib'
++	_LT_TAGVAR(archive_expsym_cmds, $1)='$CC -shared $compiler_flags $libobjs $deplibs ${wl}-soname $wl$soname ${wl}-retain-symbols-file $wl$export_symbols -o $lib'
        else
- 	_LT_AC_TAGVAR(ld_shlibs, $1)=no
+ 	_LT_TAGVAR(ld_shlibs, $1)=no
        fi
+@@ -4654,7 +4654,7 @@
+       # Tell ltmain to make .dll files, not .so files.
+       shrext_cmds=".dll"
+       # FIXME: Setting linknames here is a bad hack.
+-      _LT_TAGVAR(archive_cmds, $1)='$CC -o $lib $libobjs $compiler_flags `$ECHO "X$deplibs" | $Xsed -e '\''s/ -lc$//'\''` -link -dll~linknames='
++      _LT_TAGVAR(archive_cmds, $1)='$CC -o $lib $compiler_flags $libobjs `$ECHO "X$deplibs" | $Xsed -e '\''s/ -lc$//'\''` -link -dll~linknames='
+       # The linker will automatically build a .lib file if we build a DLL.
+       _LT_TAGVAR(old_archive_from_new_cmds, $1)='true'
+       # FIXME: Should let the user specify the lib program.
+@@ -4698,7 +4698,7 @@
+ 
+     # FreeBSD 3 and greater uses gcc -shared to do shared libraries.
+     freebsd* | dragonfly*)
+-      _LT_TAGVAR(archive_cmds, $1)='$CC -shared -o $lib $libobjs $deplibs $compiler_flags'
++      _LT_TAGVAR(archive_cmds, $1)='$CC -shared -o $lib $compiler_flags $libobjs $deplibs'
+       _LT_TAGVAR(hardcode_libdir_flag_spec, $1)='-R$libdir'
+       _LT_TAGVAR(hardcode_direct, $1)=yes
+       _LT_TAGVAR(hardcode_shlibpath_var, $1)=no
+@@ -4838,8 +4838,8 @@
+ 	_LT_TAGVAR(hardcode_shlibpath_var, $1)=no
+ 	_LT_TAGVAR(hardcode_direct_absolute, $1)=yes
+ 	if test -z "`echo __ELF__ | $CC -E - | $GREP __ELF__`" || test "$host_os-$host_cpu" = "openbsd2.8-powerpc"; then
+-	  _LT_TAGVAR(archive_cmds, $1)='$CC -shared $pic_flag -o $lib $libobjs $deplibs $compiler_flags'
+-	  _LT_TAGVAR(archive_expsym_cmds, $1)='$CC -shared $pic_flag -o $lib $libobjs $deplibs $compiler_flags ${wl}-retain-symbols-file,$export_symbols'
++	  _LT_TAGVAR(archive_cmds, $1)='$CC -shared $pic_flag $compiler_flags -o $lib $libobjs $deplibs'
++	  _LT_TAGVAR(archive_expsym_cmds, $1)='$CC -shared $pic_flag $compiler_flags -o $lib $libobjs $deplibs ${wl}-retain-symbols-file,$export_symbols'
+ 	  _LT_TAGVAR(hardcode_libdir_flag_spec, $1)='${wl}-rpath,$libdir'
+ 	  _LT_TAGVAR(export_dynamic_flag_spec, $1)='${wl}-E'
+ 	else
+@@ -4902,7 +4902,7 @@
+       _LT_TAGVAR(no_undefined_flag, $1)=' -z defs'
+       if test "$GCC" = yes; then
+ 	wlarc='${wl}'
+-	_LT_TAGVAR(archive_cmds, $1)='$CC -shared ${wl}-z ${wl}text ${wl}-h ${wl}$soname -o $lib $libobjs $deplibs $compiler_flags'
++	_LT_TAGVAR(archive_cmds, $1)='$CC -shared $compiler_flags ${wl}-z ${wl}text ${wl}-h ${wl}$soname -o $lib $libobjs $deplibs'
+ 	_LT_TAGVAR(archive_expsym_cmds, $1)='echo "{ global:" > $lib.exp~cat $export_symbols | $SED -e "s/\(.*\)/\1;/" >> $lib.exp~echo "local: *; };" >> $lib.exp~
+ 	  $CC -shared ${wl}-z ${wl}text ${wl}-M ${wl}$lib.exp ${wl}-h ${wl}$soname -o $lib $libobjs $deplibs $compiler_flags~$RM $lib.exp'
+       else
+@@ -5400,8 +5400,8 @@
+       # Check if GNU C++ uses GNU ld as the underlying linker, since the
+       # archiving commands below assume that GNU ld is being used.
+       if test "$with_gnu_ld" = yes; then
+-        _LT_TAGVAR(archive_cmds, $1)='$CC -shared -nostdlib $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags ${wl}-soname $wl$soname -o $lib'
+-        _LT_TAGVAR(archive_expsym_cmds, $1)='$CC -shared -nostdlib $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags ${wl}-soname $wl$soname ${wl}-retain-symbols-file $wl$export_symbols -o $lib'
++        _LT_TAGVAR(archive_cmds, $1)='$CC -shared -nostdlib $compiler_flags $predep_objects $libobjs $deplibs $postdep_objects ${wl}-soname $wl$soname -o $lib'
++        _LT_TAGVAR(archive_expsym_cmds, $1)='$CC -shared -nostdlib $compiler_flags $predep_objects $libobjs $deplibs $postdep_objects ${wl}-soname $wl$soname ${wl}-retain-symbols-file $wl$export_symbols -o $lib'
+ 
+         _LT_TAGVAR(hardcode_libdir_flag_spec, $1)='${wl}-rpath ${wl}$libdir'
+         _LT_TAGVAR(export_dynamic_flag_spec, $1)='${wl}--export-dynamic'
+@@ -5427,7 +5427,7 @@
+         # linker, instead of GNU ld.  If possible, this setting should
+         # overridden to take advantage of the native linker features on
+         # the platform it is being used on.
+-        _LT_TAGVAR(archive_cmds, $1)='$CC -shared -nostdlib $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags -o $lib'
++        _LT_TAGVAR(archive_cmds, $1)='$CC -shared -nostdlib $compiler_flags $predep_objects $libobjs $deplibs $postdep_objects -o $lib'
+       fi
+ 
+       # Commands to make compiler produce verbose output that lists
+@@ -5598,7 +5598,7 @@
+         _LT_TAGVAR(enable_shared_with_static_runtimes, $1)=yes
+ 
+         if $LD --help 2>&1 | $GREP 'auto-import' > /dev/null; then
+-          _LT_TAGVAR(archive_cmds, $1)='$CC -shared -nostdlib $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags -o $output_objdir/$soname ${wl}--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
++          _LT_TAGVAR(archive_cmds, $1)='$CC -shared -nostdlib $compiler_flags $predep_objects $libobjs $deplibs $postdep_objects -o $output_objdir/$soname ${wl}--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
+           # If the export-symbols file already is a .def file (1st line
+           # is EXPORTS), use it as is; otherwise, prepend...
+           _LT_TAGVAR(archive_expsym_cmds, $1)='if test "x`$SED 1q $export_symbols`" = xEXPORTS; then
+@@ -5607,7 +5607,7 @@
+ 	    echo EXPORTS > $output_objdir/$soname.def;
+ 	    cat $export_symbols >> $output_objdir/$soname.def;
+           fi~
+-          $CC -shared -nostdlib $output_objdir/$soname.def $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags -o $output_objdir/$soname ${wl}--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
++          $CC -shared -nostdlib $compiler_flags $output_objdir/$soname.def $predep_objects $libobjs $deplibs $postdep_objects -o $output_objdir/$soname ${wl}--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
+         else
+           _LT_TAGVAR(ld_shlibs, $1)=no
+         fi
+@@ -5817,8 +5817,8 @@
+ 	    # KCC will only create a shared library if the output file
+ 	    # ends with ".so" (or ".sl" for HP-UX), so rename the library
+ 	    # to its proper name (with version) after linking.
+-	    _LT_TAGVAR(archive_cmds, $1)='tempext=`echo $shared_ext | $SED -e '\''s/\([[^()0-9A-Za-z{}]]\)/\\\\\1/g'\''`; templib=`echo $lib | $SED -e "s/\${tempext}\..*/.so/"`; $CC $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags --soname $soname -o \$templib; mv \$templib $lib'
+-	    _LT_TAGVAR(archive_expsym_cmds, $1)='tempext=`echo $shared_ext | $SED -e '\''s/\([[^()0-9A-Za-z{}]]\)/\\\\\1/g'\''`; templib=`echo $lib | $SED -e "s/\${tempext}\..*/.so/"`; $CC $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags --soname $soname -o \$templib ${wl}-retain-symbols-file,$export_symbols; mv \$templib $lib'
++	    _LT_TAGVAR(archive_cmds, $1)='tempext=`echo $shared_ext | $SED -e '\''s/\([[^()0-9A-Za-z{}]]\)/\\\\\1/g'\''`; templib=`echo $lib | $SED -e "s/\${tempext}\..*/.so/"`; $CC $compiler_flags $predep_objects $libobjs $deplibs $postdep_objects --soname $soname -o \$templib; mv \$templib $lib'
++	    _LT_TAGVAR(archive_expsym_cmds, $1)='tempext=`echo $shared_ext | $SED -e '\''s/\([[^()0-9A-Za-z{}]]\)/\\\\\1/g'\''`; templib=`echo $lib | $SED -e "s/\${tempext}\..*/.so/"`; $CC $compiler_flags $predep_objects $libobjs $deplibs $postdep_objects --soname $soname -o \$templib ${wl}-retain-symbols-file,$export_symbols; mv \$templib $lib'
+ 	    # Commands to make compiler produce verbose output that lists
+ 	    # what "hidden" libraries, object files and flags are used when
+ 	    # linking a shared library.
+@@ -5844,16 +5844,16 @@
+ 	    # earlier do not add the objects themselves.
+ 	    case `$CC -V 2>&1` in
+ 	      *"Version 7."*)
+-	        _LT_TAGVAR(archive_cmds, $1)='$CC -shared $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags ${wl}-soname $wl$soname -o $lib'
+-		_LT_TAGVAR(archive_expsym_cmds, $1)='$CC -shared $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags ${wl}-soname $wl$soname ${wl}-retain-symbols-file $wl$export_symbols -o $lib'
++	        _LT_TAGVAR(archive_cmds, $1)='$CC -shared $compiler_flags $predep_objects $libobjs $deplibs $postdep_objects ${wl}-soname $wl$soname -o $lib'
++		_LT_TAGVAR(archive_expsym_cmds, $1)='$CC -shared $compiler_flags $predep_objects $libobjs $deplibs $postdep_objects ${wl}-soname $wl$soname ${wl}-retain-symbols-file $wl$export_symbols -o $lib'
+ 		;;
+ 	      *)  # Version 8.0 or newer
+ 	        tmp_idyn=
+ 	        case $host_cpu in
+ 		  ia64*) tmp_idyn=' -i_dynamic';;
+ 		esac
+-	        _LT_TAGVAR(archive_cmds, $1)='$CC -shared'"$tmp_idyn"' $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
+-		_LT_TAGVAR(archive_expsym_cmds, $1)='$CC -shared'"$tmp_idyn"' $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname ${wl}-retain-symbols-file $wl$export_symbols -o $lib'
++	        _LT_TAGVAR(archive_cmds, $1)='$CC -shared'"$tmp_idyn"' $compiler_flags $libobjs $deplibs ${wl}-soname $wl$soname -o $lib'
++		_LT_TAGVAR(archive_expsym_cmds, $1)='$CC -shared'"$tmp_idyn"' $compiler_flags $libobjs $deplibs ${wl}-soname $wl$soname ${wl}-retain-symbols-file $wl$export_symbols -o $lib'
+ 		;;
+ 	    esac
+ 	    _LT_TAGVAR(archive_cmds_need_lc, $1)=no
+@@ -5895,8 +5895,8 @@
+             ;;
+ 	  cxx*)
+ 	    # Compaq C++
+-	    _LT_TAGVAR(archive_cmds, $1)='$CC -shared $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags ${wl}-soname $wl$soname -o $lib'
+-	    _LT_TAGVAR(archive_expsym_cmds, $1)='$CC -shared $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags ${wl}-soname $wl$soname  -o $lib ${wl}-retain-symbols-file $wl$export_symbols'
++	    _LT_TAGVAR(archive_cmds, $1)='$CC -shared $compiler_flags $predep_objects $libobjs $deplibs $postdep_objects ${wl}-soname $wl$soname -o $lib'
++	    _LT_TAGVAR(archive_expsym_cmds, $1)='$CC -shared $compiler_flags $predep_objects $libobjs $deplibs $postdep_objects ${wl}-soname $wl$soname  -o $lib ${wl}-retain-symbols-file $wl$export_symbols'
+ 
+ 	    runpath_var=LD_RUN_PATH
+ 	    _LT_TAGVAR(hardcode_libdir_flag_spec, $1)='-rpath $libdir'
+@@ -5916,12 +5916,12 @@
+ 	    # IBM XL 8.0 on PPC, with GNU ld
+ 	    _LT_TAGVAR(hardcode_libdir_flag_spec, $1)='${wl}-rpath ${wl}$libdir'
+ 	    _LT_TAGVAR(export_dynamic_flag_spec, $1)='${wl}--export-dynamic'
+-	    _LT_TAGVAR(archive_cmds, $1)='$CC -qmkshrobj $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
++	    _LT_TAGVAR(archive_cmds, $1)='$CC -qmkshrobj $compiler_flags $libobjs $deplibs ${wl}-soname $wl$soname -o $lib'
+ 	    if test "x$supports_anon_versioning" = xyes; then
+ 	      _LT_TAGVAR(archive_expsym_cmds, $1)='echo "{ global:" > $output_objdir/$libname.ver~
+ 		cat $export_symbols | sed -e "s/\(.*\)/\1;/" >> $output_objdir/$libname.ver~
+ 		echo "local: *; };" >> $output_objdir/$libname.ver~
+-		$CC -qmkshrobj $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname ${wl}-version-script ${wl}$output_objdir/$libname.ver -o $lib'
++		$CC -qmkshrobj $compiler_flags $libobjs $deplibs ${wl}-soname $wl$soname ${wl}-version-script ${wl}$output_objdir/$libname.ver -o $lib'
+ 	    fi
+ 	    ;;
+ 	  *)
+@@ -6000,10 +6000,10 @@
+ 	  _LT_TAGVAR(hardcode_direct, $1)=yes
+ 	  _LT_TAGVAR(hardcode_shlibpath_var, $1)=no
+ 	  _LT_TAGVAR(hardcode_direct_absolute, $1)=yes
+-	  _LT_TAGVAR(archive_cmds, $1)='$CC -shared $pic_flag $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags -o $lib'
++	  _LT_TAGVAR(archive_cmds, $1)='$CC -shared $pic_flag $compiler_flags $predep_objects $libobjs $deplibs $postdep_objects -o $lib'
+ 	  _LT_TAGVAR(hardcode_libdir_flag_spec, $1)='${wl}-rpath,$libdir'
+ 	  if test -z "`echo __ELF__ | $CC -E - | grep __ELF__`" || test "$host_os-$host_cpu" = "openbsd2.8-powerpc"; then
+-	    _LT_TAGVAR(archive_expsym_cmds, $1)='$CC -shared $pic_flag $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags ${wl}-retain-symbols-file,$export_symbols -o $lib'
++	    _LT_TAGVAR(archive_expsym_cmds, $1)='$CC -shared $pic_flag $compiler_flags $predep_objects $libobjs $deplibs $postdep_objects ${wl}-retain-symbols-file,$export_symbols -o $lib'
+ 	    _LT_TAGVAR(export_dynamic_flag_spec, $1)='${wl}-E'
+ 	    _LT_TAGVAR(whole_archive_flag_spec, $1)="$wlarc"'--whole-archive$convenience '"$wlarc"'--no-whole-archive'
+ 	  fi
+@@ -6076,7 +6076,7 @@
+ 	          _LT_TAGVAR(archive_cmds, $1)='$CC -shared -nostdlib ${allow_undefined_flag} $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags ${wl}-soname ${wl}$soname `test -n "$verstring" && $ECHO "X${wl}-set_version ${wl}$verstring" | $Xsed` ${wl}-update_registry ${wl}${output_objdir}/so_locations -o $lib'
+ 		  ;;
+ 	        *)
+-	          _LT_TAGVAR(archive_cmds, $1)='$CC -shared -nostdlib ${allow_undefined_flag} $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags ${wl}-msym ${wl}-soname ${wl}$soname `test -n "$verstring" && $ECHO "${wl}-set_version ${wl}$verstring" | $Xsed` ${wl}-update_registry ${wl}${output_objdir}/so_locations -o $lib'
++	          _LT_TAGVAR(archive_cmds, $1)='$CC -shared -nostdlib ${allow_undefined_flag} $compiler_flags $predep_objects $libobjs $deplibs $postdep_objects ${wl}-msym ${wl}-soname ${wl}$soname `test -n "$verstring" && $ECHO "${wl}-set_version ${wl}$verstring" | $Xsed` ${wl}-update_registry ${wl}${output_objdir}/so_locations -o $lib'
+ 		  ;;
+ 	      esac
+ 
+@@ -6163,9 +6163,9 @@
+ 	    if test "$GXX" = yes && test "$with_gnu_ld" = no; then
+ 	      _LT_TAGVAR(no_undefined_flag, $1)=' ${wl}-z ${wl}defs'
+ 	      if $CC --version | $GREP -v '^2\.7' > /dev/null; then
+-	        _LT_TAGVAR(archive_cmds, $1)='$CC -shared -nostdlib $LDFLAGS $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags ${wl}-h $wl$soname -o $lib'
++	        _LT_TAGVAR(archive_cmds, $1)='$CC -shared -nostdlib $LDFLAGS $compiler_flags $predep_objects $libobjs $deplibs $postdep_objects ${wl}-h $wl$soname -o $lib'
+ 	        _LT_TAGVAR(archive_expsym_cmds, $1)='echo "{ global:" > $lib.exp~cat $export_symbols | $SED -e "s/\(.*\)/\1;/" >> $lib.exp~echo "local: *; };" >> $lib.exp~
+-		  $CC -shared -nostdlib ${wl}-M $wl$lib.exp -o $lib $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags~$RM $lib.exp'
++		  $CC -shared -nostdlib ${wl}-M $wl$lib.exp -o $lib $compiler_flags $predep_objects $libobjs $deplibs $postdep_objects~$RM $lib.exp'
+ 
+ 	        # Commands to make compiler produce verbose output that lists
+ 	        # what "hidden" libraries, object files and flags are used when
+@@ -6174,9 +6174,9 @@
+ 	      else
+ 	        # g++ 2.7 appears to require `-G' NOT `-shared' on this
+ 	        # platform.
+-	        _LT_TAGVAR(archive_cmds, $1)='$CC -G -nostdlib $LDFLAGS $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags ${wl}-h $wl$soname -o $lib'
++	        _LT_TAGVAR(archive_cmds, $1)='$CC -G -nostdlib $LDFLAGS $compiler_flags $predep_objects $libobjs $deplibs $postdep_objects ${wl}-h $wl$soname -o $lib'
+ 	        _LT_TAGVAR(archive_expsym_cmds, $1)='echo "{ global:" > $lib.exp~cat $export_symbols | $SED -e "s/\(.*\)/\1;/" >> $lib.exp~echo "local: *; };" >> $lib.exp~
+-		  $CC -G -nostdlib ${wl}-M $wl$lib.exp -o $lib $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags~$RM $lib.exp'
++		  $CC -G -nostdlib ${wl}-M $wl$lib.exp -o $lib $compiler_flags $predep_objects $libobjs $deplibs $postdep_objects~$RM $lib.exp'
+ 
+ 	        # Commands to make compiler produce verbose output that lists
+ 	        # what "hidden" libraries, object files and flags are used when
