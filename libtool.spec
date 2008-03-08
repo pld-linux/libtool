@@ -5,13 +5,13 @@ Summary(pt_BR.UTF-8):	GNU libtool, uma ferramenta de geração de bibliotecas co
 Summary(ru.UTF-8):	GNU libtool, набор утилит для генерации разделяемых библиотек
 Summary(uk.UTF-8):	GNU libtool, набір утиліт для генерації динамічних бібліотек
 Name:		libtool
-Version:	1.5.26
-Release:	2
+Version:	2.2
+Release:	0.1
 Epoch:		2
 License:	GPL v2+
 Group:		Development/Tools
-Source0:	ftp://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.gz
-# Source0-md5:	aa9c5107f3ec9ef4200eb6556f3b3c29
+Source0:	ftp://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.lzma
+# Source0-md5:	3036f2b0159feb01abd202bca7f53f77
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 # Source1-md5:	b95e215961860c66f0868b0d551358c9
 Patch0:		%{name}-info.patch
@@ -29,6 +29,7 @@ BuildRequires:	automake >= 1:1.7.9-2
 BuildRequires:	automake >= 1:1.7.3
 %endif
 BuildRequires:	gcc-c++ >= 5:3.3.3
+BuildRequires:	lzma >= 1:4.42
 BuildRequires:	rpmbuild(macros) >= 1.213
 BuildRequires:	texinfo
 %requires_eq	gcc
@@ -139,7 +140,8 @@ utilizando componentes estáticos (raramente necessário).
 складу libltdl.
 
 %prep
-%setup -q -a1
+%setup -q -c -T -a1
+lzma -dc %{SOURCE0} | tar xf - -C ..
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
@@ -147,41 +149,29 @@ utilizando componentes estáticos (raramente necessário).
 %patch4 -p1
 %patch5 -p1
 
-# it's the same - copy so patching only libtool.m4 is sufficient
-cp -f libtool.m4 acinclude.m4
-cat libtool.m4 ltdl.m4 > libltdl/acinclude.m4
-
 %build
-%{__aclocal}
+%{__aclocal} -I libltdl/m4
 %{__autoconf}
 %{__automake}
 
 cd libltdl
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
-cp -f ../config.sub .
 %{__automake}
 cd ..
 
 %configure
 
-%{__make} -C doc -k
-%{__make} libtoolize
-%{__make} acinclude.m4 cdemo/acinclude.m4 pdemo/acinclude.m4 \
-	demo/acinclude.m4 depdemo/acinclude.m4 mdemo/acinclude.m4 \
-	tagdemo/acinclude.m4 f77demo/acinclude.m4
-%{__make} -C libltdl Makefile.in
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{_mandir}}
+install -d $RPM_BUILD_ROOT%{_mandir}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
-cp -a demo/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 rm -f $RPM_BUILD_ROOT%{_infodir}/dir
 rm $RPM_BUILD_ROOT%{_mandir}/README.libtool-man-pages
@@ -204,40 +194,44 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/libtool
 %attr(755,root,root) %{_bindir}/libtoolize
 %dir %{_datadir}/libtool
-%attr(755,root,root) %{_datadir}/libtool/config.guess
-%attr(755,root,root) %{_datadir}/libtool/config.sub
-%attr(755,root,root) %{_datadir}/libtool/install-sh
-%attr(755,root,root) %{_datadir}/libtool/ltmain.sh
+%dir %{_datadir}/libtool/config
+%attr(755,root,root) %{_datadir}/libtool/config/compile
+%attr(755,root,root) %{_datadir}/libtool/config/config.guess
+%attr(755,root,root) %{_datadir}/libtool/config/config.sub
+%attr(755,root,root) %{_datadir}/libtool/config/depcomp
+%attr(755,root,root) %{_datadir}/libtool/config/install-sh
+%attr(755,root,root) %{_datadir}/libtool/config/ltmain.sh
+%attr(755,root,root) %{_datadir}/libtool/config/missing
+# libltdl copy for libtoolize --ltdl
+%dir %{_datadir}/libtool/libltdl
+%{_datadir}/libtool/libltdl/[!c]*
+%{_datadir}/libtool/libltdl/config-h.in
+%attr(755,root,root) %{_datadir}/libtool/libltdl/configure
+%{_datadir}/libtool/libltdl/configure.ac
 %{_mandir}/man1/libtool.1*
 %{_mandir}/man1/libtoolize.1*
 %lang(ja) %{_mandir}/ja/man1/libtool.1*
 %lang(ja) %{_mandir}/ja/man1/libtoolize.1*
 %{_infodir}/libtool.info*
 %{_aclocaldir}/libtool.m4
-%{_examplesdir}/%{name}-%{version}
+%{_aclocaldir}/ltoptions.m4
+%{_aclocaldir}/ltsugar.m4
+%{_aclocaldir}/ltversion.m4
+%{_aclocaldir}/lt~obsolete.m4
 
 %files -n libltdl
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libltdl.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libltdl.so.3
+%attr(755,root,root) %ghost %{_libdir}/libltdl.so.7
 
 %files -n libltdl-devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libltdl.so
 %{_libdir}/libltdl.la
+%{_includedir}/libltdl
 %{_includedir}/ltdl.h
+%{_aclocaldir}/argz.m4
 %{_aclocaldir}/ltdl.m4
-
-%dir %{_datadir}/libtool
-%dir %{_datadir}/libtool/libltdl
-%{_datadir}/libtool/libltdl/[CMRal]*
-%{_datadir}/libtool/libltdl/config-h.in
-%attr(755,root,root) %{_datadir}/libtool/libltdl/configure
-%{_datadir}/libtool/libltdl/configure.ac
-%attr(755,root,root) %{_datadir}/libtool/libltdl/install-sh
-%attr(755,root,root) %{_datadir}/libtool/libltdl/missing
-%attr(755,root,root) %{_datadir}/libtool/libltdl/config.guess
-%attr(755,root,root) %{_datadir}/libtool/libltdl/config.sub
 
 %files -n libltdl-static
 %defattr(644,root,root,755)
