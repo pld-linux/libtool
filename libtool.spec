@@ -37,6 +37,7 @@ Requires:	coreutils
 Requires:	grep
 Requires:	mktemp
 Requires:	sed
+Conflicts:	gettext-devel < 0.17
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
