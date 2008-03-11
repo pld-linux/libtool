@@ -1,0 +1,14 @@
+--- libtool-2.2/libltdl/config/ltmain.m4sh.orig	2008-03-08 17:18:03.156294000 +0100
++++ libtool-2.2/libltdl/config/ltmain.m4sh	2008-03-11 22:12:21.412466850 +0100
+@@ -6837,7 +6837,11 @@
+ 	    $RM $func_ltwrapper_scriptname_result
+ 	    trap "$RM $func_ltwrapper_scriptname_result; exit $EXIT_FAILURE" 1 2 15
+ 	    $opt_dry_run || {
++	      if [ "$build" = "$host" ]; then
+ 	      $cwrapper --lt-dump-script > $func_ltwrapper_scriptname_result
++	      else
++		func_emit_wrapper no > $func_ltwrapper_scriptname_result
++	      fi
+ 	    }
+ 	  ;;
+ 	  * )
