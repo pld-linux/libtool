@@ -23,7 +23,7 @@ Patch5:		%{name}.m4_cegcc.patch
 Patch6:		%{name}-crossw32.patch
 URL:		http://www.gnu.org/software/libtool/
 BuildRequires:	/usr/bin/which
-BuildRequires:	autoconf >= 2.57
+BuildRequires:	autoconf >= 2.59
 %ifarch %{x8664}
 BuildRequires:	automake >= 1:1.7.9-2
 %else
@@ -38,6 +38,7 @@ Requires:	coreutils
 Requires:	grep
 Requires:	mktemp
 Requires:	sed
+Conflicts:	autoconf < 2.58
 Conflicts:	gettext-devel < 0.17
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
