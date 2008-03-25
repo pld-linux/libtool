@@ -12,3 +12,15 @@
  	    }
  	  ;;
  	  * )
+--- libtool-2.2/libltdl/m4/ltoptions.m4.orig	2008-03-23 01:28:04.055579000 +0100
++++ libtool-2.2/libltdl/m4/ltoptions.m4	2008-03-25 19:45:33.463430333 +0100
+@@ -143,7 +143,8 @@
+ ])# win32-dll
+ 
+ AU_DEFUN([AC_LIBTOOL_WIN32_DLL],
+-[_LT_SET_OPTION([LT_INIT], [win32-dll])
++[AC_REQUIRE([AC_CANONICAL_HOST])dnl
++_LT_SET_OPTION([LT_INIT], [win32-dll])
+ AC_DIAGNOSE([obsolete],
+ [$0: Remove this warning and the call to _LT_SET_OPTION when you
+ put the `win32-dll' option into LT_INIT's first parameter.])
