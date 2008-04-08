@@ -10,7 +10,7 @@ Release:	0.5
 Epoch:		2
 License:	GPL v2+
 Group:		Development/Tools
-Source0:	ftp://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.lzma
+Source0:	http://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.lzma
 # Source0-md5:	3036f2b0159feb01abd202bca7f53f77
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 # Source1-md5:	b95e215961860c66f0868b0d551358c9
