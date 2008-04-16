@@ -5,13 +5,13 @@ Summary(pt_BR.UTF-8):	GNU libtool, uma ferramenta de geração de bibliotecas co
 Summary(ru.UTF-8):	GNU libtool, набор утилит для генерации разделяемых библиотек
 Summary(uk.UTF-8):	GNU libtool, набір утиліт для генерації динамічних бібліотек
 Name:		libtool
-Version:	2.2
-Release:	0.5
+Version:	2.2.2
+Release:	0.1
 Epoch:		2
 License:	GPL v2+
 Group:		Development/Tools
 Source0:	http://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.lzma
-# Source0-md5:	3036f2b0159feb01abd202bca7f53f77
+# Source0-md5:	0ea5dfadf233a5125d2b063136e6afaf
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 # Source1-md5:	b95e215961860c66f0868b0d551358c9
 Patch0:		%{name}-info.patch
@@ -20,8 +20,6 @@ Patch2:		%{name}-libdirs.patch
 Patch3:		%{name}-multilib.patch
 Patch4:		%{name}-linking-order.patch
 Patch5:		%{name}.m4_cegcc.patch
-Patch6:		%{name}-crossw32.patch
-Patch7:		%{name}-execute-mode.patch
 URL:		http://www.gnu.org/software/libtool/
 BuildRequires:	/usr/bin/which
 BuildRequires:	autoconf >= 2.59
@@ -152,8 +150,6 @@ lzma -dc %{SOURCE0} | tar xf - -C ..
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
-%patch7 -p1
 
 %build
 %{__aclocal} -I libltdl/m4
