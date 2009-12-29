@@ -6,12 +6,12 @@ Summary(ru.UTF-8):	GNU libtool, набор утилит для генераци�
 Summary(uk.UTF-8):	GNU libtool, набір утиліт для генерації динамічних бібліотек
 Name:		libtool
 Version:	2.2.6
-Release:	9
+Release:	10
 Epoch:		2
 License:	GPL v2+
 Group:		Development/Tools
-Source0:	http://ftp.gnu.org/gnu/libtool/%{name}-%{version}a.tar.lzma
-# Source0-md5:	b121e4848cc53fdd69e796aed73b9ccf
+Source0:	http://ftp.gnu.org/gnu/libtool/%{name}-%{version}b.tar.lzma
+# Source0-md5:	a4b36980765003b47dd75ac9429f4f11
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 # Source1-md5:	b95e215961860c66f0868b0d551358c9
 Patch0:		%{name}-info.patch
@@ -137,7 +137,7 @@ utilizando componentes estáticos (raramente necessário).
 складу libltdl.
 
 %prep
-%setup -q -c -T -a1
+%setup -q -c -T -a1 -n %{name}-%{version}b
 lzma -dc %{SOURCE0} | tar xf - -C ..
 %patch0 -p1
 %patch1 -p1
