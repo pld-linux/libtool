@@ -19,6 +19,7 @@ Patch1:		%{name}-relink.patch
 Patch2:		%{name}-libdirs.patch
 Patch3:		%{name}-multilib.patch
 Patch4:		%{name}-linking-order.patch
+Patch5:		%{name}-crossmingw32.patch
 URL:		http://www.gnu.org/software/libtool/
 BuildRequires:	/usr/bin/which
 BuildRequires:	autoconf >= 2.59
@@ -144,6 +145,7 @@ lzma -dc %{SOURCE0} | tar xf - -C ..
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 %{__aclocal} -I libltdl/m4
