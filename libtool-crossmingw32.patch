@@ -1,0 +1,12 @@
+--- libtool-2.2.6b/libltdl/config/ltmain.sh.org	2010-01-22 15:21:55.982507379 +0100
++++ libtool-2.2.6b/libltdl/config/ltmain.sh	2010-01-22 15:22:29.107632402 +0100
+@@ -3006,7 +3006,8 @@
+             # the odd construction:
+             func_to_host_path_tmp1=`winepath -w "$1" 2>/dev/null`
+             if test "$?" -eq 0 && test -n "${func_to_host_path_tmp1}"; then
+-              func_to_host_path_result=`echo "$func_to_host_path_tmp1" |\
++	      LOCAL_ECHO=${as_echo-'printf %s\n'}
++              func_to_host_path_result=`$LOCAL_ECHO "$func_to_host_path_tmp1" |\
+                 $SED -e "$lt_sed_naive_backslashify"`
+             else
+               # Allow warning below.
