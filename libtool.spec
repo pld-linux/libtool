@@ -5,13 +5,13 @@ Summary(pt_BR.UTF-8):	GNU libtool, uma ferramenta de geração de bibliotecas co
 Summary(ru.UTF-8):	GNU libtool, набор утилит для генерации разделяемых библиотек
 Summary(uk.UTF-8):	GNU libtool, набір утиліт для генерації динамічних бібліотек
 Name:		libtool
-Version:	2.2.6
-Release:	13
+Version:	2.2.10
+Release:	0.1
 Epoch:		2
 License:	GPL v2+
 Group:		Development/Tools
-Source0:	http://ftp.gnu.org/gnu/libtool/%{name}-%{version}b.tar.lzma
-# Source0-md5:	a4b36980765003b47dd75ac9429f4f11
+Source0:	http://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.lzma
+# Source0-md5:	2eba13ecd07653d0e34d4efe8e2974d8
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 # Source1-md5:	b95e215961860c66f0868b0d551358c9
 Patch0:		%{name}-info.patch
@@ -19,7 +19,6 @@ Patch1:		%{name}-relink.patch
 Patch2:		%{name}-libdirs.patch
 Patch3:		%{name}-multilib.patch
 Patch4:		%{name}-linking-order.patch
-Patch5:		%{name}-crossmingw32.patch
 URL:		http://www.gnu.org/software/libtool/
 BuildRequires:	/usr/bin/which
 BuildRequires:	autoconf >= 2.59
@@ -138,14 +137,13 @@ utilizando componentes estáticos (raramente necessário).
 складу libltdl.
 
 %prep
-%setup -q -c -T -a1 -n %{name}-%{version}b
+%setup -q -c -T
 lzma -dc %{SOURCE0} | tar xf - -C ..
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
 
 %build
 %{__aclocal} -I libltdl/m4
@@ -169,10 +167,10 @@ install -d $RPM_BUILD_ROOT%{_mandir}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
+# decompress only "ja" manuals; English ones are back in upstream
+bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir} ja
 
 rm -f $RPM_BUILD_ROOT%{_infodir}/dir
-rm $RPM_BUILD_ROOT%{_mandir}/README.libtool-man-pages
 
 %clean
 rm -rf $RPM_BUILD_ROOT
