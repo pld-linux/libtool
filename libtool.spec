@@ -23,7 +23,7 @@ URL:		http://www.gnu.org/software/libtool/
 BuildRequires:	/usr/bin/which
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.10.1
-BuildRequires:	gcc-c++ >= 5:3.3.3
+BuildRequires:	libstdc++-devel >= 5:3.3.3
 BuildRequires:	lzma >= 1:4.42
 BuildRequires:	rpmbuild(macros) >= 1.213
 BuildRequires:	texinfo
@@ -32,6 +32,7 @@ Requires:	coreutils
 Requires:	grep
 Requires:	mktemp
 Requires:	sed
+Obsoletes:	libltdl-devel < 2:2.2
 Conflicts:	autoconf < 2.58
 Conflicts:	gettext-devel < 0.17
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
