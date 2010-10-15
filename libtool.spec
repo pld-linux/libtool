@@ -6,7 +6,7 @@ Summary(ru.UTF-8):	GNU libtool, набор утилит для генераци�
 Summary(uk.UTF-8):	GNU libtool, набір утиліт для генерації динамічних бібліотек
 Name:		libtool
 Version:	2.4
-Release:	1
+Release:	2
 Epoch:		2
 License:	GPL v2+
 Group:		Development/Tools
@@ -22,7 +22,7 @@ Patch4:		%{name}-linking-order.patch
 URL:		http://www.gnu.org/software/libtool/
 BuildRequires:	/usr/bin/which
 BuildRequires:	autoconf >= 2.59
-BuildRequires:	automake >= 1:1.10.1
+BuildRequires:	automake >= 1:1.11.1
 BuildRequires:	libstdc++-devel >= 5:3.3.3
 BuildRequires:	rpmbuild(macros) >= 1.213
 BuildRequires:	tar >= 1:1.22
