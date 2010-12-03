@@ -6,7 +6,7 @@ Summary(ru.UTF-8):	GNU libtool, набор утилит для генераци�
 Summary(uk.UTF-8):	GNU libtool, набір утиліт для генерації динамічних бібліотек
 Name:		libtool
 Version:	2.4
-Release:	2
+Release:	3
 Epoch:		2
 License:	GPL v2+
 Group:		Development/Tools
@@ -33,6 +33,7 @@ Requires:	coreutils
 Requires:	grep
 Requires:	mktemp
 Requires:	sed
+Requires:	tar
 Obsoletes:	libltdl-devel < 2:2.2
 Conflicts:	autoconf < 2.58
 Conflicts:	gettext-devel < 0.17
