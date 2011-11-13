@@ -25,6 +25,7 @@ BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.11.1
 BuildRequires:	libstdc++-devel >= 5:3.3.3
 BuildRequires:	rpmbuild(macros) >= 1.213
+BuildRequires:	sed >= 4.0
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	texinfo
 BuildRequires:	xz
@@ -158,6 +159,12 @@ cd libltdl
 %{__automake}
 cd ..
 
+# Change in configure itself, so it will affect packaged %{_bindir}/libtool
+# script, not local libtools generated during packages building:
+# libtool packaged as /bin/sh script for general use should work with any
+# POSIX sh, not just the ones having extensions (like "+=" operator) that
+# shell used to build libtool package had.
+%{__sed} -i 's/lt_shell_append=yes/lt_shell_append=no/' configure
 %configure
 
 %{__make}
