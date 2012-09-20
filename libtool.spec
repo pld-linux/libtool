@@ -6,7 +6,7 @@ Summary(ru.UTF-8):	GNU libtool, набор утилит для генераци�
 Summary(uk.UTF-8):	GNU libtool, набір утиліт для генерації динамічних бібліотек
 Name:		libtool
 Version:	2.4.2
-Release:	7
+Release:	8
 Epoch:		2
 License:	GPL v2+
 Group:		Development/Tools
