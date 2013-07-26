@@ -6,7 +6,7 @@ Summary(ru.UTF-8):	GNU libtool, набор утилит для генераци�
 Summary(uk.UTF-8):	GNU libtool, набір утиліт для генерації динамічних бібліотек
 Name:		libtool
 Version:	2.4.2
-Release:	12
+Release:	13
 Epoch:		2
 License:	GPL v2+
 Group:		Development/Tools
@@ -19,6 +19,7 @@ Patch1:		%{name}-relink.patch
 Patch2:		%{name}-libdirs.patch
 Patch3:		%{name}-multilib.patch
 Patch4:		%{name}-linking-order.patch
+Patch5:		%{name}-fuse-ld.patch
 URL:		http://www.gnu.org/software/libtool/
 BuildRequires:	/usr/bin/which
 BuildRequires:	autoconf >= 2.59
@@ -147,6 +148,7 @@ utilizando componentes estáticos (raramente necessário).
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 %{__aclocal} -I libltdl/m4

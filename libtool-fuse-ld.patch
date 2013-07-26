@@ -1,0 +1,12 @@
+diff -urN libtool-2.4.2/libltdl/config/ltmain.sh libtool-2.4.2-patched/libltdl/config/ltmain.sh
+--- libtool-2.4.2/libltdl/config/ltmain.m4sh	2011-10-17 21:19:35.000000000 +1100
++++ libtool-2.4.2-patched/libltdl/config/ltmain.m4sh	2012-09-30 01:55:35.606361949 +1100
+@@ -5853,7 +5853,7 @@
+       # -O*, -flto*, -fwhopr*, -fuse-linker-plugin GCC link-time optimization
+       -64|-mips[0-9]|-r[0-9][0-9]*|-xarch=*|-xtarget=*|+DA*|+DD*|-q*|-m*| \
+       -t[45]*|-txscale*|-p|-pg|--coverage|-fprofile-*|-F*|@*|-tp=*|--sysroot=*| \
+-      -O*|-flto*|-fwhopr*|-fuse-linker-plugin)
++      -O*|-flto*|-fwhopr*|-fuse-linker-plugin|-fuse-ld=*)
+         func_quote_for_eval "$arg"
+ 	arg="$func_quote_for_eval_result"
+         func_append compile_command " $arg"
