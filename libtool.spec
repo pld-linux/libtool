@@ -176,7 +176,7 @@ cd ..
 
 %{__make}
 
-%{?with_tests:%{__make} check %{!?with_tests_expensive:TESTSUITEFLAGS='-k "!expensive"'}}
+%{?with_tests:%{__make} check GCJ= %{!?with_tests_expensive:TESTSUITEFLAGS='-k "!expensive"'}}
 
 %install
 rm -rf $RPM_BUILD_ROOT
