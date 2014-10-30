@@ -1,6 +1,8 @@
+#
+# Conditional build:
 %bcond_without	tests
 %bcond_without	tests_expensive
-#
+
 Summary:	GNU libtool, a shared library generation tool
 Summary(es.UTF-8):	GNU libtool, una herramienta de creación de bibliotecas compartidas
 Summary(pl.UTF-8):	GNU libtool - narzędzie do generowania bibliotek współdzielonych
