@@ -1,12 +1,11 @@
-diff -urN libtool-2.4.2/libltdl/config/ltmain.sh libtool-2.4.2-patched/libltdl/config/ltmain.sh
---- libtool-2.4.2/libltdl/config/ltmain.m4sh	2011-10-17 21:19:35.000000000 +1100
-+++ libtool-2.4.2-patched/libltdl/config/ltmain.m4sh	2012-09-30 01:55:35.606361949 +1100
-@@ -5853,7 +5853,7 @@
-       # -O*, -flto*, -fwhopr*, -fuse-linker-plugin GCC link-time optimization
+--- libtool-2.4.3/build-aux/ltmain.in.orig	2014-10-27 18:20:51.000000000 +0100
++++ libtool-2.4.3/build-aux/ltmain.in	2014-10-29 20:58:36.810592793 +0100
+@@ -5319,7 +5319,7 @@
+       # -stdlib=*            select c++ std lib with clang
        -64|-mips[0-9]|-r[0-9][0-9]*|-xarch=*|-xtarget=*|+DA*|+DD*|-q*|-m*| \
        -t[45]*|-txscale*|-p|-pg|--coverage|-fprofile-*|-F*|@*|-tp=*|--sysroot=*| \
--      -O*|-flto*|-fwhopr*|-fuse-linker-plugin)
-+      -O*|-flto*|-fwhopr*|-fuse-linker-plugin|-fuse-ld=*)
+-      -O*|-g*|-flto*|-fwhopr*|-fuse-linker-plugin|-fstack-protector*|-stdlib=*)
++      -O*|-g*|-flto*|-fwhopr*|-fuse-ld|-fuse-linker-plugin|-fstack-protector*|-stdlib=*)
          func_quote_for_eval "$arg"
- 	arg="$func_quote_for_eval_result"
+ 	arg=$func_quote_for_eval_result
          func_append compile_command " $arg"

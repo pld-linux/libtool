@@ -5,21 +5,20 @@ Summary(pt_BR.UTF-8):	GNU libtool, uma ferramenta de geração de bibliotecas co
 Summary(ru.UTF-8):	GNU libtool, набор утилит для генерации разделяемых библиотек
 Summary(uk.UTF-8):	GNU libtool, набір утиліт для генерації динамічних бібліотек
 Name:		libtool
-Version:	2.4.2
-Release:	15
+Version:	2.4.3
+Release:	1
 Epoch:		2
 License:	GPL v2+
 Group:		Development/Tools
 Source0:	http://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.xz
-# Source0-md5:	2ec8997e0c07249eb4cbd072417d70fe
+# Source0-md5:	b5699a6d58f5594cdb0992c5e1f5e57e
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 # Source1-md5:	b95e215961860c66f0868b0d551358c9
 Patch0:		%{name}-info.patch
-Patch1:		%{name}-relink.patch
-Patch2:		%{name}-libdirs.patch
-Patch3:		%{name}-multilib.patch
-Patch4:		%{name}-linking-order.patch
-Patch5:		%{name}-fuse-ld.patch
+Patch1:		%{name}-libdirs.patch
+Patch2:		%{name}-multilib.patch
+Patch3:		%{name}-linking-order.patch
+Patch4:		%{name}-fuse-ld.patch
 URL:		http://www.gnu.org/software/libtool/
 BuildRequires:	/usr/bin/which
 BuildRequires:	autoconf >= 2.59
@@ -148,15 +147,13 @@ utilizando componentes estáticos (raramente necessário).
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
 
 %build
-%{__aclocal} -I libltdl/m4
+%{__aclocal} -I m4
 %{__autoconf}
 %{__automake}
-
 cd libltdl
-%{__aclocal} -I m4
+%{__aclocal} -I ../m4
 %{__autoconf}
 %{__automake}
 cd ..
@@ -167,7 +164,8 @@ cd ..
 # POSIX sh, not just the ones having extensions (like "+=" operator) that
 # shell used to build libtool package had.
 %{__sed} -i 's/lt_shell_append=yes/lt_shell_append=no/' configure
-%configure
+%configure \
+	--disable-silent-rules
 
 %{__make}
 
@@ -201,20 +199,30 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/libtool
 %attr(755,root,root) %{_bindir}/libtoolize
 %dir %{_datadir}/libtool
-%dir %{_datadir}/libtool/config
-%attr(755,root,root) %{_datadir}/libtool/config/compile
-%attr(755,root,root) %{_datadir}/libtool/config/config.guess
-%attr(755,root,root) %{_datadir}/libtool/config/config.sub
-%attr(755,root,root) %{_datadir}/libtool/config/depcomp
-%attr(755,root,root) %{_datadir}/libtool/config/install-sh
-%attr(755,root,root) %{_datadir}/libtool/config/ltmain.sh
-%attr(755,root,root) %{_datadir}/libtool/config/missing
 # libltdl copy for libtoolize --ltdl
-%dir %{_datadir}/libtool/libltdl
-%{_datadir}/libtool/libltdl/[!c]*
-%{_datadir}/libtool/libltdl/config-h.in
-%attr(755,root,root) %{_datadir}/libtool/libltdl/configure
-%{_datadir}/libtool/libltdl/configure.ac
+%dir %{_datadir}/libtool/build-aux
+%attr(755,root,root) %{_datadir}/libtool/build-aux/compile
+%attr(755,root,root) %{_datadir}/libtool/build-aux/config.guess
+%attr(755,root,root) %{_datadir}/libtool/build-aux/config.sub
+%attr(755,root,root) %{_datadir}/libtool/build-aux/depcomp
+%attr(755,root,root) %{_datadir}/libtool/build-aux/install-sh
+%attr(755,root,root) %{_datadir}/libtool/build-aux/ltmain.sh
+%attr(755,root,root) %{_datadir}/libtool/build-aux/missing
+%{_datadir}/libtool/COPYING.LIB
+%{_datadir}/libtool/README
+%{_datadir}/libtool/Makefile*
+%{_datadir}/libtool/aclocal.m4
+%{_datadir}/libtool/argz.c
+%{_datadir}/libtool/argz_.h
+%{_datadir}/libtool/config-h.in
+%attr(755,root,root) %{_datadir}/libtool/configure
+%{_datadir}/libtool/configure.ac
+%{_datadir}/libtool/lt*.c
+%{_datadir}/libtool/ltdl.h
+%{_datadir}/libtool/ltdl.mk
+%{_datadir}/libtool/slist.c
+%{_datadir}/libtool/libltdl
+%{_datadir}/libtool/loaders
 %{_mandir}/man1/libtool.1*
 %{_mandir}/man1/libtoolize.1*
 %lang(ja) %{_mandir}/ja/man1/libtool.1*

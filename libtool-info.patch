@@ -1,10 +1,10 @@
---- libtool-2.2.10/doc/libtool.texi.orig	2010-06-07 12:22:12.000000000 +0200
-+++ libtool-2.2.10/doc/libtool.texi	2010-06-13 12:48:37.030208254 +0200
-@@ -11,16 +11,11 @@
- @set MAILLIST the Libtool mailing list @email{libtool@@gnu.org}
- @set objdir .libs
+--- libtool-2.4.3/doc/libtool.texi.orig	2014-10-27 18:20:51.000000000 +0100
++++ libtool-2.4.3/doc/libtool.texi	2014-10-29 16:14:31.197974801 +0100
+@@ -30,15 +30,11 @@
+ the section entitled ``GNU Free Documentation License''.
+ @end copying
  
--@dircategory GNU programming tools
+-@dircategory Software development
 +@dircategory Programming tools:
  @direntry
 -* Libtool: (libtool).           Generic shared library support script.
@@ -12,16 +12,15 @@
 -
 -@dircategory Individual utilities
 -@direntry
--* libtool-invocation: (libtool)Invoking libtool.
--                                                Running the @code{libtool} script.
--* libtoolize: (libtool)Invoking libtoolize.     Adding libtool support.
+-* libtool-invocation: (libtool)Invoking libtool. Running the @code{libtool} script.
+-* libtoolize: (libtool)Invoking libtoolize.      Adding libtool support.
 +* Libtool: (libtool).			Generic shared library support script
 +* libtool-invocation: (libtool)libtool.	Running the @code{libtool} script
 +* libtoolize: (libtool)libtoolize.	Adding libtool support
  @end direntry
  
- @ifnottex
-@@ -86,7 +81,7 @@
+ @titlepage
+@@ -72,7 +68,7 @@
  * Introduction::                What the heck is libtool?
  * Libtool paradigm::            How libtool's view of libraries is different.
  * Using libtool::               Example of using libtool to build libraries.
@@ -30,7 +29,7 @@
  * Integrating libtool::         Using libtool in your own packages.
  * Other languages::             Using libtool without a C compiler.
  * Versioning::                  Using library interface versions.
-@@ -151,7 +146,7 @@
+@@ -137,7 +133,7 @@
  
  Including libtool in your package
  
@@ -39,7 +38,7 @@
  * Autoconf and LTLIBOBJS::      Autoconf automates LTLIBOBJS generation.
  
  Using libtool with other languages
-@@ -1173,7 +1168,7 @@
+@@ -1171,7 +1167,7 @@
  creating a standalone binary.  Use libtool to do the linking and add the
  @option{-all-static} flag.
  
@@ -48,7 +47,7 @@
  @chapter Invoking @command{libtool}
  @pindex libtool
  @cindex libtool command options
-@@ -2349,8 +2344,8 @@
+@@ -2429,8 +2425,8 @@
  @end defmac
  
  @pindex aclocal
@@ -59,7 +58,7 @@
  @code{LT_INIT}.  If you use Automake, the @command{aclocal} program
  will automatically add @code{LT_INIT} support to your
  @file{configure} script when it sees the invocation of @code{LT_INIT}
-@@ -2407,11 +2402,11 @@
+@@ -2487,11 +2483,11 @@
  copying these files into your package.
  
  @menu
@@ -73,7 +72,7 @@
  @subsection Invoking @command{libtoolize}
  @pindex libtoolize
  @cindex libtoolize command options
-@@ -2761,7 +2756,7 @@
+@@ -2842,7 +2838,7 @@
  a tag, then it defaults to the configuration for the @code{C} language.
  
  The tag can also be specified using @command{libtool}'s
@@ -82,9 +81,9 @@
  idea to do so in @file{Makefile} rules, because that will allow users to
  substitute the compiler without relying on @command{libtool} inference
  heuristics.  When no tag is specified, @command{libtool} will default
-@@ -4598,7 +4593,7 @@
- @defmac LT_CONFIG_LTDL_DIR (@var{DIRECTORY})
- Declare @var{DIRECTORY} to be the location of the @code{libltdl}
+@@ -4692,7 +4688,7 @@
+ @defmac LT_CONFIG_LTDL_DIR (@var{directory})
+ Declare @var{directory} to be the location of the @code{libltdl}
  source files, for @command{libtoolize --ltdl} to place
 -them. @xref{Invoking libtoolize}, for more details.  Provided that you
 +them. @xref{libtoolize}, for more details.  Provided that you

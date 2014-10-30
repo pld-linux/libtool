@@ -1,5 +1,5 @@
---- libtool-2.2/libltdl/m4/libtool.m4.orig	2003-04-14 23:58:23.000000000 +0200
-+++ libtool-2.2/libltdl/m4/libtool.m4	2003-04-20 12:22:06.000000000 +0200
+--- libtool-2.4.3/m4/libtool.m4.orig	2003-04-14 23:58:23.000000000 +0200
++++ libtool-2.4.3/m4/libtool.m4	2003-04-20 12:22:06.000000000 +0200
 @@ -1103,6 +1103,21 @@
    else
      sys_lib_search_path_spec=`echo "$sys_lib_search_path_spec" | $SED  -e "s/$PATH_SEPARATOR/ /g"`

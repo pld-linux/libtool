@@ -1,5 +1,5 @@
---- libtool-2.2/libltdl/m4/libtool.m4.multilib	2003-01-04 22:22:16.000000000 +0100
-+++ libtool-2.2/libltdl/m4/libtool.m4	2003-01-04 22:25:15.000000000 +0100
+--- libtool-2.4.3/m4/libtool.m4.multilib	2003-01-04 22:22:16.000000000 +0100
++++ libtool-2.4.3/m4/libtool.m4	2003-01-04 22:25:15.000000000 +0100
 @@ -2190,6 +2190,26 @@
    # people can always --disable-shared, the test was removed, and we
    # assume the GNU/Linux dynamic linker is in use.
