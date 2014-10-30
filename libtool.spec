@@ -1,3 +1,6 @@
+%bcond_without	tests
+%bcond_without	tests_expensive
+#
 Summary:	GNU libtool, a shared library generation tool
 Summary(es.UTF-8):	GNU libtool, una herramienta de creación de bibliotecas compartidas
 Summary(pl.UTF-8):	GNU libtool - narzędzie do generowania bibliotek współdzielonych
@@ -168,6 +171,8 @@ cd ..
 	--disable-silent-rules
 
 %{__make}
+
+%{?with_tests:%{__make} check %{!?with_tests_expensive:TESTSUITEFLAGS='-k "!expensive"'}}
 
 %install
 rm -rf $RPM_BUILD_ROOT
