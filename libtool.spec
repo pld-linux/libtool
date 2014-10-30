@@ -24,6 +24,7 @@ Patch1:		%{name}-libdirs.patch
 Patch2:		%{name}-multilib.patch
 Patch3:		%{name}-linking-order.patch
 Patch4:		%{name}-fuse-ld.patch
+Patch5:		%{name}-tests.patch
 URL:		http://www.gnu.org/software/libtool/
 BuildRequires:	/usr/bin/which
 BuildRequires:	autoconf >= 2.59
@@ -152,6 +153,7 @@ utilizando componentes estáticos (raramente necessário).
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 %{__aclocal} -I m4
