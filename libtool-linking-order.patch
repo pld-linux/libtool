@@ -93,15 +93,6 @@
  	else
  	 # Determine the default libpath from the value encoded in an
  	 # empty executable.
-@@ -5296,7 +5296,7 @@
- 	  fi
- 	  _LT_TAGVAR(archive_cmds_need_lc, $1)=yes
- 	  # This is similar to how AIX traditionally builds its shared libraries.
--	  _LT_TAGVAR(archive_expsym_cmds, $1)="\$CC $shared_flag"' -o $output_objdir/$soname $libobjs $deplibs $wl-bnoentry $compiler_flags $wl-bE:$export_symbols$allow_undefined_flag~$AR $AR_FLAGS $output_objdir/$libname$release.a $output_objdir/$soname'
-+	  _LT_TAGVAR(archive_expsym_cmds, $1)="\$CC $shared_flag"' -o $output_objdir/$soname $compiler_flags $libobjs $deplibs $wl-bnoentry $wl-bE:$export_symbols$allow_undefined_flag~$AR $AR_FLAGS $output_objdir/$libname$release.a $output_objdir/$soname'
- 	fi
-       fi
-       ;;
 @@ -5376,7 +5376,7 @@
  	# Tell ltmain to make .dll files, not .so files.
  	shrext_cmds=.dll
