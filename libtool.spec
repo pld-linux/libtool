@@ -28,6 +28,7 @@ URL:		http://www.gnu.org/software/libtool/
 BuildRequires:	/usr/bin/which
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.11.1
+BuildRequires:	help2man
 BuildRequires:	libstdc++-devel >= 5:3.3.3
 BuildRequires:	rpmbuild(macros) >= 1.213
 BuildRequires:	sed >= 4.0
