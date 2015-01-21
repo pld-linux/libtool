@@ -1,7 +1,7 @@
 #
 # Conditional build:
-%bcond_without	tests
-%bcond_without	tests_expensive
+%bcond_without	tests		# "make check"
+%bcond_without	tests_expensive	# expensive tests
 
 Summary:	GNU libtool, a shared library generation tool
 Summary(es.UTF-8):	GNU libtool, una herramienta de creación de bibliotecas compartidas
@@ -10,13 +10,13 @@ Summary(pt_BR.UTF-8):	GNU libtool, uma ferramenta de geração de bibliotecas co
 Summary(ru.UTF-8):	GNU libtool, набор утилит для генерации разделяемых библиотек
 Summary(uk.UTF-8):	GNU libtool, набір утиліт для генерації динамічних бібліотек
 Name:		libtool
-Version:	2.4.4
+Version:	2.4.5
 Release:	1
 Epoch:		2
 License:	GPL v2+
 Group:		Development/Tools
 Source0:	http://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.xz
-# Source0-md5:	51bf400de3354687d68dfa2392506b7e
+# Source0-md5:	ee9c087775aeb98ce53a9c69da865a55
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 # Source1-md5:	b95e215961860c66f0868b0d551358c9
 Patch0:		%{name}-info.patch
@@ -26,7 +26,7 @@ Patch3:		%{name}-linking-order.patch
 Patch4:		%{name}-fuse-ld.patch
 URL:		http://www.gnu.org/software/libtool/
 BuildRequires:	/usr/bin/which
-BuildRequires:	autoconf >= 2.59
+BuildRequires:	autoconf >= 2.62
 BuildRequires:	automake >= 1:1.11.1
 BuildRequires:	help2man
 BuildRequires:	libstdc++-devel >= 5:3.3.3
