@@ -1,0 +1,12 @@
+--- libtool-2.4.6/m4/libtool.m4.orig	2015-03-04 21:04:41.410095883 +0100
++++ libtool-2.4.6/m4/libtool.m4	2015-03-04 21:07:12.303422884 +0100
+@@ -2911,6 +2911,9 @@
+       *64-bit*)
+         libsuff=64
+         ;;
++      *32-bit*x86-64*)
++        libsuff=x32
++        ;;
+       esac
+     fi
+     rm -rf conftest*
