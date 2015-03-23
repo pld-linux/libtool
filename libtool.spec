@@ -181,9 +181,8 @@ cd ..
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_mandir}
-
 %{__make} install \
+	INSTALL="install -p" \
 	DESTDIR=$RPM_BUILD_ROOT
 
 # decompress only "ja" manuals; English ones are back in upstream
