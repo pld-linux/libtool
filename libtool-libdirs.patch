@@ -1,8 +1,9 @@
---- libtool-2.4.3/m4/libtool.m4.orig	2003-04-14 23:58:23.000000000 +0200
-+++ libtool-2.4.3/m4/libtool.m4	2003-04-20 12:22:06.000000000 +0200
-@@ -1103,6 +1103,21 @@
-   else
-     sys_lib_search_path_spec=`echo "$sys_lib_search_path_spec" | $SED  -e "s/$PATH_SEPARATOR/ /g"`
+diff -urNp -x '*.orig' libtool-2.4.6.org/m4/libtool.m4 libtool-2.4.6/m4/libtool.m4
+--- libtool-2.4.6.org/m4/libtool.m4	2015-01-20 17:15:19.000000000 +0100
++++ libtool-2.4.6/m4/libtool.m4	2021-04-09 09:36:10.565189044 +0200
+@@ -2127,6 +2127,21 @@ if test no = "$_LT_TAGVAR(lt_cv_prog_com
+     AC_MSG_WARN(['$CC' does not support '-c -o', so 'make -j' may be unsafe])
+     need_locks=warn
    fi
 +  # sanitize
 +  new_sys_lib_search_path_spec=
@@ -20,5 +21,5 @@
 +  # compress spaces
 +  sys_lib_search_path_spec=`echo "$new_sys_lib_search_path_spec" | $SED -e 's/^ *//g;s/ \+/ /g;s/ $//g'`
  else
-   sys_lib_search_path_spec="/lib /usr/lib /usr/local/lib"
+   need_locks=no
  fi
