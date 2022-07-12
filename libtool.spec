@@ -11,7 +11,7 @@ Summary(ru.UTF-8):	GNU libtool, набор утилит для генераци�
 Summary(uk.UTF-8):	GNU libtool, набір утиліт для генерації динамічних бібліотек
 Name:		libtool
 Version:	2.4.7
-Release:	2
+Release:	3
 Epoch:		2
 License:	GPL v2+
 Group:		Development/Tools
@@ -154,7 +154,7 @@ utilizando componentes estáticos (raramente necessário).
 %patch3 -p1
 %patch4 -p1
 
-%{__sed} -i -e '1s, /usr/bin/env sh,/bin/sh,' libtoolize.in
+%{__sed} -i -e '1s, /usr/bin/env sh,/bin/sh,' libtoolize.in build-aux/ltmain.{in,sh}
 
 %build
 %{__aclocal} -I m4
