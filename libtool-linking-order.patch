@@ -1,7 +1,7 @@
---- libtool-2.4.7/m4/libtool.m4.orig	2022-06-23 20:14:57.604892363 +0200
-+++ libtool-2.4.7/m4/libtool.m4	2022-06-23 21:31:31.253339766 +0200
-@@ -5165,7 +5165,7 @@ _LT_EOF
-       _LT_TAGVAR(exclude_expsyms, $1)=['[_]+GLOBAL_OFFSET_TABLE_|[_]+GLOBAL__[FID]_.*|[_]+head_[A-Za-z0-9_]+_dll|[A-Za-z0-9_]+_dll_iname']
+--- libtool-2.5.4/m4/libtool.m4.orig	2025-01-17 18:00:01.715242923 +0100
++++ libtool-2.5.4/m4/libtool.m4	2025-01-17 22:24:02.159427871 +0100
+@@ -5299,7 +5299,7 @@ _LT_EOF
+       _LT_TAGVAR(file_list_spec, $1)='@'
  
        if $LD --help 2>&1 | $GREP 'auto-import' > /dev/null; then
 -        _LT_TAGVAR(archive_cmds, $1)='$CC -shared $libobjs $deplibs $compiler_flags -o $output_objdir/$soname $wl--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
@@ -9,7 +9,7 @@
  	# If the export-symbols file already is a .def file, use it as
  	# is; otherwise, prepend EXPORTS...
  	_LT_TAGVAR(archive_expsym_cmds, $1)='if _LT_DLL_DEF_P([$export_symbols]); then
-@@ -5174,7 +5174,7 @@ _LT_EOF
+@@ -5308,7 +5308,7 @@ _LT_EOF
            echo EXPORTS > $output_objdir/$soname.def;
            cat $export_symbols >> $output_objdir/$soname.def;
          fi~
@@ -18,7 +18,7 @@
        else
  	_LT_TAGVAR(ld_shlibs, $1)=no
        fi
-@@ -5277,13 +5280,13 @@ _LT_EOF
+@@ -5411,13 +5411,13 @@ _LT_EOF
  	*Sun\ F*)			# Sun Fortran 8.3
  	  tmp_sharedflag='-G' ;;
  	esac
@@ -34,7 +34,7 @@
          fi
  
  	case $cc_basename in
-@@ -5313,8 +5313,8 @@ _LT_EOF
+@@ -5453,8 +5453,8 @@ _LT_EOF
  	_LT_TAGVAR(archive_cmds, $1)='$LD -Bshareable $libobjs $deplibs $linker_flags -o $lib'
  	wlarc=
        else
@@ -45,7 +45,7 @@
        fi
        ;;
  
-@@ -5332,8 +5332,8 @@ _LT_EOF
+@@ -5472,8 +5472,8 @@ _LT_EOF
  
  _LT_EOF
        elif $LD --help 2>&1 | $GREP ': supported targets:.* elf' > /dev/null; then
@@ -56,7 +56,7 @@
        else
  	_LT_TAGVAR(ld_shlibs, $1)=no
        fi
-@@ -5361,8 +5361,8 @@ _LT_EOF
+@@ -5501,8 +5501,8 @@ _LT_EOF
  	  # requires that you compile everything twice, which is a pain.
  	  if $LD --help 2>&1 | $GREP ': supported targets:.* elf' > /dev/null; then
  	    _LT_TAGVAR(hardcode_libdir_flag_spec, $1)='$wl-rpath $wl$libdir'
@@ -67,7 +67,7 @@
  	  else
  	    _LT_TAGVAR(ld_shlibs, $1)=no
  	  fi
-@@ -5379,8 +5379,8 @@ _LT_EOF
+@@ -5519,8 +5519,8 @@ _LT_EOF
  
      *)
        if $LD --help 2>&1 | $GREP ': supported targets:.* elf' > /dev/null; then
@@ -78,7 +78,7 @@
        else
  	_LT_TAGVAR(ld_shlibs, $1)=no
        fi
-@@ -5550,12 +5550,12 @@ _LT_EOF
+@@ -5690,12 +5690,12 @@ _LT_EOF
          # empty executable.
          _LT_SYS_MODULE_PATH_AIX([$1])
          _LT_TAGVAR(hardcode_libdir_flag_spec, $1)='$wl-blibpath:$libdir:'"$aix_libpath"
@@ -93,7 +93,7 @@
  	else
  	 # Determine the default libpath from the value encoded in an
  	 # empty executable.
-@@ -5666,7 +5666,7 @@ _LT_EOF
+@@ -5806,7 +5806,7 @@ _LT_EOF
  	# Tell ltmain to make .dll files, not .so files.
  	shrext_cmds=.dll
  	# FIXME: Setting linknames here is a bad hack.
@@ -102,7 +102,7 @@
  	# The linker will automatically build a .lib file if we build a DLL.
  	_LT_TAGVAR(old_archive_from_new_cmds, $1)='true'
  	# FIXME: Should let the user specify the lib program.
-@@ -5804,7 +5804,7 @@ _LT_EOF
+@@ -5944,7 +5944,7 @@ _LT_EOF
  
      irix5* | irix6* | nonstopux*)
        if test yes = "$GCC"; then
@@ -111,16 +111,16 @@
  	# Try to use the -exported_symbol ld option, if it does not
  	# work, assume that -exports_file does not work either and
  	# implicitly export all symbols.
-@@ -5845,7 +5845,7 @@ _LT_EOF
+@@ -5985,7 +5985,7 @@ _LT_EOF
        tcc*)
  	# Fabrice Bellard et al's Tiny C Compiler
  	_LT_TAGVAR(ld_shlibs, $1)=yes
 -	_LT_TAGVAR(archive_cmds, $1)='$CC -shared $pic_flag -o $lib $libobjs $deplibs $compiler_flags'
 +	_LT_TAGVAR(archive_cmds, $1)='$CC -shared $pic_flag -o $lib $compiler_flags $libobjs $deplibs'
+ 	_LT_TAGVAR(hardcode_libdir_flag_spec, $1)='$wl-rpath $wl$libdir'
  	;;
        esac
-       ;;
-@@ -5878,12 +5878,12 @@ _LT_EOF
+@@ -6022,12 +6022,12 @@ _LT_EOF
  	_LT_TAGVAR(hardcode_shlibpath_var, $1)=no
  	_LT_TAGVAR(hardcode_direct_absolute, $1)=yes
  	if test -z "`echo __ELF__ | $CC -E - | $GREP __ELF__`"; then
@@ -136,7 +136,7 @@
  	  _LT_TAGVAR(hardcode_libdir_flag_spec, $1)='$wl-rpath,$libdir'
  	fi
        else
-@@ -5955,9 +5955,9 @@ _LT_EOF
+@@ -6102,9 +6102,9 @@ _LT_EOF
        _LT_TAGVAR(no_undefined_flag, $1)=' -z defs'
        if test yes = "$GCC"; then
  	wlarc='$wl'
@@ -148,7 +148,7 @@
        else
  	case `$CC -V 2>&1` in
  	*"Compilers 5.0"*)
-@@ -5968,9 +5968,9 @@ _LT_EOF
+@@ -6115,9 +6115,9 @@ _LT_EOF
  	  ;;
  	*)
  	  wlarc='$wl'
@@ -160,7 +160,7 @@
  	  ;;
  	esac
        fi
-@@ -6444,8 +6444,8 @@ if test yes != "$_lt_caught_CXX_error";
+@@ -6591,8 +6591,8 @@ if test yes != "$_lt_caught_CXX_error";
        # Check if GNU C++ uses GNU ld as the underlying linker, since the
        # archiving commands below assume that GNU ld is being used.
        if test yes = "$with_gnu_ld"; then
@@ -171,7 +171,7 @@
  
          _LT_TAGVAR(hardcode_libdir_flag_spec, $1)='$wl-rpath $wl$libdir'
          _LT_TAGVAR(export_dynamic_flag_spec, $1)='$wl--export-dynamic'
-@@ -6471,7 +6471,7 @@ if test yes != "$_lt_caught_CXX_error";
+@@ -6617,7 +6617,7 @@ if test yes != "$_lt_caught_CXX_error";
          # linker, instead of GNU ld.  If possible, this setting should
          # overridden to take advantage of the native linker features on
          # the platform it is being used on.
@@ -180,8 +180,8 @@
        fi
  
        # Commands to make compiler produce verbose output that lists
-@@ -6741,7 +6741,7 @@ if test yes != "$_lt_caught_CXX_error";
- 	  _LT_TAGVAR(enable_shared_with_static_runtimes, $1)=yes
+@@ -6888,7 +6888,7 @@ if test yes != "$_lt_caught_CXX_error";
+ 	  _LT_TAGVAR(file_list_spec, $1)='@'
  
  	  if $LD --help 2>&1 | $GREP 'auto-import' > /dev/null; then
 -	    _LT_TAGVAR(archive_cmds, $1)='$CC -shared -nostdlib $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags -o $output_objdir/$soname $wl--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
@@ -189,7 +189,7 @@
  	    # If the export-symbols file already is a .def file, use it as
  	    # is; otherwise, prepend EXPORTS...
  	    _LT_TAGVAR(archive_expsym_cmds, $1)='if _LT_DLL_DEF_P([$export_symbols]); then
-@@ -6750,7 +6750,7 @@ if test yes != "$_lt_caught_CXX_error";
+@@ -6897,7 +6897,7 @@ if test yes != "$_lt_caught_CXX_error";
                echo EXPORTS > $output_objdir/$soname.def;
                cat $export_symbols >> $output_objdir/$soname.def;
              fi~
@@ -198,7 +198,7 @@
  	  else
  	    _LT_TAGVAR(ld_shlibs, $1)=no
  	  fi
-@@ -6993,8 +6993,8 @@ if test yes != "$_lt_caught_CXX_error";
+@@ -7140,8 +7140,8 @@ if test yes != "$_lt_caught_CXX_error";
  	    # KCC will only create a shared library if the output file
  	    # ends with ".so" (or ".sl" for HP-UX), so rename the library
  	    # to its proper name (with version) after linking.
@@ -209,7 +209,7 @@
  	    # Commands to make compiler produce verbose output that lists
  	    # what "hidden" libraries, object files and flags are used when
  	    # linking a shared library.
-@@ -7020,16 +7020,16 @@ if test yes != "$_lt_caught_CXX_error";
+@@ -7167,16 +7167,16 @@ if test yes != "$_lt_caught_CXX_error";
  	    # earlier do not add the objects themselves.
  	    case `$CC -V 2>&1` in
  	      *"Version 7."*)
@@ -230,7 +230,7 @@
  		;;
  	    esac
  	    _LT_TAGVAR(archive_cmds_need_lc, $1)=no
-@@ -7105,8 +7105,8 @@ if test yes != "$_lt_caught_CXX_error";
+@@ -7252,8 +7252,8 @@ if test yes != "$_lt_caught_CXX_error";
  	    *Sun\ C*)
  	      # Sun C++ 5.9
  	      _LT_TAGVAR(no_undefined_flag, $1)=' -zdefs'
@@ -241,7 +241,7 @@
  	      _LT_TAGVAR(hardcode_libdir_flag_spec, $1)='-R$libdir'
  	      _LT_TAGVAR(whole_archive_flag_spec, $1)='$wl--whole-archive`new_convenience=; for conv in $convenience\"\"; do test -z \"$conv\" || new_convenience=\"$new_convenience,$conv\"; done; func_echo_all \"$new_convenience\"` $wl--no-whole-archive'
  	      _LT_TAGVAR(compiler_needs_object, $1)=yes
-@@ -7171,10 +7171,10 @@ if test yes != "$_lt_caught_CXX_error";
+@@ -7322,10 +7322,10 @@ if test yes != "$_lt_caught_CXX_error";
  	  _LT_TAGVAR(hardcode_direct, $1)=yes
  	  _LT_TAGVAR(hardcode_shlibpath_var, $1)=no
  	  _LT_TAGVAR(hardcode_direct_absolute, $1)=yes
@@ -254,7 +254,7 @@
  	    _LT_TAGVAR(export_dynamic_flag_spec, $1)='$wl-E'
  	    _LT_TAGVAR(whole_archive_flag_spec, $1)=$wlarc'--whole-archive$convenience '$wlarc'--no-whole-archive'
  	  fi
-@@ -7297,9 +7297,9 @@ if test yes != "$_lt_caught_CXX_error";
+@@ -7451,9 +7451,9 @@ if test yes != "$_lt_caught_CXX_error";
  	    # Sun C++ 4.2, 5.x and Centerline C++
              _LT_TAGVAR(archive_cmds_need_lc,$1)=yes
  	    _LT_TAGVAR(no_undefined_flag, $1)=' -zdefs'
@@ -266,7 +266,7 @@
  
  	    _LT_TAGVAR(hardcode_libdir_flag_spec, $1)='-R$libdir'
  	    _LT_TAGVAR(hardcode_shlibpath_var, $1)=no
-@@ -7334,9 +7334,9 @@ if test yes != "$_lt_caught_CXX_error";
+@@ -7488,9 +7488,9 @@ if test yes != "$_lt_caught_CXX_error";
  	    if test yes,no = "$GXX,$with_gnu_ld"; then
  	      _LT_TAGVAR(no_undefined_flag, $1)=' $wl-z ${wl}defs'
  	      if $CC --version | $GREP -v '^2\.7' > /dev/null; then
@@ -278,7 +278,7 @@
  
  	        # Commands to make compiler produce verbose output that lists
  	        # what "hidden" libraries, object files and flags are used when
-@@ -7345,9 +7345,9 @@ if test yes != "$_lt_caught_CXX_error";
+@@ -7499,9 +7499,9 @@ if test yes != "$_lt_caught_CXX_error";
  	      else
  	        # g++ 2.7 appears to require '-G' NOT '-shared' on this
  	        # platform.

@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without	tests		# "make check"
+%bcond_without	tests		# unit tests
 %bcond_without	tests_expensive	# expensive tests
 
 Summary:	GNU libtool, a shared library generation tool
@@ -10,13 +10,13 @@ Summary(pt_BR.UTF-8):	GNU libtool, uma ferramenta de geração de bibliotecas co
 Summary(ru.UTF-8):	GNU libtool, набор утилит для генерации разделяемых библиотек
 Summary(uk.UTF-8):	GNU libtool, набір утиліт для генерації динамічних бібліотек
 Name:		libtool
-Version:	2.4.7
-Release:	10
+Version:	2.5.4
+Release:	1
 Epoch:		2
 License:	GPL v2+
 Group:		Development/Tools
-Source0:	http://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.xz
-# Source0-md5:	2fc0b6ddcd66a89ed6e45db28fa44232
+Source0:	https://ftp.gnu.org/gnu/libtool/%{name}-%{version}.tar.xz
+# Source0-md5:	22e0a29df8af5fdde276ea3a7d351d30
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-man-pages.tar.bz2
 # Source1-md5:	b95e215961860c66f0868b0d551358c9
 Patch0:		%{name}-info.patch
@@ -24,10 +24,9 @@ Patch1:		%{name}-libdirs.patch
 Patch2:		%{name}-multilib.patch
 Patch3:		%{name}-linking-order.patch
 Patch4:		%{name}-libx32.patch
-Patch5:		0001-tests-Fix-grep-warning-about-stray-before.patch
 URL:		http://www.gnu.org/software/libtool/
 BuildRequires:	/usr/bin/which
-BuildRequires:	autoconf >= 2.62
+BuildRequires:	autoconf >= 2.64
 BuildRequires:	automake >= 1:1.11.1
 BuildRequires:	help2man
 BuildRequires:	libstdc++-devel >= 5:3.3.3
@@ -149,12 +148,11 @@ utilizando componentes estáticos (raramente necessário).
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%patch -P0 -p1
+%patch -P1 -p1
+%patch -P2 -p1
+%patch -P3 -p1
+%patch -P4 -p1
 
 %{__sed} -i -e '1s, /usr/bin/env sh,/bin/sh,' libtoolize.in build-aux/ltmain.{in,sh}
 
