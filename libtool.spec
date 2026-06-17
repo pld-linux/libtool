@@ -24,6 +24,7 @@ Patch1:		%{name}-libdirs.patch
 Patch2:		%{name}-multilib.patch
 Patch3:		%{name}-linking-order.patch
 Patch4:		%{name}-libx32.patch
+Patch5:		%{name}-lalib-syntax.patch
 URL:		http://www.gnu.org/software/libtool/
 BuildRequires:	/usr/bin/which
 BuildRequires:	autoconf >= 2.64
@@ -153,6 +154,7 @@ utilizando componentes estáticos (raramente necessário).
 %patch -P2 -p1
 %patch -P3 -p1
 %patch -P4 -p1
+%patch -P5 -p1
 
 %{__sed} -i -e '1s, /usr/bin/env sh,/bin/sh,' libtoolize.in build-aux/ltmain.{in,sh}
 
